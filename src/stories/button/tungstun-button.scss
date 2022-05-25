@@ -1,0 +1,44 @@
+@use '../../variables.scss';
+
+.button {
+  background-color: variables.$color-button-background;
+  border-radius: 100px;
+  height: 30px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: variables.$color-button-content;
+  justify-content: center;
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.button__container {
+  background: none;
+  border: none;
+}
+
+.button__overlay {
+  background-color: variables.$color-button-background-hover;
+  width: 0;
+  height: 100%;
+  border-radius: 0;
+  z-index: 1;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.button:hover > .button__overlay {
+  width: 100%;
+  border-radius: 100px;
+}
+
+.button:active > .button__overlay {
+  background-color: variables.$color-button-background-active;
+}
+
+.button > * {
+  z-index: 2;
+}

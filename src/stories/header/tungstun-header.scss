@@ -1,0 +1,27 @@
+@use "../../variables.scss";
+
+.header {
+  &__container {
+    box-shadow: variables.$shadow;
+    display: flex;
+    height: 80px;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    height: 40px;
+  }
+
+  &__left {
+    margin-left: 20px;
+  }
+
+  &__right {
+    margin-left: auto;
+
+  }
+}

@@ -1,0 +1,83 @@
+@use "../../variables.scss";
+
+.page {
+  &__container {
+    overflow: hidden;
+    min-height: 100vh;
+    max-width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    left: 0;
+    top: 0;
+  }
+
+  &__content {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    margin: 20px;
+  }
+
+  &__title {
+    font-size: variables.$size-font-title;
+    color: black;
+    margin: 0;
+  }
+
+  &__batman {
+    background-color: black;
+    height: 200vw;
+    width: 200vw;
+    position: absolute;
+    border-radius: 10000px;
+    z-index: 100;
+    object-fit: contain;
+  }
+
+  &__standard {
+    position: absolute;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+
+    & > div {
+      background-color: variables.$color-transition-background;
+      position: absolute;
+      min-width: 150vw;
+      min-height: -webkit-fill-available;
+      min-height: 150vh;
+    }
+
+    &__in {
+      transform: translate(-50vw, -50vh);
+    }
+
+    &__out {
+      transform: translate(150vw, 150vh);
+      // transform: translate(100vw);
+    }
+  }
+}
+
+.transition {
+  &-enter {
+    opacity: 0;
+
+    &-active {
+      opacity: 1;
+      transition: 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    &-active {
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use "../../variables.scss";
+
+.link-group__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > div {
+    margin: 0 variables.$margin-horizontal-small;
+  }
+}

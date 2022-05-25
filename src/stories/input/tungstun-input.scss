@@ -1,0 +1,42 @@
+@use '../../variables.scss';
+
+.background {
+  background-color: variables.$color-input-background;
+  border-radius: 100px;
+  display: flex;
+  color: variables.$color-button-content;
+  align-items: center;
+  padding: 10px;
+  height: 30px;
+  position: relative;
+}
+
+.input {
+  flex: 1;
+  background: none;
+  margin: 0 20px;
+  border: none;
+  font-size: variables.$size-font-input;
+  font-family: variables.$font-heading;
+  font-weight: bold;
+  border-radius: 100px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input__tooltip {
+  position: absolute;
+  left: 20px;
+  z-index: 2;
+}
+
+.error {
+  cursor: pointer;
+  position: absolute;
+  background-color: variables.$color-error;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+}

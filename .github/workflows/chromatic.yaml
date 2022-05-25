@@ -1,0 +1,24 @@
+name: "📖 Chromatic deployment"
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏝️ Creating sandbox
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 🚧 Installing dependencies
+        run: yarn
+
+      - name: 🌐 Publishing to chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

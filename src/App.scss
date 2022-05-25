@@ -1,0 +1,26 @@
+@use './variables.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: variables.$font-heading;
+}
+
+p {
+  font-family: variables.$font-content;
+  font-weight: 100;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
