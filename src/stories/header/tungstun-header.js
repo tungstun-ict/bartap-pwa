@@ -2,15 +2,14 @@ import React from "react";
 
 import "./tungstun-header.scss";
 
-function TungstunHeader({ logo, left, right, height, className }) {
+function TungstunHeader({ className }) {
   return (
     <div
       className={`header__container ${className}`}
-      style={{ height: height && height }}
     >
-      <img className="header__logo" alt="" src={logo} />
-      <div className="header__left">{left}</div>
-      <div className="header__right">{right}</div>
+      <div className="header__left">{}</div>
+      <div className="header__center">bartap</div>
+      <div className="header__right">{}</div>
     </div>
   );
 }

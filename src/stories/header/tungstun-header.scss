@@ -4,7 +4,7 @@
   &__container {
     box-shadow: variables.$shadow;
     display: flex;
-    height: 80px;
+    height: 60px;
     margin: 0;
     flex-direction: row;
     align-items: center;
@@ -12,16 +12,22 @@
     padding: 0 20px;
   }
 
-  &__logo {
-    height: 40px;
+  &__left {
+    flex: 1;
   }
 
-  &__left {
-    margin-left: 20px;
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: variables.$font-heading;
+    user-select: none;
+    font-weight: bold;
+    font-size: 20px;
+    flex: 1;
   }
 
   &__right {
-    margin-left: auto;
-
+    flex: 1;
   }
 }

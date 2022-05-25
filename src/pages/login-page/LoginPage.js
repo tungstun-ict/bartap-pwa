@@ -21,8 +21,6 @@ const LoginPage = () => {
   return (
     <TungstunPage style={{justifyContent: "center", alignItems: "center"}} transition={true}>
       <TungstunAuthModal
-        heroImg={require("../../assets/images/office.jpg")}
-        logo={require("../../assets/images/logo.png")}
         links={[
           { text: "I got an invite", href: "/auth/invite" },
           { text: "Forgot password", href: "/auth/forgot-password" },
@@ -49,7 +47,7 @@ const LoginPage = () => {
           />
           <TungstunIconButton
             onClick={submitForm}
-            src={require("../../assets/icons/next-icon-light.png")}
+            src={require("../../assets/icons/arrow-light.png")}
           />
         </TungstunForm>
       </TungstunAuthModal>
