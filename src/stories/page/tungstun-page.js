@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import TungstunHeader from "../header/tungstun-header";
@@ -6,8 +6,11 @@ import TungstunLinkGroup from "../link-group/tungstun-link-group";
 import TungstunLink from "../link/tungstun-link";
 
 import "./tungstun-page.scss";
+import TungstunMenu from "../menu/tungstun-menu";
 
 function TungstunPage({ children, type, noHeader, title, style }) {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
   const standardVariants = {
     initial: {
       transform: "translate(0, 0)",
@@ -40,30 +43,21 @@ function TungstunPage({ children, type, noHeader, title, style }) {
           <div className="page__standard__out" />
         </motion.div>
       )}
-      <>
-        {!noHeader && (
-          <TungstunHeader
-            className="page__header"
-            height={80}
-            logo={require("../../assets/images/logo.png")}
-            left={
-              <TungstunLinkGroup>
-                <TungstunLink header text="🏠 Home" href="/" />
-                <TungstunLink header text="👽 Another" href="/another" />
-              </TungstunLinkGroup>
-            }
-            right={
-              <TungstunLinkGroup>
-                <TungstunLink header text="⚙️ Settings" href="/settings" />
-              </TungstunLinkGroup>
-            }
-          />
-        )}
-        <div className="page__content" style={style}>
-          {title && (<h1 className="page__title">{title}</h1>)}
-          {children}
-        </div>
-      </>
+
+      <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
+
+      {!noHeader && (
+        <TungstunHeader
+          className="page__header"
+          setMenuOpen={setMenuOpen}
+          height={80}
+          logo={require("../../assets/images/logo.png")}
+        />
+      )}
+      <div className="page__content" style={style}>
+        {title && <h1 className="page__title">{title}</h1>}
+        {children}
+      </div>
     </motion.div>
   );
 }

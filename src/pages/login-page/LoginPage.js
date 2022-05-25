@@ -19,38 +19,35 @@ const LoginPage = () => {
   };
 
   return (
-    <TungstunPage style={{justifyContent: "center", alignItems: "center"}} transition={true}>
-      <TungstunAuthModal
-        links={[
-          { text: "I got an invite", href: "/auth/invite" },
-          { text: "Forgot password", href: "/auth/forgot-password" },
-        ]}
+    <TungstunPage
+      style={{ justifyContent: "center", alignItems: "center" }}
+      transition={true}
+      noHeader
+    >
+      <TungstunForm
+        title="Login"
+        style={{ width: "100%" }}
+        onSubmit={submitForm}
       >
-        <TungstunForm
-          title="Login"
-          style={{ width: "100%" }}
-          onSubmit={submitForm}
-        >
-          <TungstunInput
-            hint="Email"
-            type="email"
-            name="email"
-            value={formValues.email || ""}
-            onChange={updateFormValues}
-          />
-          <TungstunInput
-            hint="Password"
-            type="password"
-            name="password"
-            value={formValues.password || ""}
-            onChange={updateFormValues}
-          />
-          <TungstunIconButton
-            onClick={submitForm}
-            src={require("../../assets/icons/arrow-light.png")}
-          />
-        </TungstunForm>
-      </TungstunAuthModal>
+        <TungstunInput
+          hint="Email"
+          type="email"
+          name="email"
+          value={formValues.email || ""}
+          onChange={updateFormValues}
+        />
+        <TungstunInput
+          hint="Password"
+          type="password"
+          name="password"
+          value={formValues.password || ""}
+          onChange={updateFormValues}
+        />
+        <TungstunIconButton
+          onClick={submitForm}
+          src={require("../../assets/icons/arrow-light.png")}
+        />
+      </TungstunForm>
     </TungstunPage>
   );
 };

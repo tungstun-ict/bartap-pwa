@@ -7,7 +7,7 @@ import "./home-page.scss";
 
 function HomePage() {
   return (
-    <TungstunPage title="🏠 Home">
+    <TungstunPage>
       <nav>
         <Link to="/auth/login">LOGIN</Link>
       </nav>

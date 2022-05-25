@@ -1,0 +1,38 @@
+@use "../../variables.scss";
+
+.menu {
+  &__container {
+    transition: 0.3s;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: variables.$color-menu-background;
+    box-shadow: variables.$shadow;
+  }
+
+  &__header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+
+    &__close {
+      margin-left: auto;
+      margin-right: 20px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: none;
+
+      & > img {
+        width: 100%;
+      }
+    }
+  }
+
+  &-closed {
+    transform: translateX(-100vw);
+  }
+}
