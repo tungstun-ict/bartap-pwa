@@ -2,13 +2,18 @@
 
 .menu {
   &__container {
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     position: absolute;
     width: 100vw;
     height: 100vh;
     z-index: 100;
     background-color: variables.$color-menu-background;
     box-shadow: variables.$shadow;
+
+    @media(min-width: variables.$size-mobile-max) {
+      width: 500px;
+      transition: 0.5s;
+    }
   }
 
   &__header {
@@ -34,6 +39,10 @@
 
   &-closed {
     transform: translateX(-100vw);
+
+    @media (min-width: variables.$size-mobile-max) {
+      transform: translateX(-500px);
+    }
   }
 }
 
