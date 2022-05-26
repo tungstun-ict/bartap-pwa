@@ -1,0 +1,24 @@
+@use "../../variables.scss";
+
+.title {
+  font-family: variables.$font-heading;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+
+  &__h1 {
+    font-size: 30px;
+  }
+
+  &__h2 {
+    font-size: 25px;
+  }
+
+  &__h3 {
+    font-size: 20px;
+  }
+
+  &__container {
+    width: fit-content;
+  }
+}

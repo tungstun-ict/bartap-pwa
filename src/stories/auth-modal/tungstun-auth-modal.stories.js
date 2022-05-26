@@ -48,7 +48,7 @@ export const Primary = () => {
         />
         <TungstunIconButton
           onClick={submitForm}
-          src={require("../../assets/icons/next-icon-light.png")}
+          src={require("../../assets/icons/arrow-light.png")}
         />
       </TungstunForm>
     </TungstunAuthModal>
