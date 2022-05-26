@@ -9,6 +9,7 @@ import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
 import useForm from "../../utils/useForm";
 
 import "./login-page.scss";
+import TungstunWaves from "../../stories/waves/tungstun-waves";
 
 const LoginPage = () => {
   const [formValues, updateFormValues] = useForm();
@@ -48,6 +49,7 @@ const LoginPage = () => {
           src={require("../../assets/icons/arrow-light.png")}
         />
       </TungstunForm>
+      <TungstunWaves />
     </TungstunPage>
   );
 };
