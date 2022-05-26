@@ -33,14 +33,14 @@ const LoginPage = () => {
           hint="Email"
           type="email"
           name="email"
-          value={formValues.email || ""}
+          value={formValues.email}
           onChange={updateFormValues}
         />
         <TungstunInput
           hint="Password"
           type="password"
           name="password"
-          value={formValues.password || ""}
+          value={formValues.password}
           onChange={updateFormValues}
         />
         <TungstunIconButton

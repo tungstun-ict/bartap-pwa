@@ -3,7 +3,7 @@ import TungstunTooltip from "../tooltip/tungstun-tooltip";
 
 import "./tungstun-input.scss";
 
-const TungstunInput = ({ width, hint, name, type, error, value, onChange }) => {
+const TungstunInput = ({ width, hint, name, type, error, value = "", onChange }) => {
   const [isShownTooltip, setShownTooltip] = useState(false);
 
   return (
