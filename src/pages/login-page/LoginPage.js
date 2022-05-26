@@ -25,6 +25,7 @@ const LoginPage = () => {
       transition={true}
       noHeader
     >
+      <img className="login-page__logo" src={require("../../assets/icons/icon.png")}/>
       <TungstunForm
         title="Login"
         style={{ width: "100%" }}

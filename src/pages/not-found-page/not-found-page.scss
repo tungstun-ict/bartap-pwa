@@ -7,45 +7,17 @@
   &__content {
     margin-top: 100px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-
-    &__left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      & > p {
-        margin: 0;
-      }
-
-      & > h1 {
-        margin: 50px 0 0 0;
-      }
-
-      &__logo {
-        width: 300px;
-      }
-    }
-
-    &__right {
-      border-radius: 1000px;
-      width: 500px;
-      height: 500px;
-      object-fit: cover;
-    }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
   }
 
-  &__bottom {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    margin: 50px;
-
-    & > button {
-      margin-left: 20px;
-    }
+  &__gif {
+    border-radius: 1000px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
   }
 }

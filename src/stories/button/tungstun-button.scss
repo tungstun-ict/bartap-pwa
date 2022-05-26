@@ -20,6 +20,10 @@
   border: none;
 }
 
+.button__content {
+  z-index: 2;
+}
+
 .button__overlay {
   background-color: variables.$color-button-background-hover;
   width: 0;
