@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TungstunMenuLink from "../menu-link/tungstun-menu-link";
 
 import "./tungstun-menu.scss";
 
@@ -14,6 +15,10 @@ function TungstunMenu({open, setOpen}) {
         <button onClick={handleClose} className="menu__header__close">
           <img src={require("../../assets/icons/cross.png")} />
         </button>
+      </div>
+      <div className="menu__links">
+        <TungstunMenuLink to="/auth/login" text="Login"/>
+        <TungstunMenuLink to="/another-one" text="Another one"/>
       </div>
     </div>
   );
