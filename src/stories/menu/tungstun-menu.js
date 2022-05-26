@@ -16,10 +16,10 @@ function TungstunMenu({open, setOpen}) {
           <img src={require("../../assets/icons/cross.png")} />
         </button>
       </div>
-      <div className="menu__links">
-        <TungstunMenuLink to="/auth/login" text="Login"/>
+      <nav className="menu__links">
+        <TungstunMenuLink to="/" text="🏠 Home"/>
         <TungstunMenuLink to="/another-one" text="Another one"/>
-      </div>
+      </nav>
     </div>
   );
 }

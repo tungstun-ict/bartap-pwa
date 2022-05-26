@@ -51,7 +51,6 @@ function TungstunPage({ children, type, noHeader, title, style }) {
           className="page__header"
           setMenuOpen={setMenuOpen}
           height={80}
-          logo={require("../../assets/images/logo.png")}
         />
       )}
       <div className="page__content" style={style}>
