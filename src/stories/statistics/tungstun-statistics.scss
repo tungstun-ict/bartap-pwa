@@ -1,0 +1,15 @@
+@use "../../variables.scss";
+
+.statistics__container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+
+  & > div {
+    flex: 1 0 30%;
+  }
+
+  & > div + div + div {
+    margin-top: 10px;
+  }
+}
