@@ -2,7 +2,7 @@ import React from "react";
 
 import "./tungstun-title.scss"
 
-function TungstunTitle({text, level}) {
+function TungstunTitle({text, level }) {
   return (
     <div className="title__container">
       {

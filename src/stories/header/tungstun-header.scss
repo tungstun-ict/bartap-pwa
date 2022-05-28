@@ -3,6 +3,9 @@
 .header {
   &__container {
     box-shadow: variables.$shadow;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
     display: flex;
     height: 60px;
     margin: 0;

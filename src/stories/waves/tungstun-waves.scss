@@ -11,6 +11,7 @@
     padding: none;
     display: flex;
     user-select: none;
+    z-index: -1;
   }
 
   &__image {
