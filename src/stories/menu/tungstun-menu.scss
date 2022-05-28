@@ -12,7 +12,7 @@
     background-color: variables.$color-menu-background;
     box-shadow: variables.$shadow;
 
-    @media(min-width: variables.$size-mobile-max) {
+    @media (min-width: variables.$size-mobile-max) {
       width: 500px;
       transition: 0.5s;
     }
@@ -24,7 +24,6 @@
     display: flex;
     align-items: center;
 
-
     &__close {
       margin-left: auto;
       margin-right: 20px;
@@ -32,6 +31,7 @@
       height: 40px;
       border: none;
       background: none;
+      cursor: pointer;
 
       & > img {
         width: 100%;
@@ -59,5 +59,3 @@
     }
   }
 }
-
-

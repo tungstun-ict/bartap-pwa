@@ -1,6 +1,7 @@
 @use './variables.scss';
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -22,5 +23,5 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }

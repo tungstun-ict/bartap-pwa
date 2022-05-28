@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import TungstunMenuLink from "../menu-link/tungstun-menu-link";
+import TungstunTitle from "../title/tungstun-title";
 
 import "./tungstun-menu.scss";
 
-function TungstunMenu({open, setOpen}) {
-
+function TungstunMenu({ open, setOpen }) {
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <div className={`menu__container ${!open && "menu-closed"}`}>
@@ -17,8 +17,9 @@ function TungstunMenu({open, setOpen}) {
         </button>
       </div>
       <nav className="menu__links">
-        <TungstunMenuLink to="/" text="🏠 Home"/>
-        <TungstunMenuLink to="/another-one" text="Another one"/>
+        <TungstunTitle text={"Menu"} level={2} />
+        <TungstunMenuLink to="/" text="🏠 Home" />
+        <TungstunMenuLink to="/another-one" text="Another one" />
       </nav>
     </div>
   );

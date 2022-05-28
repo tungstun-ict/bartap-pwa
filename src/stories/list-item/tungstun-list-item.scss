@@ -1,23 +1,39 @@
 @use "../../variables.scss";
 
 .list-item {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: variables.$color-item-background;
+  box-shadow: variables.$shadow;
+  border-radius: variables.$border-radius;
+  user-select: none;
+  transition: 0.3s;
+
   &__container {
+    text-decoration: none;
+    color: black;
     height: 60px;
-    width: 100%;
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: variables.$color-item-background;
-    box-shadow: variables.$shadow;
-    border-radius: variables.$border-radius;
+
+    &-link {
+      cursor: pointer;
+    }
+
+    &:hover > .arrow {
+      opacity: 1;
+      width: 40px;
+      margin-left: 20px;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 0 10px;
+    padding: 0 20px;
     box-sizing: border-box;
 
     & > div {
@@ -51,4 +67,13 @@
   &__date {
     color: variables.$color-text-date;
   }
+}
+
+.arrow {
+  user-select: none;
+  width: 0;
+  opacity: 0;
+  object-fit: contain;
+  margin-left: 0;
+  transition: 0.3s;
 }
