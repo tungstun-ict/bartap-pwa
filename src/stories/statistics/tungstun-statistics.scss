@@ -4,12 +4,22 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 10px;
+  transition: 0.3s;
+
+  @media(min-width: variables.$size-mobile-max) {
+    column-gap: 20px;
+  }
 
   & > div {
-    flex: 1 0 30%;
+    flex: 1 0 40%;
+    transition: 0.3s;
   }
 
   & > div + div + div {
     margin-top: 10px;
+
+    @media(min-width: variables.$size-mobile-max) {
+      margin-top: 20px;
+    }
   }
 }
