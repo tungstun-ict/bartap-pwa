@@ -9,8 +9,13 @@ const TungstunButton = ({ onClick, children, type, width }) => {
   };
 
   return (
-    <button className="button__container" type={type} onClick={clicked}>
-      <div className="button" style={{ width: width }}>
+    <button
+      className="button__container"
+      style={{ width: width }}
+      type={type}
+      onClick={clicked}
+    >
+      <div className="button">
         <div className="button__overlay"></div>
         {children}
       </div>
