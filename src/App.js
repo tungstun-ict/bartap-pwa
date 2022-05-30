@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import NotFoundPage from "./pages/not-found-page/NotFoundPage";
 import BarPage from "./pages/bar-page/BarPage";
 import SessionPage from "./pages/session-page/SessionPage";
+import ScanPage from "./pages/scan-page/ScanPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -18,6 +19,8 @@ const AnimatedRoutes = () => {
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/bar/:slug" element={<BarPage />} />
         <Route path="/session/:id" element={<SessionPage />} />
+        <Route path="/bar/add" element={<ScanPage />} />
+
       </Routes>
     </AnimatePresence>
   );

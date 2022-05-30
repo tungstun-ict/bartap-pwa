@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunHeader from "../../stories/header/tungstun-header";
 
@@ -14,12 +14,17 @@ import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const bar = {
     name: "Test Bar",
     debt: 20.49,
-    slug: "test-bar"
+    slug: "test-bar",
   };
-  
+
+  const handleClick = () => {
+    navigate("/bar/add");
+  };
+
   return (
     <TungstunPage>
       <TungstunTitle text={"🏠 Home"} level={1} />
@@ -36,10 +41,10 @@ const HomePage = () => {
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
-        <TungstunTextButton text="Add new bar" width="100%" />
+        <TungstunTextButton text="Add new bar" width="100%" onClick={handleClick} />
       </TungstunListView>
     </TungstunPage>
   );
-}
+};
 
 export default HomePage;
