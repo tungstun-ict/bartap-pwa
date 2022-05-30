@@ -26,7 +26,6 @@ const HomePage = () => {
       <TungstunStatistics>
         <TungstunStatistic value={"€40,50"} description="Open tap" />
         <TungstunStatistic value={"€230,50"} description="Total spent" />
-        <TungstunStatistic value={"Vodka Martini"} description="Favorite drink"/>
       </TungstunStatistics>
       <TungstunTitle text="🍺 My bars" level={2} />
       <TungstunListView>

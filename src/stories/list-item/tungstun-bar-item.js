@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import TungstunListItem from "./tungstun-list-item";
 
-function TungstunBarItem({ bar, link }) {
+const TungstunBarItem = ({ bar }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/bar", { state: { bar: bar } });
+  };
+
   return (
     <TungstunListItem
-      link={link}
+      onClick={handleClick}
       left={
         <>
           <p className="list-item__text list-item__name">{bar.name}</p>
@@ -17,6 +24,6 @@ function TungstunBarItem({ bar, link }) {
       }
     />
   );
-}
+};
 
 export default TungstunBarItem;

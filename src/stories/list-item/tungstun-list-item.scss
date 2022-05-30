@@ -17,15 +17,22 @@
     color: black;
     height: 60px;
     display: flex;
+    transition: 0.3s;
 
     &-link {
       cursor: pointer;
     }
 
-    &:hover > .arrow {
-      opacity: 1;
-      width: 40px;
-      margin-left: 20px;
+    &:hover {
+      & > .arrow {
+        opacity: 1;
+        width: 40px;
+        margin-left: 20px;
+      }
+      height: 70px;
+    }
+    &:active {
+      height: 100px;
     }
   }
 
