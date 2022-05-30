@@ -12,7 +12,8 @@ const BarPage = () => {
 
   const bar = {
     name: "Test bar",
-    debt: 20.45
+    debt: 20.45,
+    slug: slug
   }
 
   const session = {

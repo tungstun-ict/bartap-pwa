@@ -23,8 +23,8 @@
     margin: 80px 20px 20px 20px;
 
     @media (min-width: variables.$size-mobile-max) {
-     width: 1000px;
-     align-self: center; 
+      width: 1000px;
+      align-self: center;
     }
   }
 
@@ -49,11 +49,11 @@
     }
 
     &__in {
-      transform: translate(-50vw, -50vh);
+      transform: translateX(-50vw);
     }
 
     &__out {
-      transform: translate(150vw, 150vh);
+      transform: translateX(200vw);
       // transform: translate(100vw);
     }
   }
