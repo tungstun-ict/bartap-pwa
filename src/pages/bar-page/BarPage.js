@@ -17,6 +17,7 @@ const BarPage = () => {
   }
 
   const session = {
+    id: "xxxxxxxxxxxx",
     date: "20-02-22",
     name: "Session 1",
     total: 20.1,

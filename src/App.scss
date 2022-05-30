@@ -4,6 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
 h1,
@@ -24,4 +25,5 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
+  border: none;
 }

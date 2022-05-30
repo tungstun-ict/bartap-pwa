@@ -10,7 +10,6 @@ import TungstunTextButton from "../../stories/text-button/tungstun-text-button";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
-import TungstunAddBarItem from "../../stories/list-item/tungstun-add-bar-item";
 
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 

@@ -18,21 +18,20 @@
     height: 60px;
     display: flex;
     transition: 0.3s;
+    cursor: pointer;
 
-    &-link {
-      cursor: pointer;
-    }
-
-    &:hover {
-      & > .arrow {
-        opacity: 1;
-        width: 40px;
-        margin-left: 20px;
+    @media (min-width: variables.$size-mobile-max) {
+      &:hover {
+        & > .arrow {
+          opacity: 1;
+          width: 40px;
+          margin-left: 20px;
+        }
+        height: 70px;
       }
-      height: 70px;
-    }
-    &:active {
-      height: 100px;
+      &:active {
+        height: 100px;
+      }
     }
   }
 
