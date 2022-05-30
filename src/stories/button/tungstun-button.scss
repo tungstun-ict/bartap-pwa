@@ -2,10 +2,11 @@
 
 .button {
   background-color: variables.$color-button-background;
-  border-radius: 100px;
-  height: 30px;
-  padding: 10px;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   color: variables.$color-button-content;
@@ -13,11 +14,14 @@
   z-index: 0;
   position: relative;
   overflow: hidden;
+  border-radius: 1000px;
 }
 
 .button__container {
   background: none;
   border: none;
+  height: 50px;
+  padding: 0;  
 }
 
 .button__content {

@@ -2,7 +2,7 @@ import React from "react";
 
 import "./tungstun-button.scss";
 
-const TungstunButton = ({ onClick, children, type, width }) => {
+const TungstunButton = ({ onClick, children, type, width = 50 }) => {
   const clicked = (e) => {
     e.preventDefault();
     onClick();

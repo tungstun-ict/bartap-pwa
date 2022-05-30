@@ -23,7 +23,7 @@ function NotFoundPage() {
           className="nf-page__gif"
           src={require("../../assets/images/confusion.gif")}
         />
-        <TungstunTextButton text={"🏠"} width={"30px"} onClick={handleClick}/>
+        <TungstunTextButton text={"🏠"} onClick={handleClick}/>
       </div>
     </TungstunPage>
   );
