@@ -55,6 +55,10 @@
 
     &__right {
       margin-left: auto;
+
+      & > p {
+        margin-left: 10px;
+      }
     }
   }
 
@@ -68,6 +72,10 @@
     margin: 0;
     padding: 0;
     height: fit-content;
+  }
+
+  &__multiplier {
+
   }
 
   &__date {
