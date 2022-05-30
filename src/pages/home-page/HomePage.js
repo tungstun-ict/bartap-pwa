@@ -18,6 +18,7 @@ const HomePage = () => {
   const bar = {
     name: "Test Bar",
     debt: 20.49,
+    slug: "test-bar"
   };
   
   return (
@@ -29,13 +30,13 @@ const HomePage = () => {
       </TungstunStatistics>
       <TungstunTitle text="🍺 My bars" level={2} />
       <TungstunListView>
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
-        <TungstunBarItem bar={bar} link="/test-bar" />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
         <TungstunTextButton text="Add new bar" width="100%" />
       </TungstunListView>
     </TungstunPage>

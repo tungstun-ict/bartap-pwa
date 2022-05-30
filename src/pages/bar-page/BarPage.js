@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
@@ -8,9 +8,12 @@ import TungstunSessionItem from "../../stories/list-item/tungstun-session-item";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 
 const BarPage = () => {
-  const navigate = useNavigate();
-  const { state } = useLocation();
-  const { bar } = state;
+  const { slug } = useParams();
+
+  const bar = {
+    name: "Test bar",
+    debt: 20.45
+  }
 
   const session = {
     date: "20-02-22",
@@ -21,7 +24,7 @@ const BarPage = () => {
 
   return (
     <TungstunPage>
-      <TungstunTitle text={`🍺 ${bar.name}`} level={1} />
+      <TungstunTitle text={`🍺 ${bar.name}`} level={1} back />
       <TungstunStatistics>
         <TungstunStatistic
           description={"Total dept"}

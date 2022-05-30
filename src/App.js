@@ -14,8 +14,8 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/bar" element={<BarPage />} />
         <Route path="/auth/login" element={<LoginPage />} />
+        <Route path="/bar/:slug" element={<BarPage />} />
       </Routes>
     </AnimatePresence>
   );

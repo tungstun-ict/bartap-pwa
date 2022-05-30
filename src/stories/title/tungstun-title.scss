@@ -20,8 +20,21 @@
     font-size: 20px;
   }
 
+  &__back {
+    height: 30px;
+    width: 30px;
+    margin: 0 10px 20px 0;
+    transform: rotate(180deg);
+    transition: 0.3s;
+
+    &:hover {
+      margin-right: 20px;
+    }
+  }
+
   &__container {
-    width: fit-content;
+    display: flex;
+    align-items: center;
     height: fit-content;
   }
 }

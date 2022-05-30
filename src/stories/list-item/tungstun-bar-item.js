@@ -6,7 +6,7 @@ const TungstunBarItem = ({ bar }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/bar", { state: { bar: bar } });
+    navigate(`/bar/${bar.slug}`);
   };
 
   return (
