@@ -25,7 +25,7 @@ const SessionPage = () => {
       price: 5.49,
     },
     timestamp: Date.now(),
-    total: 10.89,
+    total: 10.98,
     amount: 2,
   };
 

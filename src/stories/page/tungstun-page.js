@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import TungstunHeader from "../header/tungstun-header";
-import TungstunLinkGroup from "../link-group/tungstun-link-group";
-import TungstunLink from "../link/tungstun-link";
+import TungstunMenu from "../menu/tungstun-menu";
+import TungstunNotificationQueue from "../notification/tungstun-notification-queue";
 
 import "./tungstun-page.scss";
-import TungstunMenu from "../menu/tungstun-menu";
 
-function TungstunPage({ children, type, noHeader, title, style }) {
+const TungstunPageContainer = () => {};
+
+const TungstunPage = ({ children, type, noHeader, title, style }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const standardVariants = {
@@ -45,7 +46,7 @@ function TungstunPage({ children, type, noHeader, title, style }) {
       )}
 
       <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
-
+      <TungstunNotificationQueue />
       {!noHeader && (
         <TungstunHeader
           className="page__header"
@@ -59,6 +60,6 @@ function TungstunPage({ children, type, noHeader, title, style }) {
       </div>
     </motion.div>
   );
-}
+};
 
 export default TungstunPage;

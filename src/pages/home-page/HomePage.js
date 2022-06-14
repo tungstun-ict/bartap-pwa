@@ -34,7 +34,7 @@ const HomePage = () => {
       </TungstunStatistics>
       <TungstunTitle text="🍺 My bars" level={2} />
       <TungstunListView>
-        <TungstunBarItem bar={bar} />
+      <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />

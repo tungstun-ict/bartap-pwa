@@ -1,0 +1,26 @@
+@use "../../variables.scss";
+
+.notification-queue {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    padding: 20px;
+    top: 0;
+    right: 0;
+    transition: 0.3s;
+    box-sizing: border-box;
+    z-index: 999;
+
+    & > div + div {
+      margin-top: 20px;
+    }
+
+    @media (min-width: variables.$size-mobile-max) {
+      width: 600px;
+      padding: 20px;
+    }
+  }
+}

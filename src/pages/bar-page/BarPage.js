@@ -29,11 +29,19 @@ const BarPage = () => {
       <TungstunTitle text={`🍺 ${bar.name}`} level={1} back />
       <TungstunStatistics>
         <TungstunStatistic
-          description={"Total dept"}
+          description={"Total debt"}
           value={`€${bar.debt},-`}
         />
         <TungstunStatistic
           description={"Most spent at one time"}
+          value={`€${bar.debt},-`}
+        />
+        <TungstunStatistic
+          description={"Total debt"}
+          value={`€${bar.debt},-`}
+        />
+        <TungstunStatistic
+          description={"Total debt"}
           value={`€${bar.debt},-`}
         />
         <TungstunStatistic
