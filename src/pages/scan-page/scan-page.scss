@@ -1,5 +1,48 @@
+@use "../../variables.scss";
+
 .scan-page {
   &__camera {
-    max-height: 200px;
+    height: 800px;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.3s;
+
+    & > section > div {
+      height: 100%;
+    }
+
+    @media (max-width: variables.$size-mobile-max) {
+      position: absolute;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      height: 100%;
+
+      & > section {
+        height: 100%;
+      }
+      & > section > div {
+        height: 100%;
+      }
+    }
+
+    & > section > div > #video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__form {
+    @media (max-width: variables.$size-mobile-max) {
+      background-color: white;
+      height: 150px;
+      width: 100vw;
+      position: fixed;
+      bottom: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      left: 0;
+    }
   }
 }
