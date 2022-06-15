@@ -4,34 +4,42 @@ import "./tungstun-notification.scss";
 
 function TungstunNotification({ id, text, error, dispatch }) {
   const [exit, setExit] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
   const [progress, setProgress] = useState(0);
   const speed = 5000;
 
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const startTimer = () => {
+    const id = setInterval(() => {
+      setProgress(prev => {
+        if(prev < 100) {
+          return prev + 1;
+        }
 
-  const startTimer = async () => {
-    setProgress(100);
+        return prev;
+      })
+    }, speed / 100);
 
-    setTimeout(() => {
-      closeNotification();
-    }, speed);
+    setIntervalId(id);
   };
 
   useEffect(() => {
-    async function start() {
-      await startTimer();
-    }
-
-    start();
+    startTimer();
   }, []);
 
+  useEffect(() => {
+    if (progress === 100) {
+      closeNotification();
+    }
+  }, [progress]);
+
   const closeNotification = () => {
+    clearInterval(intervalId);
     setExit(true);
 
     setTimeout(() => {
       dispatch({
         type: "REMOVE_NOTIFICATION",
-        id: id
+        id: id,
       });
     }, 400);
   };
@@ -45,7 +53,7 @@ function TungstunNotification({ id, text, error, dispatch }) {
     >
       <div
         className="notification__overlay"
-        style={{ width: `${progress}%`, transition: `${speed}ms linear` }}
+        style={{ width: `${progress}%`, transition: `${speed / 100}ms linear` }}
       ></div>
       <p className="notification__text">{text}</p>
     </div>

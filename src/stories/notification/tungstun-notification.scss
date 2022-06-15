@@ -14,7 +14,6 @@
     position: relative;
     animation: SlideIn 0.2s;
     animation-fill-mode: forwards;
-    transition: 0.5s ease-in-out;
 
     @keyframes SlideIn {
       0% {
@@ -49,10 +48,10 @@
 
   @keyframes SlideOut {
     0% {
-      margin-left: 0;
+      transform: translateY(0);
     }
     100% {
-      margin-left: 120%;
+      transform: translateY(-80px);
     }
   }
 }
