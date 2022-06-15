@@ -14,14 +14,14 @@ const AnimatedRoutes = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <TungstunNotificationProvider>
-        <Routes location={location} key={location.pathname}>
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/auth/login" element={<LoginPage />} />
-          <Route path="/bar/:slug" element={<BarPage />} />
-          <Route path="/session/:id" element={<SessionPage />} />
-          <Route path="/bar/add" element={<ScanPage />} />
+      <TungstunNotificationProvider key={location.pathname} >
+        <Routes location={location} key={location.pathname} >
+          <Route path="*" element={<NotFoundPage />} key={location.pathname} />
+          <Route path="/" element={<HomePage />} key={location.pathname} />
+          <Route path="/auth/login" element={<LoginPage />} key={location.pathname} />
+          <Route path="/bar/:slug" element={<BarPage />} key={location.pathname} />
+          <Route path="/session/:id" element={<SessionPage />} key={location.pathname} />
+          <Route path="/bar/add" element={<ScanPage />} key={location.pathname} />
         </Routes>
       </TungstunNotificationProvider>
     </AnimatePresence>
