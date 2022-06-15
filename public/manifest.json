@@ -1,6 +1,6 @@
 {
-  "short_name": "Dashboard",
-  "name": "Tungstun API dashboard",
+  "short_name": "bartap",
+  "name": "bartap",
   "icons": [
     {
       "src": "favicon.ico",
