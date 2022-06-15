@@ -25,6 +25,10 @@ const ScanPage = () => {
   }, [scan]);
 
   const handleScan = (input) => {
+    if(input === null || input === "") {
+      return null;
+    }
+
     dispatch({
       type: "ADD_NOTIFICATION",
       payload: { text: "Succesfully added new bar" },
