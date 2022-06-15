@@ -23,7 +23,26 @@ function TungstunMenu({ open, setOpen }) {
         <TungstunTitle text={"Menu"} level={2} />
         <TungstunMenuLink to="/" text="🏠 Home" />
         <TungstunMenuLink to="/another-one" text="Another one" />
-        <TungstunTextButton width={"100%"} text={"Push new notification"} onClick={() => notificationDispatch({type: "ADD_NOTIFICATION", payload: { text: "Hai"}})}/>
+        <TungstunTextButton
+          width={"100%"}
+          text={"Push new notification"}
+          onClick={() =>
+            notificationDispatch({
+              type: "ADD_NOTIFICATION",
+              payload: { text: "This is a friendly notification." },
+            })
+          }
+        />
+        <TungstunTextButton
+          width={"100%"}
+          text={"Push new error"}
+          onClick={() =>
+            notificationDispatch({
+              type: "ADD_NOTIFICATION",
+              payload: { text: "This is a critical error.", error: "error" },
+            })
+          }
+        />
       </nav>
     </div>
   );

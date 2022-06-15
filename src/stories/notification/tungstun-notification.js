@@ -6,21 +6,7 @@ function TungstunNotification({ id, text, error, dispatch }) {
   const [exit, setExit] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const [progress, setProgress] = useState(0);
-  const speed = 5000;
-
-  const startTimer = () => {
-    const id = setInterval(() => {
-      setProgress(prev => {
-        if(prev < 100) {
-          return prev + 1;
-        }
-
-        return prev;
-      })
-    }, speed / 100);
-
-    setIntervalId(id);
-  };
+  const speed = 10000;
 
   useEffect(() => {
     startTimer();
@@ -31,6 +17,24 @@ function TungstunNotification({ id, text, error, dispatch }) {
       closeNotification();
     }
   }, [progress]);
+
+  const startTimer = () => {
+    const id = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 100) {
+          return prev + 1;
+        }
+
+        return prev;
+      });
+    }, speed / 100);
+
+    setIntervalId(id);
+  };
+
+  const pauseTimer = () => {
+    clearInterval(intervalId);
+  };
 
   const closeNotification = () => {
     clearInterval(intervalId);
@@ -46,6 +50,8 @@ function TungstunNotification({ id, text, error, dispatch }) {
 
   return (
     <div
+      onMouseEnter={pauseTimer}
+      onMouseLeave={startTimer}
       className={`
         notification__container 
         ${error ? "notification-error" : ""} 
@@ -55,6 +61,17 @@ function TungstunNotification({ id, text, error, dispatch }) {
         className="notification__overlay"
         style={{ width: `${progress}%`, transition: `${speed / 100}ms linear` }}
       ></div>
+      {error ? (
+        <img
+          className="notification__icon"
+          src={require("../../assets/icons/caution-light.png")}
+        />
+      ) : (
+        <img
+          className="notification__icon"
+          src={require("../../assets/icons/info.png")}
+        />
+      )}
       <p className="notification__text">{text}</p>
     </div>
   );

@@ -14,6 +14,7 @@
     position: relative;
     animation: SlideIn 0.2s;
     animation-fill-mode: forwards;
+    align-items: center;
 
     @keyframes SlideIn {
       0% {
@@ -37,8 +38,14 @@
     z-index: 1;
   }
 
+  &__icon {
+    height: 40px;
+    margin-left: 20px;
+  }
+
   &-error {
     background-color: variables.$color-error;
+    color: white;
   }
 
   &-exit {
