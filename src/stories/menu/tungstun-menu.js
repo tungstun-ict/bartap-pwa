@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TungstunMenuLink from "../menu-link/tungstun-menu-link";
+import TungstunNotificationContext from "../notification/tungstun-notification-provider";
+import TungstunTextButton from "../text-button/tungstun-text-button";
 import TungstunTitle from "../title/tungstun-title";
 
 import "./tungstun-menu.scss";
 
 function TungstunMenu({ open, setOpen }) {
+  const notificationDispatch = useContext(TungstunNotificationContext);
   const handleClose = () => {
     setOpen(false);
   };
@@ -20,6 +23,7 @@ function TungstunMenu({ open, setOpen }) {
         <TungstunTitle text={"Menu"} level={2} />
         <TungstunMenuLink to="/" text="🏠 Home" />
         <TungstunMenuLink to="/another-one" text="Another one" />
+        <TungstunTextButton width={"100%"} text={"Push new notification"} onClick={() => notificationDispatch({type: "ADD_NOTIFICATION", payload: { text: "Hai"}})}/>
       </nav>
     </div>
   );

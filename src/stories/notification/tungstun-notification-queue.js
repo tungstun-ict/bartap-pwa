@@ -4,11 +4,11 @@ import "./tungstun-notification-queue.scss";
 import TungstunNotificationContext from "./tungstun-notification-provider";
 import TungstunNotification from "./tungstun-notification";
 
-const TungstunNotificationQueue = () => {
+const TungstunNotificationQueue = ({state, dispatch}) => {
   const notificationContext = useContext(TungstunNotificationContext);
   return (
     <div className="notification-queue__container">
-      <TungstunNotification text="This is a notification" />
+      {state.map((n) => (<TungstunNotification key={n.id} id={n.id} text={n.text} error={n.error} dispatch={dispatch} />))}
     </div>
   );
 };

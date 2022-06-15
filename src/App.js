@@ -8,13 +8,14 @@ import BarPage from "./pages/bar-page/BarPage";
 import SessionPage from "./pages/session-page/SessionPage";
 import ScanPage from "./pages/scan-page/ScanPage";
 import { TungstunNotificationProvider } from "./stories/notification/tungstun-notification-provider";
+import TungstunNotificationQueue from "./stories/notification/tungstun-notification-queue";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <TungstunNotificationProvider key={location.pathname}>
+    <TungstunNotificationProvider>
+      <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="*" element={<NotFoundPage />} key={location.pathname} />
           <Route path="/" element={<HomePage />} key={location.pathname} />
@@ -39,8 +40,8 @@ const AnimatedRoutes = () => {
             key={location.pathname}
           />
         </Routes>
-      </TungstunNotificationProvider>
-    </AnimatePresence>
+      </AnimatePresence>
+    </TungstunNotificationProvider>
   );
 };
 
