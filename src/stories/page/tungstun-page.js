@@ -46,7 +46,6 @@ const TungstunPage = ({ children, type, noHeader, title, style }) => {
       )}
 
       <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
-      <TungstunNotificationQueue />
       {!noHeader && (
         <TungstunHeader
           className="page__header"

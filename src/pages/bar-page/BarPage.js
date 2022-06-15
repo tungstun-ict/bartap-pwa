@@ -37,14 +37,6 @@ const BarPage = () => {
           value={`€${bar.debt},-`}
         />
         <TungstunStatistic
-          description={"Total debt"}
-          value={`€${bar.debt},-`}
-        />
-        <TungstunStatistic
-          description={"Total debt"}
-          value={`€${bar.debt},-`}
-        />
-        <TungstunStatistic
           description={"Favourite drink"}
           value={`Vodka martini`}
         />
