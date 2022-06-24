@@ -1,5 +1,3 @@
-import React, {useContext} from "react";
-
 import "./tungstun-notification-queue.scss";
 import TungstunNotification from "./tungstun-notification";
 
