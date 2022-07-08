@@ -2,7 +2,13 @@ import React from "react";
 
 import "./tungstun-button.scss";
 
-const TungstunButton = ({ onClick, children, type, width = 50 }) => {
+const TungstunButton = ({
+  onClick,
+  children,
+  type,
+  width = 50,
+  color,
+}) => {
   const clicked = (e) => {
     e.preventDefault();
     onClick();
@@ -10,13 +16,17 @@ const TungstunButton = ({ onClick, children, type, width = 50 }) => {
 
   return (
     <button
+      color={color}
       className="button__container"
       style={{ width: width }}
       type={type}
       onClick={clicked}
     >
-      <div className="button">
-        <div className="button__overlay"></div>
+      <div className="button" style={{ background: color }}>
+        <div
+          className="button__overlay"
+          style={{ background: color && "rgba(0,0,0,0.4)" }}
+        ></div>
         {children}
       </div>
     </button>
