@@ -7,8 +7,8 @@ import NotFoundPage from "./pages/not-found-page/NotFoundPage";
 import BarPage from "./pages/bar-page/BarPage";
 import SessionPage from "./pages/session-page/SessionPage";
 import ScanPage from "./pages/scan-page/ScanPage";
+import DebugPage from "./pages/debug-page/DebugPage";
 import { TungstunNotificationProvider } from "./stories/notification/tungstun-notification-provider";
-import TungstunNotificationQueue from "./stories/notification/tungstun-notification-queue";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -37,6 +37,11 @@ const AnimatedRoutes = () => {
           <Route
             path="/bar/add"
             element={<ScanPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/debug"
+            element={<DebugPage />}
             key={location.pathname}
           />
         </Routes>

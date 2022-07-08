@@ -7,7 +7,6 @@ import TungstunTitle from "../title/tungstun-title";
 import "./tungstun-menu.scss";
 
 function TungstunMenu({ open, setOpen }) {
-  const notificationDispatch = useContext(TungstunNotificationContext);
   const handleClose = () => {
     setOpen(false);
   };
@@ -22,27 +21,7 @@ function TungstunMenu({ open, setOpen }) {
       <nav className="menu__links">
         <TungstunTitle text={"Menu"} level={2} />
         <TungstunMenuLink to="/" text="🏠 Home" />
-        <TungstunMenuLink to="/another-one" text="Another one" />
-        <TungstunTextButton
-          width={"100%"}
-          text={"Push new notification"}
-          onClick={() =>
-            notificationDispatch({
-              type: "ADD_NOTIFICATION",
-              payload: { text: "This is a friendly notification." },
-            })
-          }
-        />
-        <TungstunTextButton
-          width={"100%"}
-          text={"Push new error"}
-          onClick={() =>
-            notificationDispatch({
-              type: "ADD_NOTIFICATION",
-              payload: { text: "This is a critical error.", error: "error" },
-            })
-          }
-        />
+        <TungstunMenuLink to="/debug" text="🪲 Debug options" />
       </nav>
     </div>
   );
