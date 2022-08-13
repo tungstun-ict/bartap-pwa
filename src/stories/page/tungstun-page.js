@@ -3,16 +3,13 @@ import { motion } from "framer-motion";
 
 import TungstunHeader from "../header/tungstun-header";
 import TungstunMenu from "../menu/tungstun-menu";
-import TungstunNotificationQueue from "../notification/tungstun-notification-queue";
 
 import "./tungstun-page.scss";
-
-const TungstunPageContainer = () => {};
 
 const TungstunPage = ({ children, type, noHeader, title, style }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const standardVariants = {
+  const heavyVariants = {
     initial: {
       transform: "translate(0, 0)",
     },
@@ -24,21 +21,25 @@ const TungstunPage = ({ children, type, noHeader, title, style }) => {
     },
   };
 
-  const standardTransition = {
+  const heavyTransition = {
     duration: 0.4,
     ease: "easeOut",
   };
 
   return (
-    <motion.div className={`page__container`}>
-      {!type && (
+    <motion.div 
+      className={`page__container`}
+      initial={{ opacity: 0}}
+      animate={{ opacity: 100 }}
+      transition={{ duration: 2 }}>
+      {type && (
         <motion.div
           className="page__standard"
           initial={"initial"}
           exit={"out"}
           animate={"in"}
-          variants={standardVariants}
-          transition={standardTransition}
+          variants={heavyVariants}
+          transition={heavyTransition}
         >
           <div className="page__standard__in" />
           <div className="page__standard__out" />

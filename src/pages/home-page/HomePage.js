@@ -34,15 +34,13 @@ const HomePage = () => {
       </TungstunStatistics>
       <TungstunTitle text="🍺 My bars" level={2} />
       <TungstunListView>
-      <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunTextButton text="Add new bar" width="100%" onClick={handleClick} />
       </TungstunListView>
+      <TungstunTextButton className={"add-bar-button"} text="Add new bar" width="100%" onClick={handleClick} />
     </TungstunPage>
   );
 };

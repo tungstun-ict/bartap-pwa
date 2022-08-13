@@ -8,6 +8,7 @@ const TungstunButton = ({
   type,
   width = 50,
   color,
+  className
 }) => {
   const clicked = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const TungstunButton = ({
   return (
     <button
       color={color}
-      className="button__container"
+      className={`button__container ${className}`}
       style={{ width: width }}
       type={type}
       onClick={clicked}
