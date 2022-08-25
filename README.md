@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Bartap Progressive web app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Release
 
-## Available Scripts
+More info soon.
 
-In the project directory, you can run:
+## Tools
+- [React](https://reactjs.org/)
+- [Storybook](https://storybook.js.org/)
+- [Chromatic](https://www.chromatic.com/)
+- [Jest](https://jestjs.io/)
+- [Scss](https://sass-lang.com/)
 
-### `npm start`
+## The bartap project
+The bartap project is a SaaS solution for the catering branch. It provides an application for stock keeping, customer management and bill administration. This project can be found 
+[here](https://github.com/tungstun-ict/bartap-app).
+All data is processed and stored in a Spring Boot microservice backend
+[here](https://github.com/tungstun-ict/bartap-backend).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We also created a clocking system using nfc tags and an Arduino micro controller programmed in c++. This project can be found 
+[here](https://github.com/tungstun-ict/bartap-rfid).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Progressive web app
+This project is an application developed for the customer of the catering company using bartap so they can track their expenses and statistics.
+We decided to create a PWA to target as many people as we could. Since a PWA can be used behind a PC, in a mobile web browser and as a standalone application we thought it would be the perfect fit.
 
-### `npm test`
+## Git Strategy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For our git strategy, we are using a modified version of git flow. In our strategy we use the following branches:
 
-### `npm run build`
+- `Master branch`
+- `Development branch`
+- `Feature branches`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Whatever is in the master branch, will be running on the latest [build](#Release). The only things that will go in the master branch are releases, accompanied by `git tag` tags (v1, v2, etc.).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+All of the development work will be done in the `development` branch. This is to ensure that the deployed version (`master` branch) will always remain stable.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For every story or (sub)task we create a new `feature` branch, each team member can do whatever he wants in this branch (rebasing, force pushing, all of it). These `feature` branches will be used to make Pull Requests in Github. In these PR's there will be regular reviews to ensure high code quality.
 
-### `npm run eject`
+### Git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Commits
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To keep your commits clean, we follow the advice given in this [article](https://chris.beams.io/posts/git-commit/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### History
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To keep the Git history as clean as possible we do not allow merging between feature brances. Instead we use `git rebase` for this. All merging is to be done from Github.
 
-## Learn More
+#### Feature Branches
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For every issue on the [project board](https://github.com/JortWillemsen/bar-application/projects/1) you can create a branch. This branch must follow the feature branch naming convention like this:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`feature/{isssue code}-a-small-description`
 
-### Code Splitting
+This makes sure that we can always discern branches from eachother. For example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`feature/22-topbar-menu-implementation`
 
-### Analyzing the Bundle Size
+#### Pull requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+After you have finished an issue and the feature branch is ready to be merged with development you create a new pull request by going to:
 
-### Making a Progressive Web App
+`Github` -> `bartap-app` -> `Pull requests` -> `Compare and create new pull request`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+In your last commit you must say to Github that the issue is done and it may close it. You can do this by typing:
+`Closes #{feature id}` inside your commit message. Example:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`Closes #22`

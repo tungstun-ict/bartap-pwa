@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer } from "react";
 import {v4} from "uuid";
 import TungstunNotificationQueue from "./tungstun-notification-queue";
 
@@ -23,5 +23,6 @@ const TungstunNotificationProvider = (props) => {
     </TungstunNotificationContext.Provider>
   );
 };
+
 export { TungstunNotificationProvider };
 export default TungstunNotificationContext;
