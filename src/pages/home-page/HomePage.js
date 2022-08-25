@@ -12,6 +12,7 @@ import TungstunListView from "../../stories/list-view/tungstun-list-view";
 import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
+import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -39,8 +40,24 @@ const HomePage = () => {
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+        <TungstunBarItem bar={bar} />
+
       </TungstunListView>
-      <TungstunTextButton className={"add-bar-button"} text="Add new bar" width="100%" onClick={handleClick} />
+      <TungstunBottomContainer>
+        <TungstunTextButton
+          className={"add-bar-button"}
+          text="Add new bar"
+          width="100%"
+          onClick={handleClick}
+        />
+      </TungstunBottomContainer>
     </TungstunPage>
   );
 };

@@ -6,7 +6,7 @@ import TungstunMenu from "../menu/tungstun-menu";
 
 import "./tungstun-page.scss";
 
-const TungstunPage = ({ children, type, noHeader, title, style }) => {
+const TungstunPage = ({ children, type, noHeader, bottomBar, title, style }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const heavyVariants = {
@@ -57,6 +57,7 @@ const TungstunPage = ({ children, type, noHeader, title, style }) => {
       <div className="page__content" style={style}>
         {title && <h1 className="page__title">{title}</h1>}
         {children}
+        {bottomBar}
       </div>
     </motion.div>
   );
