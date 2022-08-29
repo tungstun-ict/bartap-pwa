@@ -13,7 +13,7 @@ const DebugPage = () => {
   const notificationDispatch = useContext(TungstunNotificationContext);
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={"🪲 Debug"} level={1} />
       <TungstunTitle text="🔔 Notifications" level={2} />
       <div className="notifications__container">

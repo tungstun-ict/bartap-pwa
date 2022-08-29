@@ -1,4 +1,3 @@
-import { localStorage } from "react";
 
 export function storeAccessToken(accessToken) {
   try {
@@ -9,6 +8,9 @@ export function storeAccessToken(accessToken) {
 }
 
 export function getAccessToken() {
+  if(localStorage.getItem("@accessToken" === undefined)) {
+    return undefined;
+  }
   const accessToken = JSON.parse(localStorage.getItem("@accessToken"));
   if (accessToken !== null) {
     return accessToken;
@@ -34,7 +36,10 @@ export function storeRefreshToken(token) {
 }
 
 export function getRefreshToken() {
-  const token = JSON.parse(localStorage.getItem("@refreshToken"));
+  if(localStorage.getItem("@refreshToken" === undefined)) {
+    return undefined;
+  }
+  let token = JSON.parse(localStorage.getItem("@refreshToken"))
   if (token !== null) {
     return token;
   }
