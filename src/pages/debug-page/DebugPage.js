@@ -38,6 +38,16 @@ const DebugPage = () => {
           }
         />
       </div>
+      <TungstunTitle text="🧭 Navigation" level={2} />
+      <div className="notifications__container">
+      <TungstunTextButton
+          width={"100%"}
+          text={"Go to login"}
+          onClick={() =>
+            navigate("/auth/login")
+          }
+        />
+      </div>
     </TungstunPage>
   );
 };
