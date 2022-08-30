@@ -10,6 +10,7 @@ import ScanPage from "./pages/scan-page/ScanPage";
 import AccountPage from "./pages/account-page/AccountPage";
 import DebugPage from "./pages/debug-page/DebugPage";
 import { TungstunNotificationProvider } from "./stories/notification/tungstun-notification-provider";
+import RegisterPage from "./pages/register-page/RegisterPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -23,6 +24,11 @@ const AnimatedRoutes = () => {
           <Route
             path="/auth/login"
             element={<LoginPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/auth/register"
+            element={<RegisterPage />}
             key={location.pathname}
           />
           <Route
