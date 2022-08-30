@@ -14397,6 +14397,11 @@ re2@^1.15.8:
     nan "^2.16.0"
     node-gyp "^9.0.0"
 
+react-adobe-fonts@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-adobe-fonts/-/react-adobe-fonts-0.1.0.tgz#cd0a98c8571e6f754680602e54bb2b81061c5519"
+  integrity sha512-kaHL3x4ON588ILhD335uI6qNwwIUPyod7HFmHHe0JofWKinhyKeumJ10XXykVoVC9nVdfUJDya/fEjOfOrB7NQ==
+
 react-app-polyfill@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-3.0.0.tgz#95221e0a9bd259e5ca6b177c7bb1cb6768f68fd7"

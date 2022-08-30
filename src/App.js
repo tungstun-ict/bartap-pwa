@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useAdobeFonts } from 'react-adobe-fonts'
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import LoginPage from "./pages/login-page/LoginPage";
 import HomePage from "./pages/home-page/HomePage";
@@ -14,6 +15,8 @@ import RegisterPage from "./pages/register-page/RegisterPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  useAdobeFonts({kitId: "opl2xhz"});
 
   return (
     <TungstunNotificationProvider>
