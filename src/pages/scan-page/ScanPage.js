@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { QrReader } from "react-qr-reader";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TungstunNotificationContext from "../../stories/notification/tungstun-notification-provider";
 import TungstunInput from "../../stories/input/tungstun-input";
 import TungstunPage from "../../stories/page/tungstun-page";
@@ -8,7 +8,6 @@ import TungstunTitle from "../../stories/title/tungstun-title";
 
 import "./scan-page.scss";
 import TungstunForm from "../../stories/form/tungstun-form";
-import TungstunTextButton from "../../stories/text-button/tungstun-text-button";
 import useForm from "../../utils/useForm";
 import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
 
@@ -25,7 +24,7 @@ const ScanPage = () => {
   }, [scan]);
 
   const handleScan = (input) => {
-    if(input === null || input === "") {
+    if (input === null || input === "") {
       return null;
     }
 
@@ -37,7 +36,7 @@ const ScanPage = () => {
   };
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text="📷 Scan QR" level={1} back />
       <div className="scan-page__camera">
         {scan === null ? (

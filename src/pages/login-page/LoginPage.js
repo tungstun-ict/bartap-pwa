@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as ApiService from "../../services/BarApiService";
+import * as StorageService from "../../services/BarStorageService";
+import TungstunNotificationContext from "../../stories/notification/tungstun-notification-provider";
 
 import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunAuthModal from "../../stories/auth-modal/tungstun-auth-modal";
 import TungstunForm from "../../stories/form/tungstun-form";
 import TungstunInput from "../../stories/input/tungstun-input";
 import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
@@ -10,26 +12,60 @@ import useForm from "../../utils/useForm";
 
 import "./login-page.scss";
 import TungstunWaves from "../../stories/waves/tungstun-waves";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const LoginPage = () => {
   const [formValues, updateFormValues] = useForm();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const notificationDispatch = useContext(TungstunNotificationContext);
 
-  const submitForm = () => {
-    navigate("/");
+  function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+
+  const submitForm = async () => {
+    setLoading(true);
+
+    try {
+      if (await ApiService.login(formValues.email, formValues.password)) {
+        sleep(1000);
+        setLoading(false);
+        navigate("/");
+      }
+    } catch (e) {
+      sleep(1000);
+      setLoading(false);
+      notificationDispatch({
+        type: "ADD_NOTIFICATION",
+        payload: { text: `${e}`, error: "error" },
+      });
+    }
   };
 
   return (
     <TungstunPage
       style={{ justifyContent: "center", alignItems: "center" }}
+      className={"login-page__container"}
       transition={true}
       noHeader
     >
-      <img className="login-page__logo" src={require("../../assets/icons/icon.png")}/>
+      
       <TungstunForm
         title="Login"
         style={{ width: "100%" }}
         onSubmit={submitForm}
+        submitButton={
+          <TungstunIconButton
+            onClick={async () => await submitForm()}
+            src={require("../../assets/icons/arrow-light.png")}
+          />
+        }
+        loading={loading}
       >
         <TungstunInput
           hint="Email"
@@ -44,10 +80,6 @@ const LoginPage = () => {
           name="password"
           value={formValues.password}
           onChange={updateFormValues}
-        />
-        <TungstunIconButton
-          onClick={submitForm}
-          src={require("../../assets/icons/arrow-light.png")}
         />
       </TungstunForm>
       <TungstunWaves />

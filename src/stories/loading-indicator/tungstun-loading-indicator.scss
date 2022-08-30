@@ -1,0 +1,18 @@
+@use "../../variables.scss";
+
+.loading-indicator {
+  &__container {
+    background-color: variables.$color-loader-background;
+    box-shadow: variables.$shadow;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+
+  &--invisible {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}

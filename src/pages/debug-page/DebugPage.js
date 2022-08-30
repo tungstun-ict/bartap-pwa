@@ -13,7 +13,7 @@ const DebugPage = () => {
   const notificationDispatch = useContext(TungstunNotificationContext);
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={"🪲 Debug"} level={1} />
       <TungstunTitle text="🔔 Notifications" level={2} />
       <div className="notifications__container">
@@ -35,6 +35,16 @@ const DebugPage = () => {
               type: "ADD_NOTIFICATION",
               payload: { text: "This is a critical error.", error: "error" },
             })
+          }
+        />
+      </div>
+      <TungstunTitle text="🧭 Navigation" level={2} />
+      <div className="notifications__container">
+      <TungstunTextButton
+          width={"100%"}
+          text={"Go to login"}
+          onClick={() =>
+            navigate("/auth/login")
           }
         />
       </div>

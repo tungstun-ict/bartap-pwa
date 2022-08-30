@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
@@ -13,19 +13,18 @@ const BarPage = () => {
   const bar = {
     name: "Test bar",
     debt: 20.45,
-    slug: slug
-  }
+    slug: slug,
+  };
 
   const session = {
     id: "xxxxxxxxxxxx",
     date: "20-02-22",
     name: "Session 1",
     total: 20.1,
-    payed: true,
   };
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={`🍺 ${bar.name}`} level={1} back />
       <TungstunStatistics>
         <TungstunStatistic

@@ -1,6 +1,12 @@
 .login-page {
+  &__container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
   &__logo {
     margin-bottom: 50px;
     width: 150px;
   }
 }
+

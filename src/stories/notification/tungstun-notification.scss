@@ -13,8 +13,9 @@
     overflow: hidden;
     position: relative;
     animation: SlideIn 0.2s;
-    animation-fill-mode: forwards;
+    
     align-items: center;
+    transition: all 1s ease-in-out;
 
     @keyframes SlideIn {
       0% {
@@ -50,13 +51,14 @@
 
   &-exit {
     animation: SlideOut 0.4s;
-    animation-fill-mode: forwards;
+    
   }
 
   @keyframes SlideOut {
     0% {
       transform: translateY(0);
     }
+
     100% {
       transform: translateY(-80px);
     }
