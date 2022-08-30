@@ -85,7 +85,7 @@ const TungstunPage = ({
       )}
       <div className="page__content" style={style}>
         {title && <h1 className="page__title">{title}</h1>}
-        {children}
+        <div className="page__content__children">{children}</div>
         {bottomBar}
       </div>
     </motion.div>

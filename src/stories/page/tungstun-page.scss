@@ -22,6 +22,11 @@
     flex: 1;
     margin: 80px 20px 20px 20px;
 
+    &__children {
+      margin-bottom: 100px;
+      width: 100%;
+    }
+
     @media (min-width: variables.$size-mobile-max) {
       width: 1000px;
       align-self: center;

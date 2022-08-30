@@ -54,7 +54,6 @@ const LoginPage = () => {
       transition={true}
       noHeader
     >
-      
       <TungstunForm
         title="Login"
         style={{ width: "100%" }}
@@ -82,6 +81,12 @@ const LoginPage = () => {
           onChange={updateFormValues}
         />
       </TungstunForm>
+      <div className="login-page__links">
+        <hr className="login-page__links__divider" />
+        <a className="login-page__links__register" onClick={() => {
+          navigate("/auth/register");
+        }}>or register here</a>
+      </div>
       <TungstunWaves />
     </TungstunPage>
   );

@@ -5,8 +5,9 @@
     background-color: rgba(0, 0, 0, 0.3);
     width: 0;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     visibility: hidden;
+    cursor: pointer;
     z-index: 99;
     transition: 0.3s;
     width: 100vw;

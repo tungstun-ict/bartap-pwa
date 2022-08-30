@@ -1,5 +1,4 @@
 import React from "react";
-import useForm from "../../utils/useForm";
 import TungstunLoadingIndicator from "../loading-indicator/tungstun-loading-indicator";
 
 import "./tungstun-form.scss";
