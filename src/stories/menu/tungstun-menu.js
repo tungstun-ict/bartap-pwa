@@ -1,4 +1,5 @@
 import React from "react";
+import TungstunInstallButton from "../install-button/tungstun-install-button";
 import TungstunMenuLink from "../menu-link/tungstun-menu-link";
 import TungstunTitle from "../title/tungstun-title";
 
@@ -23,6 +24,7 @@ function TungstunMenu({ open, setOpen }) {
           <TungstunMenuLink to="/account" text="🧑 Account" />
           <TungstunMenuLink to="/debug" text="🪲 Debug options" />
         </nav>
+        <TungstunInstallButton />
       </div>
       <div className={`menu__negative ${open && "menu__negative--open"}`} onClick={handleClose}/>
     </div>
