@@ -11,6 +11,11 @@
     width: 150px;
   }
 
+  &__phone {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__links {
     display: flex;
     flex-direction: column;

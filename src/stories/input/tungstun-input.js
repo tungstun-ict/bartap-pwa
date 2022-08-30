@@ -5,6 +5,7 @@ import TungstunTooltip from "../tooltip/tungstun-tooltip";
 import "./tungstun-input.scss";
 
 const TungstunInput = ({
+  prefix,
   width,
   hint,
   name,
@@ -30,6 +31,9 @@ const TungstunInput = ({
         style={{ zIndex: 5, top: -20 }}
         active={isShownTooltip}
       />
+      {prefix && (
+        <p className="input__prefix">{prefix}</p>
+      )}
       <input
         name={name}
         className="input"

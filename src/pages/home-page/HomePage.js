@@ -47,7 +47,6 @@ const HomePage = () => {
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
-
       </TungstunListView>
       <TungstunBottomContainer>
         <TungstunTextButton
