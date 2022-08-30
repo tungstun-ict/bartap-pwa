@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import "./tungstun-list-item.scss";
 
-const TungstunListItem = ({ left, right, borderColor, onClick }) => {
+const TungstunListItem = ({ left, right, borderColor, onClick, loading }) => {
   const handleClick = () => {
     onClick();
   };
 
-  return (
+  return loading ? (
+    <Skeleton style={{height: 60, borderRadius: 20}} />
+  ) : (
     <div className="list-item__container" onClick={handleClick}>
       <div className="list-item">
         <div className="list-item__content">

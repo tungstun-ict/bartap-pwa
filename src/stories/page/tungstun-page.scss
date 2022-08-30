@@ -20,7 +20,10 @@
     flex-direction: column;
     display: flex;
     flex: 1;
-    margin: 80px 20px 20px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 80px 20px 20px 20px;
+    align-self: center;
 
     &__children {
       margin-bottom: 100px;
@@ -28,7 +31,7 @@
     }
 
     @media (min-width: variables.$size-mobile-max) {
-      width: 1000px;
+      width: variables.$size-mobile-max;
       align-self: center;
     }
   }

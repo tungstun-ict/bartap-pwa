@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import TungstunListItem from "./tungstun-list-item";
 
-const TungstunBarItem = ({ bar }) => {
+const TungstunBarItem = ({ bar, loading }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -12,6 +12,7 @@ const TungstunBarItem = ({ bar }) => {
   return (
     <TungstunListItem
       onClick={handleClick}
+      loading={loading}
       left={
         <>
           <p className="list-item__text list-item__name">{bar.name}</p>

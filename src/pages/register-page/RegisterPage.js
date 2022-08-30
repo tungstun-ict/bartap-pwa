@@ -39,7 +39,12 @@ const RegisterPage = () => {
 
     try {
       for (const prop in formValues) {
-        if (formValues[prop] === "" || formValues[prop] === undefined) {
+        console.log(formValues[prop]);
+        if (
+          formValues[prop] === "" ||
+          formValues[prop] === undefined ||
+          formValues[prop] === null
+        ) {
           throw new Error("Some fields are empty.");
         }
       }
@@ -74,7 +79,11 @@ const RegisterPage = () => {
 
   return (
     <TungstunPage
-      style={{ justifyContent: "center", alignItems: "center" }}
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        maxWidth: "750px",
+      }}
       className={"register-page__container"}
       transition={true}
       noHeader

@@ -30,24 +30,36 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
+      for (const prop in formValues) {
+        if (
+          formValues[prop] === "" ||
+          formValues[prop] === undefined ||
+          formValues[prop] === null
+        ) {
+          throw new Error("Some fields are empty.");
+        }
+      }
+
       if (await ApiService.login(formValues.email, formValues.password)) {
-        sleep(1000);
         setLoading(false);
         navigate("/");
       }
     } catch (e) {
-      sleep(1000);
       setLoading(false);
       notificationDispatch({
         type: "ADD_NOTIFICATION",
-        payload: { text: `${e}`, error: "error" },
+        payload: { text: `${e.message}`, error: "error" },
       });
     }
   };
 
   return (
     <TungstunPage
-      style={{ justifyContent: "center", alignItems: "center" }}
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        maxWidth: "750px",
+      }}
       className={"login-page__container"}
       transition={true}
       noHeader
@@ -83,9 +95,14 @@ const LoginPage = () => {
       </TungstunForm>
       <div className="login-page__links">
         <hr className="login-page__links__divider" />
-        <p className="login-page__links__register" onClick={() => {
-          navigate("/auth/register");
-        }}>or register here</p>
+        <p
+          className="login-page__links__register"
+          onClick={() => {
+            navigate("/auth/register");
+          }}
+        >
+          or register here
+        </p>
       </div>
       <TungstunWaves />
     </TungstunPage>

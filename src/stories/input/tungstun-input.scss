@@ -22,9 +22,10 @@
   border-radius: 100px;
 
   &__eye {
-    height: 100%;
-    margin-right: 20px;
+    height: 80%;
+    margin-right: 10px;
     cursor: pointer;
+    user-select: none;
   }
 }
 
