@@ -63,11 +63,13 @@ function TungstunNotification({ id, text, error, dispatch }) {
       ></div>
       {error ? (
         <img
+          alt=""
           className="notification__icon"
           src={require("../../assets/icons/caution-light.png")}
         />
       ) : (
         <img
+          alt=""
           className="notification__icon"
           src={require("../../assets/icons/info.png")}
         />

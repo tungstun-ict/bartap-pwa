@@ -8,7 +8,8 @@ const TungstunButton = ({
   type,
   width = 50,
   color,
-  className
+  className,
+  ariaLabel,
 }) => {
   const clicked = (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ const TungstunButton = ({
 
   return (
     <button
+      aria-label={ariaLabel}
       color={color}
       className={`button__container ${className}`}
       style={{ width: width }}

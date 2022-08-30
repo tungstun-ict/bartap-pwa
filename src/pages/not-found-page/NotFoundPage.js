@@ -20,6 +20,7 @@ function NotFoundPage() {
       <TungstunTitle text="✋ Not found" level={1} />
       <div className="nf-page__content">
         <img
+          alt=""
           className="nf-page__gif"
           src={require("../../assets/images/confusion.gif")}
         />

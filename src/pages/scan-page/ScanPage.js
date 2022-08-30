@@ -64,6 +64,7 @@ const ScanPage = () => {
             onChange={updateFormValues}
           />
           <TungstunIconButton
+            ariaLabel={"Submit"}
             src={require("../../assets/icons/arrow-light.png")}
             onClick={() => handleScan(formValues.id)}
           />

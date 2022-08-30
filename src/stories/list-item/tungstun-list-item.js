@@ -26,7 +26,7 @@ const TungstunListItem = ({ left, right, borderColor, onClick, loading }) => {
         )}
       </div>
       {onClick && (
-        <img className="arrow" src={require("../../assets/icons/arrow.png")} />
+        <img alt="open item" className="arrow" src={require("../../assets/icons/arrow.png")} />
       )}
     </div>
   );

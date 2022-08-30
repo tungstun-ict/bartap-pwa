@@ -46,6 +46,7 @@ const TungstunInput = ({
       />
       {type === "password" && (
         <img
+          alt=""
           className="input__eye"
           src={
             passwordVisible ? 

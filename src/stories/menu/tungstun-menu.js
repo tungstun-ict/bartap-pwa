@@ -13,7 +13,7 @@ function TungstunMenu({ open, setOpen }) {
     <div>
       <div className={`menu__container ${!open && "menu-closed"}`}>
         <div className="menu__header">
-          <button onClick={handleClose} className="menu__header__close">
+          <button aria-label="Close menu" onClick={handleClose} className="menu__header__close">
             <img alt="" src={require("../../assets/icons/cross.png")} />
           </button>
         </div>

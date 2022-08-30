@@ -14,6 +14,7 @@ const TungstunTitle = ({ text, level, back }) => {
     <div className="title__container">
       {back && (
         <img
+          alt="Go back"
           onClick={handleClick}
           src={require("../../assets/icons/arrow.png")}
           className="title__back"

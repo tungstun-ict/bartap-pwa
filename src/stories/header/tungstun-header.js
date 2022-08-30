@@ -10,8 +10,9 @@ function TungstunHeader({ className, setMenuOpen }) {
   return (
     <div className={`header__container ${className}`}>
       <div className="header__left">
-        <button onClick={handleOpenMenu} className="menu__button">
+        <button aria-label="Open menu" onClick={handleOpenMenu} className="menu__button">
           <img
+            alt="menu"
             className="menu__image"
             src={require("../../assets/icons/menu.png")}
           />

@@ -134,6 +134,7 @@ const RegisterPage = () => {
         onSubmit={submitForm}
         submitButton={
           <TungstunIconButton
+            ariaLabel={"Create account"}
             onClick={async () => submitForm()}
             src={require("../../assets/icons/arrow-light.png")}
           />
@@ -184,6 +185,7 @@ const RegisterPage = () => {
         onSubmit={submitAccountForm}
         submitButton={
           <TungstunIconButton
+            ariaLabel={"Update account information"}
             onClick={async () => submitAccountForm()}
             src={require("../../assets/icons/arrow-light.png")}
           />

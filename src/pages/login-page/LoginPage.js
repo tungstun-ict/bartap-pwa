@@ -70,6 +70,7 @@ const LoginPage = () => {
         onSubmit={submitForm}
         submitButton={
           <TungstunIconButton
+            ariaLabel={"Login"}
             onClick={async () => await submitForm()}
             src={require("../../assets/icons/arrow-light.png")}
           />
