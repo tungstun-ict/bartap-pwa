@@ -10,18 +10,21 @@ function TungstunMenu({ open, setOpen }) {
   };
 
   return (
-    <div className={`menu__container ${!open && "menu-closed"}`}>
-      <div className="menu__header">
-        <button onClick={handleClose} className="menu__header__close">
-          <img src={require("../../assets/icons/cross.png")} />
-        </button>
+    <div>
+      <div className={`menu__container ${!open && "menu-closed"}`}>
+        <div className="menu__header">
+          <button onClick={handleClose} className="menu__header__close">
+            <img alt="" src={require("../../assets/icons/cross.png")} />
+          </button>
+        </div>
+        <nav className="menu__links">
+          <TungstunTitle text={"Menu"} level={2} />
+          <TungstunMenuLink to="/" text="🏠 Home" />
+          <TungstunMenuLink to="/account" text="🧑 Account" />
+          <TungstunMenuLink to="/debug" text="🪲 Debug options" />
+        </nav>
       </div>
-      <nav className="menu__links">
-        <TungstunTitle text={"Menu"} level={2} />
-        <TungstunMenuLink to="/" text="🏠 Home" />
-        <TungstunMenuLink to="/account" text="🧑 Account" />
-        <TungstunMenuLink to="/debug" text="🪲 Debug options" />
-      </nav>
+      <div className={`menu__negative ${open && "menu__negative--open"}`} onClick={handleClose}/>
     </div>
   );
 }

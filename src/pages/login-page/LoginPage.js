@@ -50,13 +50,11 @@ const LoginPage = () => {
   return (
     <TungstunPage
       style={{ justifyContent: "center", alignItems: "center" }}
+      className={"login-page__container"}
       transition={true}
       noHeader
     >
-      <img
-        className="login-page__logo"
-        src={require("../../assets/icons/icon.png")}
-      />
+      
       <TungstunForm
         title="Login"
         style={{ width: "100%" }}

@@ -1,24 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import TungstunNotificationContext from "../../stories/notification/tungstun-notification-provider";
 import * as ApiService from "../../services/BarApiService";
 
 import "./account-page.scss";
 
+import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
 import TungstunPage from "../../stories/page/tungstun-page";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
+import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTextButton from "../../stories/text-button/tungstun-text-button";
 import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 
 const AccountPage = () => {
   const navigate = useNavigate();
-  const notificationDispatch = useContext(TungstunNotificationContext);
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={"🧑 Account"} level={1} />
-      <TungstunTitle text="ℹ️ Information" level={2} />
+      <TungstunTitle text={"🌐 Information"} level={2} />
       <TungstunStatistics>
         <TungstunStatistic value={"Jort Willemsen"} description={"Full name"} />
         <TungstunStatistic value={"jortw"} description={"User name"} />
@@ -28,6 +27,7 @@ const AccountPage = () => {
         />
       </TungstunStatistics>
 
+      <TungstunBottomContainer>
       <div className="account__bottom">
         <TungstunTextButton
           width={"100%"}
@@ -43,6 +43,7 @@ const AccountPage = () => {
           text={"Delete account"}
         />
       </div>
+      </TungstunBottomContainer>
     </TungstunPage>
   );
 };

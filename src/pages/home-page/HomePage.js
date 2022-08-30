@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunHeader from "../../stories/header/tungstun-header";
 
 import "./home-page.scss";
 import TungstunTitle from "../../stories/title/tungstun-title";
@@ -27,7 +26,7 @@ const HomePage = () => {
   };
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={"🏠 Home"} level={1} />
       <TungstunStatistics>
         <TungstunStatistic value={"€40,50"} description="Open tap" />

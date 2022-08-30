@@ -17,6 +17,7 @@ const TungstunPage = ({
   bottomBar,
   title,
   style,
+  className,
   authenticated,
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -55,7 +56,7 @@ const TungstunPage = ({
 
   return (
     <motion.div
-      className={`page__container`}
+      className={`page__container ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 100 }}
       transition={{ duration: 2 }}

@@ -30,7 +30,7 @@ const SessionPage = () => {
   };
 
   return (
-    <TungstunPage>
+    <TungstunPage authenticated>
       <TungstunTitle text={`📜 ${session.name}`} level={1} back />
       <TungstunStatistics>
         <TungstunStatistic description="Total" value={`€${session.total},-`} />
