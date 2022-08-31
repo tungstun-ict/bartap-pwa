@@ -36,15 +36,9 @@ const HomePage = () => {
       <TungstunListView>
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
+      </TungstunListView>
+      <TungstunTitle text="⛓️ Joined bars" level={2} />
+      <TungstunListView>
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
       </TungstunListView>
