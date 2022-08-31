@@ -15,6 +15,7 @@ const TungstunPage = ({
   type,
   noHeader,
   bottomBar,
+  id,
   title,
   style,
   className,
@@ -56,6 +57,7 @@ const TungstunPage = ({
 
   return (
     <motion.div
+      id={id}
       className={`page__container ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 100 }}

@@ -5,6 +5,10 @@
   margin: 0;
   padding: 0;
 
+  &__action {
+    margin-left: auto;
+  }
+
   &__h1 {
     font-size: 30px;
     margin: 0 0 20px 0;
@@ -26,6 +30,7 @@
     transform: rotate(180deg);
     transition: 0.3s;
     z-index: 0;
+    align-self: center;
     cursor: pointer;
 
     &:hover {
@@ -35,7 +40,6 @@
 
   &__container {
     display: flex;
-    align-items: center;
     height: fit-content;
   }
 }

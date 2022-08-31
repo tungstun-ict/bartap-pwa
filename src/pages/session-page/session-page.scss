@@ -1,0 +1,9 @@
+@use "../../variables.scss";
+
+.session-page {
+  &__share {
+    height: 40px;
+    width: 40px;
+    align-self: center;
+  }
+}

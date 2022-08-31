@@ -8,6 +8,7 @@ const TungstunButton = ({
   type,
   width = 50,
   color,
+  id,
   className,
   ariaLabel,
 }) => {
@@ -18,6 +19,7 @@ const TungstunButton = ({
 
   return (
     <button
+      id={id}
       aria-label={ariaLabel}
       color={color}
       className={`button__container ${className}`}
