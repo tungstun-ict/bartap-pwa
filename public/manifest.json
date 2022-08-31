@@ -20,9 +20,25 @@
       "purpose": "maskable"
     }
   ],
+  "screenshots": [
+    {
+      "src": "./screenshots/screenshot-home.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    },
+    {
+      "src": "./screenshots/screenshot-bar.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    },{
+      "src": "./screenshots/screenshot-login.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    }
+  ],
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#FF9900",
   "background_color": "#ffffff",
-  "description": "Customer application for bill keeping."
+  "description": "With bartap you can keep track of all your spendings at your favourite bar! This is the all in one place app to see your order history, keep track of payments and see fun statistics about your night out. Just join a bar and have fun while ordering your favorite drink!"
 }
