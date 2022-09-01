@@ -1,6 +1,13 @@
 @use "../../variables.scss";
 
 .menu {
+  &__draggable {
+    position: absolute;
+    width: 20px;
+    height: 100vh;
+    z-index: 998;
+  }
+
   &__negative {
     background-color: rgba(0, 0, 0, 0.3);
     width: 0;

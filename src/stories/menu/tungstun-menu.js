@@ -20,12 +20,14 @@ function TungstunMenu({ open, setOpen }) {
         </div>
         <nav className="menu__links">
           <TungstunTitle text={"Menu"} level={2} />
-          <TungstunMenuLink to="/" text="🏠 Home" />
-          <TungstunMenuLink to="/account" text="🧑 Account" />
-          <TungstunMenuLink to="/debug" text="🪲 Debug options" />
-        </nav>
+          <TungstunMenuLink handleClose={handleClose} to="/" text="🏠 Home" />
+          <TungstunMenuLink handleClose={handleClose} to="/my-bar" text="🍻 My bar" />
+          <TungstunMenuLink handleClose={handleClose} to="/account" text="🧑 Account" />
+          <TungstunMenuLink handleClose={handleClose} to="/debug" text="🪲 Debug options" />
+        </nav>  
         <TungstunInstallButton />
       </div>
+      <div className="menu__draggable"></div>
       <div className={`menu__negative ${open && "menu__negative--open"}`} onClick={handleClose}/>
     </div>
   );

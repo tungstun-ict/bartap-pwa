@@ -12,6 +12,7 @@ import AccountPage from "./pages/account-page/AccountPage";
 import DebugPage from "./pages/debug-page/DebugPage";
 import { TungstunNotificationProvider } from "./stories/notification/tungstun-notification-provider";
 import RegisterPage from "./pages/register-page/RegisterPage";
+import OwnedBarPage from "./pages/owner-pages/owned-bar-page/OwnedBarPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -57,6 +58,11 @@ const AnimatedRoutes = () => {
           <Route
             path="/account"
             element={<AccountPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/my-bar"
+            element={<OwnedBarPage />}
             key={location.pathname}
           />
         </Routes>

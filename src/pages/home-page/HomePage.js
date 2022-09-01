@@ -32,12 +32,7 @@ const HomePage = () => {
         <TungstunStatistic value={"€40,50"} description="Open tap" />
         <TungstunStatistic value={"€230,50"} description="Total spent" />
       </TungstunStatistics>
-      <TungstunTitle text="🍺 My bars" level={2} />
-      <TungstunListView>
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
-      </TungstunListView>
-      <TungstunTitle text="⛓️ Joined bars" level={2} />
+      <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
         <TungstunBarItem bar={bar} />
         <TungstunBarItem bar={bar} />
@@ -45,7 +40,7 @@ const HomePage = () => {
       <TungstunBottomContainer>
         <TungstunTextButton
           className={"add-bar-button"}
-          text="Add new bar"
+          text="Join new bar"
           width="100%"
           onClick={handleClick}
         />
