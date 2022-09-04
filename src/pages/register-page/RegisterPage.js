@@ -40,6 +40,9 @@ const RegisterPage = () => {
     setLoading(true);
 
     try {
+      if (Object.keys(formValues).length === 0)
+        throw new Error("Some fields are empty");
+
       for (const prop in formValues) {
         if (
           formValues[prop] === "" ||
@@ -76,9 +79,10 @@ const RegisterPage = () => {
   };
 
   const submitAccountForm = async () => {
-    setLoading(true);
+    setLoading(true);;
 
-    console.log(accountFormValues);
+    if (Object.keys(accountFormValues).length === 0)
+        throw new Error("Some fields are empty");
 
     try {
       for (const prop in accountFormValues) {

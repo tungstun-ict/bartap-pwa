@@ -36,7 +36,7 @@ api.interceptors.response.use(
     let accessToken = storage.getAccessToken();
     if (
       refreshToken &&
-      error.response.status === 403 &&
+      error.response.status === 401 &&
       !originalRequest._retry
     ) {
       originalRequest._retry = true;
@@ -73,7 +73,7 @@ async function getRequest(url) {
 }
 
 export async function login(email, password) {
-  let data = { userIdentification: email, password: password };
+  let data = { username: email, password: password };
   let tokens = null;
 
   tokens = await fetch(api_url + "/authenticate", {
@@ -86,6 +86,7 @@ export async function login(email, password) {
   })
     .then((response) => {
       if (response.ok) {
+          console.log(response.headers)
         if (response.headers.get("access_token")) {
           return {
             accessToken: response.headers.get("access_token"),

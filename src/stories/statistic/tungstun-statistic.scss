@@ -10,16 +10,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     padding: 10px;
   }
 
   &__value {
     margin: 0;
     font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   &__description {
     margin: 0;
+    text-overflow: ellipsis;
     font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
   }
 }

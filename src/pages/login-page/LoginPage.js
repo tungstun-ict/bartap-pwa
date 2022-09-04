@@ -30,6 +30,9 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
+      if (Object.keys(formValues).length === 0)
+        throw new Error("Some fields are empty");
+  
       for (const prop in formValues) {
         if (
           formValues[prop] === "" ||
@@ -48,7 +51,7 @@ const LoginPage = () => {
       setLoading(false);
       notificationDispatch({
         type: "ADD_NOTIFICATION",
-        payload: { text: `${e.message}`, error: "error" },
+        payload: { text: `${e.message}` },
       });
     }
   };
