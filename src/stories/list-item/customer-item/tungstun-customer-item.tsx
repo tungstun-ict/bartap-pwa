@@ -7,7 +7,7 @@ const TungstunCustomerItem: FC<Props> = ({customer}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/bar/${customer.firstName}/${customer.id}`);
+    navigate(`/bar/${customer.firstName}/customer/${customer.id}`);
   };
 
   return (

@@ -11,7 +11,7 @@ import "./owned-bar-page.scss";
 
 function OwnedBarPage() {
   const customers = [
-    <TungstunCustomerItem  customer={{
+    <TungstunCustomerItem customer={{
       firstName: "Jort",
       lastName: "Willemsen",
       id: "1",
