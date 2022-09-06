@@ -1,0 +1,70 @@
+@use "../../variables.scss";
+
+.disconnected {
+  border: 3px dashed lightgray;
+  height: 80px;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &__text {
+    color: lightgray;
+    user-select: none;
+  }
+}
+
+.account-banner {
+  &__container {
+    transition: 0.4s;
+    box-shadow: variables.$shadow;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 20px;
+    max-height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__accountImage {
+    width: 50px;
+    margin-right: 20px;
+    border-radius: 50px;
+    height: 50px;
+    background-color: lightgray;
+  }
+
+  &__close {
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: variables.$color-error;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &__image {
+      padding: 5px;
+      max-width: 10px;
+      max-height: 10px;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__username {
+    margin: 0;
+  }
+}
