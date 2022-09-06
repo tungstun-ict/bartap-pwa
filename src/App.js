@@ -67,7 +67,7 @@ const AnimatedRoutes = () => {
             key={location.pathname}
           />
           <Route
-            path="/my-bar"
+            path="/my-bar/:barId"
             element={<OwnedBarPage />}
             key={location.pathname}
           />

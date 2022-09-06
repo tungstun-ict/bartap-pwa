@@ -121,6 +121,10 @@ export async function signUp(email, userName, password, firstName, lastName) {
   });
 }
 
+export async function getOwnedBars() {
+  return getRequest(`/bars/owned`);
+}
+
 // export async function createSession(name) {
 //   await api.post(`/bars/${await storage.getActiveBar()}/sessions`, {
 //     name: name,
