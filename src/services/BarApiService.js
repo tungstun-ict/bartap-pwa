@@ -125,6 +125,18 @@ export async function getOwnedBars() {
   return getRequest(`/bars/owned`);
 }
 
+export async function getBarById(barId) {
+  return getRequest(`/bars/${barId}`);
+}
+
+export async function getCustomersOfBar(barId) {
+  return getRequest(`/bars/${barId}/people`);
+}
+
+export async function getSessionsOfBar(barId) {
+  return getRequest(`/bars/${barId}/sessions`)
+}
+
 // export async function createSession(name) {
 //   await api.post(`/bars/${await storage.getActiveBar()}/sessions`, {
 //     name: name,

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import TungstunListItem from "../tungstun-list-item";
 import { Props } from "./tungstun-customer-item.specs";
 
-const TungstunCustomerItem: FC<Props> = ({customer}) => {
+const TungstunCustomerItem: FC<Props> = ({barId, customer}: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/bar/${customer.firstName}/customer/${customer.id}`);
+    navigate(`/bar/${barId}/customer/${customer.id}`);
   };
 
   return (
@@ -17,7 +17,7 @@ const TungstunCustomerItem: FC<Props> = ({customer}) => {
         <>
           <div className="list-item__accountImage"></div>
           <p className="list-item__text list-item__name">
-            {`${customer.firstName} ${customer.lastName}`}
+            {`${customer.name}`}
           </p>
         </>
       }

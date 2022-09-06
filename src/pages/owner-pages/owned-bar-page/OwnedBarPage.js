@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TungstunCustomerItem from "../../../stories/list-item/customer-item/tungstun-customer-item.tsx";
-import TungstunSessionItem from "../../../stories/list-item/tungstun-session-item";
+import TungstunSessionItem from "../../../stories/list-item/session-item/tungstun-session-item.tsx";
 import TungstunMultiList from "../../../stories/multi-list/tungstun-multi-list.tsx";
 import TungstunPage from "../../../stories/page/tungstun-page";
 import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
@@ -8,28 +8,40 @@ import TungstunStatistics from "../../../stories/statistics/tungstun-statistics"
 import TungstunTitle from "../../../stories/title/tungstun-title";
 
 import "./owned-bar-page.scss";
+import { useParams } from "react-router-dom";
+import { getBarById, getCustomersOfBar, getSessionsOfBar } from "../../../services/BarApiService";
 
 function OwnedBarPage() {
-  const customers = [
-    <TungstunCustomerItem customer={{
-      firstName: "Jort",
-      lastName: "Willemsen",
-      id: "1",
-    }}/>
-  ];
+  const [loading, setLoading] = useState(true);
+  const [bar, setBar] = useState({});
+  const [customers, setCustomers] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
-  const sessions = [
-    <TungstunSessionItem session={{
-      id: 1,
-      date: "20-02-22",
-      name: "Session 1",
-      total: 20.19,
-      payed: true,
-    }}/>
-  ]
+  const { barId } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      setBar(await getBarById(barId));
+      setCustomers(
+        (await getCustomersOfBar(barId)).map((c) => {
+          return <TungstunCustomerItem barId={barId} customer={c} />;
+        })
+      );
+      setSessions(
+        (await getSessionsOfBar(barId)).map((s) => {
+          return <TungstunSessionItem session={s} />;
+        })
+      );
+    }
+
+    if (loading) fetchData();
+
+    setLoading(false);
+  }, [loading]);
+
   return (
     <TungstunPage>
-      <TungstunTitle level={1} text="🍻 My bar" />
+      <TungstunTitle level={1} text={`🍻 ${bar.name}`} />
       <TungstunStatistics>
         <TungstunStatistic value={"€5921.90,-"} description={"Total revenue"} />
         <TungstunStatistic
@@ -51,7 +63,7 @@ function OwnedBarPage() {
           {
             displayName: "🕰️ Sessions",
             data: sessions,
-          }
+          },
         ]}
       />
     </TungstunPage>

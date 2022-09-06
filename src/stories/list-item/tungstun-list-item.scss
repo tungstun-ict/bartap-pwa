@@ -48,13 +48,19 @@
     }
 
     &__left {
+      flex: 1;
+      overflow: hidden;
+
       & > p {
+        width: max-content;
         margin-right: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
     &__right {
-      margin-left: auto;
+      width: fit-content;
 
       & > p {
         margin-left: 10px;
@@ -71,7 +77,6 @@
   &__text {
     margin: 0;
     padding: 0;
-    height: fit-content;
   }
 
   &__date {

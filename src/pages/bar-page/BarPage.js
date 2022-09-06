@@ -4,7 +4,7 @@ import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunSessionItem from "../../stories/list-item/tungstun-session-item";
+import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item.tsx";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 
 const BarPage = () => {
