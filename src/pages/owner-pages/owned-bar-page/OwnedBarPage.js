@@ -9,13 +9,29 @@ import TungstunTitle from "../../../stories/title/tungstun-title";
 
 import "./owned-bar-page.scss";
 import { useParams } from "react-router-dom";
-import { getBarById, getCustomersOfBar, getSessionsOfBar } from "../../../services/BarApiService";
+import {
+  getBarById,
+  getCustomersOfBar,
+  getSessionsOfBar,
+  getStatisticsOfBar,
+} from "../../../services/BarApiService";
 
 function OwnedBarPage() {
   const [loading, setLoading] = useState(true);
   const [bar, setBar] = useState({});
   const [customers, setCustomers] = useState([]);
   const [sessions, setSessions] = useState([]);
+  const [statistics, setStatistics] = useState({
+    totalSpentOfAllTime: 0,
+    mostSoldProductOfAllTime: {
+      name: "...",
+      brand: "...",
+    },
+    mostSoldProductOfLastMonth: {
+      name: "...",
+      brand: "...",
+    },
+  });
 
   const { barId } = useParams();
 
@@ -32,6 +48,7 @@ function OwnedBarPage() {
           return <TungstunSessionItem session={s} />;
         })
       );
+      setStatistics(await getStatisticsOfBar(barId));
     }
 
     if (loading) fetchData();
@@ -43,14 +60,17 @@ function OwnedBarPage() {
     <TungstunPage>
       <TungstunTitle level={1} text={`🍻 ${bar.name}`} />
       <TungstunStatistics>
-        <TungstunStatistic value={"€5921.90,-"} description={"Total revenue"} />
         <TungstunStatistic
-          value={"Heineken vaasje"}
-          description={"Most sold drink"}
+          value={`€${statistics.totalSpentOfAllTime},-`}
+          description={"Total revenue"}
         />
         <TungstunStatistic
-          value={"Mojito"}
-          description={"Most popular drink"}
+          value={`${statistics.mostSoldProductOfAllTime.brand} ${statistics.mostSoldProductOfAllTime.name}`}
+          description={"Most sold / all time"}
+        />
+        <TungstunStatistic
+          value={`${statistics.mostSoldProductOfLastMonth.brand} ${statistics.mostSoldProductOfLastMonth.name}`}
+          description={"Most sold / month"}
         />
       </TungstunStatistics>
       <TungstunMultiList

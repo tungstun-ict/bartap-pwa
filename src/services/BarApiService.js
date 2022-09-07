@@ -86,7 +86,7 @@ export async function login(email, password) {
   })
     .then((response) => {
       if (response.ok) {
-          console.log(response.headers)
+        console.log(response.headers);
         if (response.headers.get("access_token")) {
           return {
             accessToken: response.headers.get("access_token"),
@@ -134,7 +134,11 @@ export async function getCustomersOfBar(barId) {
 }
 
 export async function getSessionsOfBar(barId) {
-  return getRequest(`/bars/${barId}/sessions`)
+  return getRequest(`/bars/${barId}/sessions`);
+}
+
+export async function getStatisticsOfBar(barId) {
+  return getRequest(`/bars/${barId}/statistics`);
 }
 
 // export async function createSession(name) {
