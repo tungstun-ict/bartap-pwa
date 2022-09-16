@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 
 import "./customer-page.scss";
@@ -7,41 +7,45 @@ import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
-import { Account, Bar, Customer } from "./CustomerPage.specs";
+import { Account, Bar, Customer, DefaultCustomer, DefaultBar } from "./CustomerPage.specs.ts";
 import TungstunAccountBanner from "../../stories/account-banner/tungstun-account-banner.tsx";
 import TungstunPopup from "../../stories/popup/tungstun-popup.tsx";
+import { getBarById, getCustomerOfBar } from "../../services/BarApiService";
 
 const CustomerPage = () => {
   const { barId, customerId } = useParams();
+
+  const [loading, setLoading] = useState(true);
+  const [customer, setCustomer] = useState<Customer>(DefaultCustomer);
+  const [account, setAccount] = useState<Account>();
+  const [bar, setBar] = useState<Bar>(DefaultBar);
   const [popupOpen, setPopupOpen] = useState(false);
 
-  const bar: Bar = {
-    id: "1",
-    name: "Bartjes bar",
-  };
+  useEffect(() => {
+    async function fetchData() {
+      let customerResponse: Customer = await getCustomerOfBar(barId, customerId);
+      setCustomer(customerResponse);
 
-  const account: Account = {
-    id: "1",
-    firstName: "Jona",
-    lastName: "Leeflang",
-    username: "chromachroma",
-  };
+      let barResponse: Bar = await getBarById(barId);
+      setBar(barResponse);
+      
+      if(customerResponse.userId){
+        let accountResponse: Account = await getAccount(customerResponse.userId);
+        setAccount(accountResponse);
+      }
+    }
 
-  const customer: Customer = {
-    id: "1",
-    accountId: "1",
-    name: "Jona Leeflang",
-    favorite: "Watermelon Dream",
-    highestBill: 42.4,
-  };
+    if(loading)
+      fetchData();
+
+    setLoading(false);
+  }, [loading]);
 
   const handleConnect = () => {
-    console.log("Connect!");
     setPopupOpen(true);
   };
 
   const handleDisconnect = () => {
-    console.log("Disconnect!");
   };
 
   return (
@@ -50,16 +54,17 @@ const CustomerPage = () => {
       <TungstunStatistics>
         <TungstunStatistic value={bar.name} description={"Customer of"} />
         <TungstunStatistic
-          value={customer.favorite}
+          value={customer.name}
           description={"Favorite item"}
         />
         <TungstunStatistic
-          value={`€${customer.highestBill.toFixed(2)}`}
+          value={`€${new Number(2).toFixed(2)}`}
           description={"Highest bill"}
         />
       </TungstunStatistics>
       <TungstunTitle text={`🔒 Account`} level={2} />
       <TungstunAccountBanner
+        account={account}
         handleConnect={handleConnect}
         handleDisconnect={handleDisconnect}
       />

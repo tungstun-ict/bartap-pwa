@@ -26,7 +26,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: 0.5s;
+    transition: height width 0.5s;
     background-color: white;
     border-radius: 20px;
     box-sizing: border-box;
@@ -47,6 +47,7 @@
     &__closed {
       height: 0;
       width: 0;
+      padding: 0;
     }
   }
 }

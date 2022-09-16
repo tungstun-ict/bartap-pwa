@@ -4,8 +4,6 @@ import "./tungstun-popup.scss";
 import { Props } from "./tungstun-popup.specs";
 
 const TungstunPopup: FC<Props> = ({ isOpen, setClose, children }: Props) => {
-  console.log(isOpen);
-
   return (
     <>
       <div

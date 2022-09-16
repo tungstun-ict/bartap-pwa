@@ -118,7 +118,6 @@ const RegisterPage = () => {
         throw new Error("Last name must not be empty.");
       }
 
-      console.log("Submit formmmmm");
       setLoading(false);
       navigate("/");
     } catch (e) {

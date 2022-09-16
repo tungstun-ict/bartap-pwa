@@ -26,6 +26,7 @@ function TungstunMenu({ open, setOpen }) {
     return bars.map((b) => {
       return (
         <TungstunMenuLink
+          key={b.name}
           handleClose={handleClose}
           to={`/my-bar/${b.id}`}
           text={`🍻 ${b.name}`}
@@ -48,13 +49,19 @@ function TungstunMenu({ open, setOpen }) {
         </div>
         <nav className="menu__links">
           <TungstunTitle text={"Menu"} level={2} />
-          <TungstunMenuLink handleClose={handleClose} to="/" text="🏠 Home" />
+          <TungstunMenuLink 
+            key={"home"}
+            handleClose={handleClose} 
+            to="/" 
+            text="🏠 Home" />
           <TungstunMenuLink
+            key={"account"}
             handleClose={handleClose}
             to="/account"
             text="🧑 Account"
           />
           <TungstunMenuLink
+            key={"debug"}
             handleClose={handleClose}
             to="/debug"
             text="🪲 Debug options"

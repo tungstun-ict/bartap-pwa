@@ -55,7 +55,6 @@ const TungstunInput = ({
           }
           onClick={() => {
             setVisible(!passwordVisible);
-            console.log(passwordVisible)
           }}
         />
       )}

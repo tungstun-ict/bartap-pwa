@@ -15,7 +15,6 @@ export const Primary = () => {
   const [formValues, updateFormValues] = useForm();
 
   const submitForm = () => {
-    console.log(formValues);
   };
 
   return (
