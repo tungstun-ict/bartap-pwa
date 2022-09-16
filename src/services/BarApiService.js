@@ -72,6 +72,19 @@ async function getRequest(url) {
     });
 }
 
+async function postRequest(url, body = null) {
+  const accessToken = storage.getAccessToken();
+
+  return api
+  .post(url, body, { headers: { access_token: accessToken } })
+  .then((response) => {
+    return response.data;
+  })
+  .catch((e) => {
+    throw e;
+  });
+}
+
 export async function login(email, password) {
   let data = { username: email, password: password };
   let tokens = null;
@@ -151,4 +164,17 @@ export async function getCustomerOfBar(barId, customerId) {
 
 export async function getAccountById(accountId) {
   return getRequest(`/account/${accountId}`)
+}
+
+export async function getConnectAccountToken(barId, accountId) {
+  const accessToken = storage.getAccessToken();
+  
+  return api
+  .post(`/bars/${barId}/people/${accountId}/connect`, null, { headers: { access_token: accessToken } })
+  .then((response) => {
+    return response.headers["connect_token"];
+  })
+  .catch((e) => {
+    throw e;
+  });
 }
