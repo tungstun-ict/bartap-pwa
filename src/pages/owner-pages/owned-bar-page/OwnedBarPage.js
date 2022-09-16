@@ -6,6 +6,7 @@ import TungstunPage from "../../../stories/page/tungstun-page";
 import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../../stories/title/tungstun-title";
+import { sleep } from "../../../services/Utils";
 
 import "./owned-bar-page.scss";
 import { useParams } from "react-router-dom";
@@ -51,13 +52,13 @@ function OwnedBarPage() {
       setStatistics(await getStatisticsOfBar(barId));
     }
 
-    if (loading) fetchData();
-
-    setLoading(false);
+    if (loading) {
+      fetchData().finally(() => setLoading(false));
+    }
   }, [loading]);
 
   return (
-    <TungstunPage>
+    <TungstunPage loading={loading}>
       <TungstunTitle level={1} text={`🍻 ${bar.name}`} />
       <TungstunStatistics>
         <TungstunStatistic

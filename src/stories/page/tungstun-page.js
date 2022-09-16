@@ -60,50 +60,47 @@ const TungstunPage = ({
   }
 
   return (
-    <>
-      {loading && (
+    <motion.div id={id} className={`page__container ${className}`}>
+      {type && (
+        <motion.div
+          className="page__standard"
+          initial={"initial"}
+          exit={"out"}
+          animate={"in"}
+          variants={heavyVariants}
+          transition={heavyTransition}
+        >
+          <div className="page__standard__in" />
+          <div className="page__standard__out" />
+        </motion.div>
+      )}
+
+      <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
+      {!noHeader && (
+        <TungstunHeader
+          className="page__header"
+          setMenuOpen={setMenuOpen}
+          height={80}
+        />
+      )}
+      {loading ? (
         <div className="page__loadingContainer">
           <TungstunLoadingIndicator loading={true} size={50} />
         </div>
-      )}
-      <motion.div
-        id={id}
-        className={`page__container ${className} ${
-          loading && "page__container--loading"
-        }`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 100 }}
-        transition={{ duration: 2 }}
-      >
-        {type && (
-          <motion.div
-            className="page__standard"
-            initial={"initial"}
-            exit={"out"}
-            animate={"in"}
-            variants={heavyVariants}
-            transition={heavyTransition}
-          >
-            <div className="page__standard__in" />
-            <div className="page__standard__out" />
-          </motion.div>
-        )}
-
-        <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
-        {!noHeader && (
-          <TungstunHeader
-            className="page__header"
-            setMenuOpen={setMenuOpen}
-            height={80}
-          />
-        )}
-        <div className="page__content" style={style}>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 100 }}
+          transition={{ duration: 2 }}
+          className="page__content"
+          style={style}
+        >
           {title && <h1 className="page__title">{title}</h1>}
           <div className="page__content__children">{children}</div>
           {bottomBar}
-        </div>
-      </motion.div>
-    </>
+        </motion.div>
+      )}
+    </motion.div>
   );
 };
 

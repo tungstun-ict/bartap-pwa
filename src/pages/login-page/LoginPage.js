@@ -18,14 +18,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const notificationDispatch = useContext(TungstunNotificationContext);
 
-  function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
-
   const submitForm = async () => {
     setLoading(true);
 
