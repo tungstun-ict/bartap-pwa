@@ -42,7 +42,7 @@ const TungstunPage = ({
   };
 
   if (authenticated) {
-    if (!ApiService.checkTokenValidity(StorageService.getRefreshToken())) {
+    if (!ApiService.checkTokenValidity(StorageService.getRefreshToken())) {      
       children = (
         <TungstunTextButton
           text={"You should not be here, please log in!"}
@@ -52,6 +52,8 @@ const TungstunPage = ({
           }}
         />
       );
+      
+      window.location.href = "/auth/login";
     }
   }
 
