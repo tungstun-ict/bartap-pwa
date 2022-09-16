@@ -10,6 +10,7 @@ import TungstunForm from "../../stories/form/tungstun-form";
 import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
 import useForm from "../../utils/useForm";
 import "./scan-page.scss";
+import { connectAccountWithToken } from "../../services/BarApiService";
 
 const ScanPage = () => {
   const dispatch = useContext(TungstunNotificationContext);
@@ -28,11 +29,16 @@ const ScanPage = () => {
       return null;
     }
 
-    dispatch({
-      type: "ADD_NOTIFICATION",
-      payload: { text: "Succesfully added new bar" },
-    });
-    navigate(`/bar/${input}`);
+    connectAccountWithToken(input)
+      .then(() => {
+        dispatch({
+          type: "ADD_NOTIFICATION",
+          payload: { text: "Succesfully added new bar" },
+        });
+      })
+      .finally(() => {
+        navigate(`/`);
+      });
   };
 
   return (

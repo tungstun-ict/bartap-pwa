@@ -76,13 +76,18 @@ async function postRequest(url, body = null) {
   const accessToken = storage.getAccessToken();
 
   return api
-  .post(url, body, { headers: { access_token: accessToken } })
-  .then((response) => {
-    return response.data;
-  })
-  .catch((e) => {
-    throw e;
-  });
+    .post(url, body, {
+      headers: {
+        access_token: accessToken,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e) => {
+      throw e;
+    });
 }
 
 export async function login(email, password) {
@@ -125,7 +130,7 @@ export async function logout() {
 }
 
 export async function signUp(email, userName, password, firstName, lastName) {
-  await api.post(`/register`, {
+  await api.post(`/account/register`, {
     firstName: firstName,
     lastName: lastName,
     mail: email,
@@ -163,18 +168,25 @@ export async function getCustomerOfBar(barId, customerId) {
 }
 
 export async function getAccountById(accountId) {
-  return getRequest(`/account/${accountId}`)
+  return getRequest(`/account/${accountId}`);
 }
 
 export async function getConnectAccountToken(barId, accountId) {
   const accessToken = storage.getAccessToken();
-  
+
   return api
-  .post(`/bars/${barId}/people/${accountId}/connect`, null, { headers: { access_token: accessToken } })
-  .then((response) => {
-    return response.headers["connect_token"];
-  })
-  .catch((e) => {
-    throw e;
-  });
+    .post(`/bars/${barId}/people/${accountId}/connect`, null, {
+      headers: { access_token: accessToken },
+    })
+    .then((response) => {
+      return response.headers["connect_token"];
+    })
+    .catch((e) => {
+      throw e;
+    });
+}
+
+export async function connectAccountWithToken(token) {
+  console.log(token)
+  return postRequest(`/connect-user`, { token: token });
 }

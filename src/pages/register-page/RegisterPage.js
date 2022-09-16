@@ -118,6 +118,7 @@ const RegisterPage = () => {
         throw new Error("Last name must not be empty.");
       }
 
+      //TODO: IMPLEMENT
       setLoading(false);
       navigate("/");
     } catch (e) {
@@ -134,7 +135,6 @@ const RegisterPage = () => {
       <TungstunForm
         title="Register"
         style={{ width: "100%" }}
-        onSubmit={submitForm}
         submitButton={
           <TungstunIconButton
             ariaLabel={"Create account"}
@@ -185,7 +185,6 @@ const RegisterPage = () => {
       <TungstunForm
         title="Account"
         style={{ width: "100%" }}
-        onSubmit={submitAccountForm}
         submitButton={
           <TungstunIconButton
             ariaLabel={"Update account information"}

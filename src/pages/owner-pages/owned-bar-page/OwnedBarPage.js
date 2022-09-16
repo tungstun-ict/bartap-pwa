@@ -6,7 +6,7 @@ import TungstunPage from "../../../stories/page/tungstun-page";
 import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../../stories/title/tungstun-title";
-import { sleep } from "../../../services/Utils";
+import { sleep, sortNameAlphabet } from "../../../services/Utils.ts";
 
 import "./owned-bar-page.scss";
 import { useParams } from "react-router-dom";
@@ -79,11 +79,11 @@ function OwnedBarPage() {
         categories={[
           {
             displayName: "🧑 Customers",
-            data: customers,
+            data: sortNameAlphabet(customers),
           },
           {
             displayName: "🕰️ Sessions",
-            data: sessions,
+            data: sortNameAlphabet(sessions),
           },
         ]}
       />
