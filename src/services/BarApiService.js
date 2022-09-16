@@ -141,10 +141,14 @@ export async function getStatisticsOfBar(barId) {
   return getRequest(`/bars/${barId}/statistics`);
 }
 
+export async function getStatisticsOfCustomer(barId) {
+  return getRequest(`/bars/${barId}/statistics`);
+}
+
 export async function getCustomerOfBar(barId, customerId) {
   return getRequest(`/bars/${barId}/people/${customerId}`);
 }
 
-export async function getAccount(accountId) {
-  
+export async function getAccountById(accountId) {
+  return getRequest(`/account/${accountId}`)
 }

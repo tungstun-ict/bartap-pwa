@@ -10,7 +10,7 @@ import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import { Account, Bar, Customer, DefaultCustomer, DefaultBar } from "./CustomerPage.specs.ts";
 import TungstunAccountBanner from "../../stories/account-banner/tungstun-account-banner.tsx";
 import TungstunPopup from "../../stories/popup/tungstun-popup.tsx";
-import { getBarById, getCustomerOfBar } from "../../services/BarApiService";
+import { getAccountById, getBarById, getCustomerOfBar } from "../../services/BarApiService";
 
 const CustomerPage = () => {
   const { barId, customerId } = useParams();
@@ -30,7 +30,7 @@ const CustomerPage = () => {
       setBar(barResponse);
 
       if(customerResponse.userId){
-        let accountResponse: Account = await getAccount(customerResponse.userId);
+        let accountResponse: Account = await getAccountById(customerResponse.userId);
         setAccount(accountResponse);
       }
     }
@@ -50,7 +50,7 @@ const CustomerPage = () => {
 
   return (
     <TungstunPage authenticated loading={loading}>
-      <TungstunTitle text={`🧑 ${customer.name}`} level={1} />
+      <TungstunTitle back text={`🧑 ${customer.name}`} level={1} />
       <TungstunStatistics>
         <TungstunStatistic value={bar.name} description={"Customer of"} />
         <TungstunStatistic
