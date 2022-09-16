@@ -6,7 +6,7 @@ function TungstunNotification({ id, text, error, dispatch }) {
   const [exit, setExit] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const [progress, setProgress] = useState(0);
-  const speed = 10000;
+  const speed = 5000;
 
   useEffect(() => {
     startTimer();
