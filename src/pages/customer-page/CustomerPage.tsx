@@ -28,7 +28,7 @@ const CustomerPage = () => {
 
       let barResponse: Bar = await getBarById(barId);
       setBar(barResponse);
-      
+
       if(customerResponse.userId){
         let accountResponse: Account = await getAccount(customerResponse.userId);
         setAccount(accountResponse);
@@ -36,9 +36,9 @@ const CustomerPage = () => {
     }
 
     if(loading)
-      fetchData();
+      fetchData().finally(() => setLoading(false));
 
-    setLoading(false);
+    
   }, [loading]);
 
   const handleConnect = () => {
@@ -49,7 +49,7 @@ const CustomerPage = () => {
   };
 
   return (
-    <TungstunPage authenticated>
+    <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={`🧑 ${customer.name}`} level={1} />
       <TungstunStatistics>
         <TungstunStatistic value={bar.name} description={"Customer of"} />

@@ -9,9 +9,11 @@ import TungstunMenu from "../menu/tungstun-menu";
 import "./tungstun-page.scss";
 import TungstunTextButton from "../text-button/tungstun-text-button";
 import { useNavigate } from "react-router-dom";
+import TungstunLoadingIndicator from "./../loading-indicator/tungstun-loading-indicator";
 
 const TungstunPage = ({
   children,
+  loading,
   type,
   noHeader,
   bottomBar,
@@ -42,7 +44,7 @@ const TungstunPage = ({
   };
 
   if (authenticated) {
-    if (!ApiService.checkTokenValidity(StorageService.getRefreshToken())) {      
+    if (!ApiService.checkTokenValidity(StorageService.getRefreshToken())) {
       children = (
         <TungstunTextButton
           text={"You should not be here, please log in!"}
@@ -52,47 +54,56 @@ const TungstunPage = ({
           }}
         />
       );
-      
+
       window.location.href = "/auth/login";
     }
   }
 
   return (
-    <motion.div
-      id={id}
-      className={`page__container ${className}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 100 }}
-      transition={{ duration: 2 }}
-    >
-      {type && (
-        <motion.div
-          className="page__standard"
-          initial={"initial"}
-          exit={"out"}
-          animate={"in"}
-          variants={heavyVariants}
-          transition={heavyTransition}
-        >
-          <div className="page__standard__in" />
-          <div className="page__standard__out" />
-        </motion.div>
+    <>
+      {loading && (
+        <div className="page__loadingContainer">
+          <TungstunLoadingIndicator loading={true} size={50} />
+        </div>
       )}
+      <motion.div
+        id={id}
+        className={`page__container ${className} ${
+          loading && "page__container--loading"
+        }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 100 }}
+        transition={{ duration: 2 }}
+      >
+        {type && (
+          <motion.div
+            className="page__standard"
+            initial={"initial"}
+            exit={"out"}
+            animate={"in"}
+            variants={heavyVariants}
+            transition={heavyTransition}
+          >
+            <div className="page__standard__in" />
+            <div className="page__standard__out" />
+          </motion.div>
+        )}
 
-      <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
-      {!noHeader && (
-        <TungstunHeader
-          className="page__header"
-          setMenuOpen={setMenuOpen}
-          height={80}
-        />
-      )}
-      <div className="page__content" style={style}>
-        {title && <h1 className="page__title">{title}</h1>}
-        <div className="page__content__children">{children}</div>
-        {bottomBar}
-      </div>
-    </motion.div>
+        <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
+        {!noHeader && (
+          <TungstunHeader
+            className="page__header"
+            setMenuOpen={setMenuOpen}
+            height={80}
+          />
+        )}
+        <div className="page__content" style={style}>
+          {title && <h1 className="page__title">{title}</h1>}
+          <div className="page__content__children">{children}</div>
+          {bottomBar}
+        </div>
+      </motion.div>
+    </>
   );
 };
 
