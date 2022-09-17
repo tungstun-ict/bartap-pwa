@@ -1,6 +1,7 @@
 @use "../../variables.scss";
 
 .list-item {
+  position: relative;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -13,6 +14,7 @@
   transition: 0.3s;
 
   &__container {
+    position: relative;
     text-decoration: none;
     color: black;
     height: 60px;
@@ -27,7 +29,6 @@
           width: 40px;
           margin-left: 20px;
         }
-        height: 70px;
       }
       &:active {
         height: 100px;
@@ -70,8 +71,12 @@
 
   &__border {
     width: 100%;
-    height: 15px;
+    height: 10px;
+    border-radius: 15px;
     margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 
   &__text {

@@ -15,4 +15,11 @@ export type Bill = {
   id: string;
   isPayed: boolean;
   totalPrice: number;
+  customer: Customer;
+}
+
+export type Customer  = {
+  id: string;
+  name: string;
+  userId: string;
 }
