@@ -1,10 +1,11 @@
 import React, { useState, FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TungstunListItem from "../tungstun-list-item";
 import { Props } from "./tungstun-session-item.specs";
 import "./tungstun-session-item.scss";
 
 const TungstunSessionItem: FC<Props> = ({ session }: Props) => {
+  const { barId } = useParams();
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -48,7 +49,7 @@ const TungstunSessionItem: FC<Props> = ({ session }: Props) => {
       }
     >
       {session.bills.map((b) => (
-        <div className="customer" onClick={() => navigate(`/bill/${b.id}`)}>
+        <div className="customer" onClick={() => navigate(`/bar/${barId}/session/${session.id}/bill/${b.id}`)}>
           <p className="customer__name">{b.customer.name}</p>
           <p className="customer__price">€{b.totalPrice.toFixed(2)}</p>
         </div>

@@ -1,6 +1,6 @@
 export type Props = {
   session: Session;
-}
+};
 
 export type Session = {
   id: string;
@@ -8,18 +8,18 @@ export type Session = {
   creationDate: Date;
   closedDate: Date;
   isLocked: boolean;
-  bills: Bill[]
-}
+  bills: Bill[];
+};
 
 export type Bill = {
   id: string;
   isPayed: boolean;
   totalPrice: number;
   customer: Customer;
-}
+};
 
-export type Customer  = {
+export type Customer = {
   id: string;
   name: string;
   userId: string;
-}
+};

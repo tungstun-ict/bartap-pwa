@@ -1,19 +1,47 @@
+export type Customer = {
+  id: string;
+  name: string;
+  userId: string;
+}
+
+const DefaultCustomer: Customer = {
+  id: "",
+  name: "... ...",
+  userId: "",
+}
+
 export type Bill = {
   id: string;
   date: Date;
   name: string;
-  total: number;
+  totalPrice: number;
   payed: boolean;
-  orders: Order[]
+  orders: Order[];
+  customer: Customer;
 };
 
 export const DefaultBill: Bill = {
   id: "",
   date: new Date(Date.now()),
   name: "... ...",
-  total: 0,
+  totalPrice: 0,
   payed: false,
-  orders: []
+  orders: [],
+  customer: DefaultCustomer,
+}
+
+
+
+export type Session = {
+  id: string;
+  name: string;
+  startDate: Date;
+}
+
+export const DefaultSession: Session = {
+  id: "",
+  name: "... ...",
+  startDate: new Date(Date.now())
 }
 
 export type Product = {
@@ -30,14 +58,14 @@ export const DefaultProduct: Product = {
 
 export type Order = {
   product: Product,
-  timestamp: Date,
+  creationDate: Date,
   total: number,
   amount: number,
 };
 
 export const DefaultOrder: Order = {
   product: DefaultProduct,
-  timestamp: new Date(Date.now()),
+  creationDate: new Date(Date.now()),
   total: 0,
   amount: 0,
 }

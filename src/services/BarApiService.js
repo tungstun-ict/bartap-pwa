@@ -187,6 +187,13 @@ export async function getConnectAccountToken(barId, accountId) {
 }
 
 export async function connectAccountWithToken(token) {
-  console.log(token)
   return postRequest(`/connect-user`, { token: token });
+}
+
+export async function getBillById(barId, sessionId, billId) {
+  let response = await getRequest(
+    `/bars/${barId}/sessions/${sessionId}/bills/${billId}`
+  );
+  console.log(response);
+  return response;
 }
