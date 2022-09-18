@@ -104,7 +104,6 @@ export async function login(email, password) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log(response.headers);
         if (response.headers.get("access_token")) {
           return {
             accessToken: response.headers.get("access_token"),
@@ -171,6 +170,10 @@ export async function getAccountById(accountId) {
   return getRequest(`/account/${accountId}`);
 }
 
+export async function getMyAccount() {
+  return getRequest(`/account`);
+}
+
 export async function getConnectAccountToken(barId, accountId) {
   const accessToken = storage.getAccessToken();
 
@@ -194,6 +197,5 @@ export async function getBillById(barId, sessionId, billId) {
   let response = await getRequest(
     `/bars/${barId}/sessions/${sessionId}/bills/${billId}`
   );
-  console.log(response);
   return response;
 }

@@ -49,11 +49,12 @@ function TungstunMenu({ open, setOpen }) {
         </div>
         <nav className="menu__links">
           <TungstunTitle text={"Menu"} level={2} />
-          <TungstunMenuLink 
+          <TungstunMenuLink
             key={"home"}
-            handleClose={handleClose} 
-            to="/" 
-            text="🏠 Home" />
+            handleClose={handleClose}
+            to="/"
+            text="🏠 Home"
+          />
           <TungstunMenuLink
             key={"account"}
             handleClose={handleClose}
@@ -66,7 +67,7 @@ function TungstunMenu({ open, setOpen }) {
             to="/debug"
             text="🪲 Debug options"
           />
-          <TungstunTitle text={"My bars"} level={2} />
+          {bars.length > 0 && <TungstunTitle text={"My bars"} level={2} />}
           {showBars(bars)}
         </nav>
         <TungstunInstallButton />

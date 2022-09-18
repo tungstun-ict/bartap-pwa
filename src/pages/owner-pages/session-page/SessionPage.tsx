@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
-import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
-import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunListView from "../../stories/list-view/tungstun-list-view";
-import TungstunOrderItem from "../../stories/list-item/tungstun-order-item";
-import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
-import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
+import TungstunPage from "../../../stories/page/tungstun-page";
+import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
+import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
+import TungstunTitle from "../../../stories/title/tungstun-title";
+import TungstunListView from "../../../stories/list-view/tungstun-list-view";
+import TungstunOrderItem from "../../../stories/list-item/tungstun-order-item";
+import TungstunBottomContainer from "../../../stories/bottom-container/tungstun-bottom-container";
+import TungstunIconButton from "../../../stories/icon-button/tungstun-icon-button";
 import "./session-page.scss";
-import TungstunNotificationContext from "../../stories/notification/tungstun-notification-provider";
+import TungstunNotificationContext from "../../../stories/notification/tungstun-notification-provider";
 
 import domtoimage from "dom-to-image";
 import {
@@ -18,7 +18,7 @@ import {
   DefaultSession,
   Session,
 } from "./SessionPage.specs.ts";
-import { getBillById } from "../../services/BarApiService";
+import { getBillById } from "../../../services/BarApiService";
 
 const SessionPage = () => {
   const notificationDispatch = useContext(TungstunNotificationContext);
@@ -89,7 +89,7 @@ const SessionPage = () => {
               <TungstunIconButton
                 onClick={handleShare}
                 className="session-page__share"
-                src={require("../../assets/icons/share-light.png")}
+                src={require("../../../assets/icons/share-light.png")}
               />
             )
           }

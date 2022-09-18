@@ -61,7 +61,7 @@ const CustomerPage = () => {
     }
 
     fetchData()
-      .then(token => {setToken(token); console.log(token);})
+      .then(token => {setToken(token);})
       .finally(() => setPopupOpen(true));
   };
 
