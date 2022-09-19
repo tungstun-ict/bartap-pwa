@@ -4,8 +4,10 @@ import TungstunMenuLink from "../menu-link/tungstun-menu-link";
 import TungstunTitle from "../title/tungstun-title";
 import "./tungstun-menu.scss";
 import { getOwnedBars } from "../../services/BarApiService";
+import TungstunLoadingIndicator from "../loading-indicator/tungstun-loading-indicator";
 
 function TungstunMenu({ open, setOpen }) {
+  const [loading, setLoading] = useState(true);
   const [bars, setBars] = useState([]);
 
   useEffect(() => {
@@ -13,8 +15,8 @@ function TungstunMenu({ open, setOpen }) {
       setBars(await getOwnedBars());
     }
 
-    fetchData();
-  }, []);
+    if(loading) fetchData().finally(() => setLoading(false));
+  }, [loading]);
 
   const handleClose = () => {
     setOpen(false);
@@ -67,6 +69,7 @@ function TungstunMenu({ open, setOpen }) {
             to="/debug"
             text="🪲 Debug options"
           />
+          {loading && <TungstunLoadingIndicator className={"menu__loadingIndicator"} loading={loading} size={30} />}
           {bars.length > 0 && <TungstunTitle text={"My bars"} level={2} />}
           {showBars(bars)}
         </nav>

@@ -26,6 +26,10 @@
     }
   }
 
+  &__loadingIndicator {
+    margin-top: 100px !important;
+  }
+
   &__container {
     transition: 0.2s ease-in-out;
     position: fixed;
