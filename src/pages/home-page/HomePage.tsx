@@ -37,7 +37,7 @@ const HomePage = ({}) => {
   };
 
   return (
-    <TungstunPage authenticated>
+    <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={"🏠 Home"} level={1} />
       <TungstunStatistics>
         <TungstunStatistic value={"€40,50"} description="Open tap" />

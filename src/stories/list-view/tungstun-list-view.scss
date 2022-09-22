@@ -7,12 +7,8 @@
     box-sizing: border-box;
 
     & > * + * {
-      margin-top: 10px;
+      margin-top: 20px;
       transition: 0.3s;
-
-      @media(min-width: variables.$size-mobile-max) {
-        margin-top: 20px;
-      }
     }
   }
 }
