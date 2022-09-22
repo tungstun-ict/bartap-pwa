@@ -27,20 +27,15 @@ const SessionPage = () => {
   const [session, setSession] = useState<Session>(DefaultSession);
 
   const { barId, sessionId, billId } = useParams();
-
-  console.log(barId, sessionId, billId);
-
+  
   useEffect(() => {
     async function fetchData() {
       let billResponse = await getBillById(barId, sessionId, billId);
       setBill(billResponse);
     }
 
-    if (loading) {
+    if (loading)
       fetchData().finally(() => setLoading(false));
-    }
-
-    console.log(bill);
   }, [loading]);
 
   const handleShare = async () => {

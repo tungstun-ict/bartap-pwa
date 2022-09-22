@@ -11,7 +11,7 @@ const TungstunTitle = ({ text, level, back, action }) => {
   };
 
   return (
-    <div className="title__container">
+    <div className={`title__container ${level === 1 && "title__fixed"}`}>
       {back && (
         <img
           id="button"

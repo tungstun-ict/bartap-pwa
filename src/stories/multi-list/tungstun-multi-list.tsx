@@ -11,6 +11,7 @@ interface ComponentProps {
 
 interface Category {
   displayName: string;
+  id: string;
   data: {}[];
 }
 
@@ -27,6 +28,7 @@ const TungstunMultiList = ({ categories, className }: ComponentProps) => {
         {categories.map((category: Category, index: number) => {
           return (
             <div
+              key={index}
               className={`multi-list__category ${
                 index === selected && "multi-list__category--selected"
               } `}

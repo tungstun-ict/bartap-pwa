@@ -19,9 +19,13 @@ import TungstunPopup from "../../stories/popup/tungstun-popup.tsx";
 import {
   getAccountById,
   getBarById,
+  getBillsOfCustomer,
   getConnectAccountToken,
   getCustomerOfBar,
 } from "../../services/BarApiService";
+import { Bill, DefaultBill, Session } from "./CustomerPage.specs.ts";
+import TungstunListView from './../../stories/list-view/tungstun-list-view';
+import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item.tsx";
 
 const CustomerPage = () => {
   const { barId, customerId } = useParams();
@@ -31,6 +35,7 @@ const CustomerPage = () => {
   const [connectionToken, setToken] = useState<string>("");
   const [account, setAccount] = useState<Account>();
   const [bar, setBar] = useState<Bar>(DefaultBar);
+  const [bills, setBills] = useState<Bill[]>([DefaultBill]);
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
@@ -43,6 +48,9 @@ const CustomerPage = () => {
 
       let barResponse: Bar = await getBarById(barId);
       setBar(barResponse);
+
+      let billsResponse: Bill[] = await getBillsOfCustomer(barId, customerId);
+      setBills(billsResponse);
 
       if (customerResponse.userId) {
         let accountResponse: Account = await getAccountById(
@@ -87,6 +95,12 @@ const CustomerPage = () => {
         handleConnect={handleConnect}
         handleDisconnect={handleDisconnect}
       />
+      <TungstunTitle text={`📜 Bills`} level={2} />
+      <TungstunListView>
+        {bills.map((bill: Bill) => (
+          <TungstunBillItem bill={bill} />
+        ))}
+      </TungstunListView>
       <TungstunPopup isOpen={popupOpen} setClose={() => setPopupOpen(false)}>
         <QRCode value={connectionToken} />
       </TungstunPopup>

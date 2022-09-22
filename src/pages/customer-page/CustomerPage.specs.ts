@@ -33,3 +33,27 @@ export const DefaultBar = {
   id: "",
   name: "...",
 }
+
+export type Bill = {
+  id: string,
+  isPayed: boolean,
+  totalPrice: number,
+  session: Session,
+}
+
+export type Session = {
+  id: string,
+  name: string
+}
+
+export const DefaultSession: Session = {
+  id: "",
+  name: "..."
+}
+
+export const DefaultBill: Bill = {
+  id: "",
+  isPayed: false,
+  totalPrice: 0,
+  session: DefaultSession
+}

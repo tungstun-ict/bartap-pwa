@@ -41,12 +41,12 @@ function OwnedBarPage() {
       setBar(await getBarById(barId));
       setCustomers(
         (await getCustomersOfBar(barId)).map((c) => {
-          return <TungstunCustomerItem barId={barId} customer={c} />;
+          return <TungstunCustomerItem key={c.id} barId={barId} customer={c} />;
         })
       );
       setSessions(
         (await getSessionsOfBar(barId)).map((s) => {
-          return <TungstunSessionItem session={s} />;
+          return <TungstunSessionItem key={s.id} session={s} />;
         })
       );
       setStatistics(await getStatisticsOfBar(barId));

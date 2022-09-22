@@ -75,7 +75,6 @@ function TungstunMenu({ open, setOpen }) {
         </nav>
         <TungstunInstallButton />
       </div>
-      <div className="menu__draggable"></div>
       <div
         className={`menu__negative ${open && "menu__negative--open"}`}
         onClick={handleClose}

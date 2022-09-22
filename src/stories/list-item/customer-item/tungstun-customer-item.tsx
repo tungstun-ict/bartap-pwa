@@ -23,7 +23,7 @@ const TungstunCustomerItem: FC<Props> = ({barId, customer}: Props) => {
       }
       right={
         <>
-          {customer.accountId !== undefined && (
+          {customer.userId !== undefined && (
             <img className="list-item__image" src={require("../../../assets/icons/connected.png")} />
           )}
         </>

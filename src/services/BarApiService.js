@@ -194,8 +194,9 @@ export async function connectAccountWithToken(token) {
 }
 
 export async function getBillById(barId, sessionId, billId) {
-  let response = await getRequest(
-    `/bars/${barId}/sessions/${sessionId}/bills/${billId}`
-  );
-  return response;
+  return getRequest(`/bars/${barId}/sessions/${sessionId}/bills/${billId}`);
+}
+
+export async function getBillsOfCustomer(barId, customerId) {
+  return getRequest(`/bars/${barId}/people/${customerId}/bills`);
 }

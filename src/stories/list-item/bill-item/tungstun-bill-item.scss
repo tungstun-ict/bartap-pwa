@@ -1,0 +1,48 @@
+@use "../../../variables.scss";
+
+.session-item {
+  &__container {
+    transition: 0.4s ease-in-out;
+    &--open {
+      height: max-content;
+    }
+
+    & > div > div {
+      align-items: flex-start;
+      margin-top: 15px;
+    }
+  }
+
+  &__children {
+    height: 0;
+    transform: scaleY(0);
+    transition: 0.3s ease-in-out;
+    transform-origin: top;
+
+    &--open {
+      transform: scaleY(1);
+      height: max-content;
+      margin-bottom: 15px;
+    }
+    & > div > p {
+      padding: 10px;
+    }
+  }
+}
+
+.customer {
+  display: flex;
+  &:hover {
+    transition: 0.3s;
+
+    background-color: lightgray;
+  }
+
+  &__name {
+    margin: 0 0 0 10px;
+  }
+
+  &__price {
+    margin: 0 10px 0 auto;
+  }
+}

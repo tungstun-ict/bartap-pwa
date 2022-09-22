@@ -5,28 +5,36 @@ import TungstunListItem from "../list-item/tungstun-list-item";
 import TungstunSearchBar from "../search-bar/tungstun-search-bar.tsx";
 import "./tungstun-list-view.scss";
 
-function TungstunListView({ children }) {
+function TungstunListView({ children, className }) {
   const [search, setSearch] = useState("");
   const [filteredChildren, setFilteredChildren] = useState(children);
 
   const searchProps = (props) => {
-    let toFilter = Object.values(props).filter((value) => {
-      return typeof value === "object";
+    let toFilter = returnObjectsInObject(props);
+
+    toFilter = toFilter.filter((item) => {
+      return searchInObject(item);
     });
 
-    for (let item of toFilter) {
-      for (let value of Object.values(Object.values(item))) {
-        console.log(value);
+    return toFilter.length > 0;
+  };
 
-        if (typeof value !== "string") {
-          continue;
-        }
-
-        if (value.toLowerCase().includes(search.toLowerCase())) {
-          return true;
-        }
+  const searchInObject = (obj) => {
+    for (let value of Object.values(Object.values(obj))) {
+      if (typeof value === "object") {
+        return searchInObject(value);
       }
+
+      if (typeof value !== "string") continue;
+
+      if (value.toLowerCase().includes(search.toLowerCase())) return true;
     }
+  };
+
+  const returnObjectsInObject = (obj) => {
+    return Object.values(obj).filter((value) => {
+      return typeof value === "object";
+    });
   };
 
   useEffect(() => {
@@ -38,7 +46,7 @@ function TungstunListView({ children }) {
   }, [search, children]);
 
   return (
-    <div className="list-view__container">
+    <div className={`list-view__container ${className}`}>
       <TungstunSearchBar
         value={search}
         onChange={(e) => {
