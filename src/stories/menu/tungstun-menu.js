@@ -3,19 +3,26 @@ import TungstunInstallButton from "../install-button/tungstun-install-button";
 import TungstunMenuLink from "../menu-link/tungstun-menu-link";
 import TungstunTitle from "../title/tungstun-title";
 import "./tungstun-menu.scss";
-import { getOwnedBars } from "../../services/BarApiService";
+import { getAccountById, getMyAccount, getOwnedBars } from "../../services/BarApiService";
 import TungstunLoadingIndicator from "../loading-indicator/tungstun-loading-indicator";
 
 function TungstunMenu({ open, setOpen }) {
   const [loading, setLoading] = useState(true);
   const [bars, setBars] = useState([]);
+  const [account, setAccount] = useState({
+    name: "Loading...",
+    userName: "Loading...",
+  });
 
   useEffect(() => {
     async function fetchData() {
       setBars(await getOwnedBars());
+      var response = await getMyAccount();
+      setAccount(response);
+      console.log(response);
     }
 
-    if(loading) fetchData().finally(() => setLoading(false));
+    if (loading) fetchData().finally(() => setLoading(false));
   }, [loading]);
 
   const handleClose = () => {
@@ -41,6 +48,13 @@ function TungstunMenu({ open, setOpen }) {
     <div>
       <div className={`menu__container ${!open && "menu-closed"}`}>
         <div className="menu__header">
+          <div className="menu__header__account">
+            <div className="menu__header__account__image"></div>
+            <div className="menu__header__account__info">
+              <p className="menu__header__account__info__name">{`${account.firstName} ${account.lastName}`}</p>
+              <p className="menu__header__account__info__userName">{account.username}</p>
+            </div>
+          </div>
           <button
             aria-label="Close menu"
             onClick={handleClose}
@@ -69,7 +83,13 @@ function TungstunMenu({ open, setOpen }) {
             to="/debug"
             text="🪲 Debug options"
           />
-          {loading && <TungstunLoadingIndicator className={"menu__loadingIndicator"} loading={loading} size={30} />}
+          {loading && (
+            <TungstunLoadingIndicator
+              className={"menu__loadingIndicator"}
+              loading={loading}
+              size={30}
+            />
+          )}
           {bars.length > 0 && <TungstunTitle text={"My bars"} level={2} />}
           {showBars(bars)}
         </nav>
