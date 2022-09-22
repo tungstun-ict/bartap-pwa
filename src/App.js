@@ -2,7 +2,7 @@ import "./App.scss";
 import { useAdobeFonts } from 'react-adobe-fonts'
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import LoginPage from "./pages/login-page/LoginPage";
-import HomePage from "./pages/home-page/HomePage";
+import HomePage from "./pages/home-page/HomePage.tsx";
 import { AnimatePresence } from "framer-motion";
 import NotFoundPage from "./pages/not-found-page/NotFoundPage";
 import BarPage from "./pages/bar-page/BarPage";
@@ -14,6 +14,7 @@ import { TungstunNotificationProvider } from "./stories/notification/tungstun-no
 import RegisterPage from "./pages/register-page/RegisterPage";
 import OwnedBarPage from "./pages/owner-pages/owned-bar-page/OwnedBarPage";
 import CustomerPage from "./pages/customer-page/CustomerPage.tsx";
+import ScrollToTop from './utils/ScrollToTop.tsx';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const AnimatedRoutes = () => {
   return (
     <TungstunNotificationProvider>
       <AnimatePresence exitBeforeEnter>
+        <ScrollToTop />
         <Routes location={location} key={location.pathname}>
           <Route path="*" element={<NotFoundPage />} key={location.pathname} />
           <Route path="/" element={<HomePage />} key={location.pathname} />

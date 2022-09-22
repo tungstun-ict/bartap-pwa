@@ -4,6 +4,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 import TungstunListItem from "../list-item/tungstun-list-item";
 import TungstunSearchBar from "../search-bar/tungstun-search-bar.tsx";
 import "./tungstun-list-view.scss";
+import { distance } from "fastest-levenshtein";
+var levenshtein = require("fast-levenshtein");
 
 function TungstunListView({ children, className }) {
   const [search, setSearch] = useState("");
@@ -27,7 +29,9 @@ function TungstunListView({ children, className }) {
 
       if (typeof value !== "string") continue;
 
-      if (value.toLowerCase().includes(search.toLowerCase())) return true;
+      if (value.toLowerCase().includes(search.toLowerCase()) || distance(value.toLowerCase(), search.toLowerCase()) < 2) {
+        return true;
+      }
     }
   };
 

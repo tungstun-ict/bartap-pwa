@@ -98,7 +98,7 @@ const CustomerPage = () => {
       <TungstunTitle text={`📜 Bills`} level={2} />
       <TungstunListView>
         {bills.map((bill: Bill) => (
-          <TungstunBillItem bill={bill} />
+          <TungstunBillItem key={bill.id} bill={bill} />
         ))}
       </TungstunListView>
       <TungstunPopup isOpen={popupOpen} setClose={() => setPopupOpen(false)}>

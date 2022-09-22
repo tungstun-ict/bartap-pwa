@@ -16,6 +16,7 @@ export type Bill = {
   name: string;
   totalPrice: number;
   payed: boolean;
+  session: Session;
   orders: Order[];
   customer: Customer;
 };

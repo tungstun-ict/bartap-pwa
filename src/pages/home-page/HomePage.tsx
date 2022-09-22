@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
 
@@ -12,14 +12,25 @@ import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
+import { Bar } from "./HomePage.specs";
+import { getConnectedBars } from "../../services/BarApiService";
 
-const HomePage = () => {
+const HomePage = ({}) => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [bars, setBars] = useState<Bar[]>([]);
+
   const navigate = useNavigate();
-  const bar = {
-    name: "Test Bar",
-    debt: 20.49,
-    slug: "test-bar",
-  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const response: Bar[] = await getConnectedBars();
+      setBars(response);
+    }
+
+    if (loading) {
+      fetchData().finally(() => setLoading(false));
+    }
+  }, [loading]);
 
   const handleClick = () => {
     navigate("/bar/add");
@@ -34,8 +45,9 @@ const HomePage = () => {
       </TungstunStatistics>
       <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
-        <TungstunBarItem bar={bar} />
-        <TungstunBarItem bar={bar} />
+        {bars.map((bar) => {
+          return <TungstunBarItem key={bar.id} bar={bar} />
+        })}
       </TungstunListView>
       <TungstunBottomContainer>
         <TungstunTextButton

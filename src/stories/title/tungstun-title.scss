@@ -27,12 +27,12 @@
 
     @media (min-width: variables.$size-mobile-max) {
       display: flex;
+      padding: 10px 0;
       align-items: center;
       justify-content: center;
       
       & > h1 {
         min-width: 1000px;
-
       }
     }
   }

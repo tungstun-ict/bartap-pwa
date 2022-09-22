@@ -9,7 +9,7 @@ const TungstunBillItem: FC<Props> = ({ bill }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/bar/${barId}/bill/${bill.id}`);
+    navigate(`/bar/${barId}/session/${bill.session.id}/bill/${bill.id}`);
   };
   return (
     <TungstunListItem

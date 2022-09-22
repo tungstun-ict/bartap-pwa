@@ -6,7 +6,7 @@ const TungstunBarItem = ({ bar, loading }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/bar/${bar.slug}`);
+    navigate(`/bar/${bar.id}`);
   };
 
   return (
@@ -16,11 +16,6 @@ const TungstunBarItem = ({ bar, loading }) => {
       left={
         <>
           <p className="list-item__text list-item__name">{bar.name}</p>
-        </>
-      }
-      right={
-        <>
-          <p className="list-item__text list-item__price">€{bar.debt}</p>
         </>
       }
     />

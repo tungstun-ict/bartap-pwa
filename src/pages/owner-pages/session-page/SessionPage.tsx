@@ -96,6 +96,7 @@ const SessionPage = () => {
             value={`€${bill.totalPrice},-`}
           />
           <TungstunStatistic description="Status" value={`Payed`} />
+          
         </TungstunStatistics>
         <TungstunTitle text={`🍽️ Orders`} level={2} />
         <TungstunListView>
