@@ -5,7 +5,7 @@ import LoginPage from "./pages/login-page/LoginPage";
 import HomePage from "./pages/home-page/HomePage.tsx";
 import { AnimatePresence } from "framer-motion";
 import NotFoundPage from "./pages/not-found-page/NotFoundPage";
-import BarPage from "./pages/bar-page/BarPage";
+import BarPage from "./pages/bar-page/BarPage.tsx";
 import SessionPage from "./pages/owner-pages/session-page/SessionPage.tsx";
 import ScanPage from "./pages/scan-page/ScanPage";
 import AccountPage from "./pages/account-page/AccountPage.tsx";
@@ -39,7 +39,7 @@ const AnimatedRoutes = () => {
             key={location.pathname}
           />
           <Route
-            path="/bar/:slug"
+            path="/bar/:id"
             element={<BarPage />}
             key={location.pathname}
           />

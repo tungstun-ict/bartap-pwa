@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
@@ -6,25 +6,30 @@ import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item.tsx";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
+import { Bar } from "./BarPage.specs.ts";
+import { getBarById } from "../../services/BarApiService";
+import { Bill } from "./BarPage.specs";
 
 const BarPage = () => {
-  const { slug } = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [bar, setBar] = useState<Bar>({ id: "0", name: "...", bills: [] });
+  const [bills, setBills] = useState<Bill[]>([]);
+  const { id } = useParams();
 
-  const bar = {
-    name: "Test bar",
-    debt: 20.45,
-    slug: slug,
-  };
+  useEffect(() => {
+    async function fetchData() {
+      const response: Bar = await getBarById(id);
+      console.log(id);
+      setBar(response);
+    }
 
-  const session = {
-    id: "xxxxxxxxxxxx",
-    date: "20-02-22",
-    name: "Session 1",
-    total: 20.1,
-  };
+    if (loading) {
+      fetchData().finally(() => setLoading(false));
+    }
+  }, [loading]);
 
   return (
-    <TungstunPage authenticated>
+    <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={`🍺 ${bar.name}`} level={1} back />
       <TungstunStatistics>
         <TungstunStatistic
@@ -41,17 +46,8 @@ const BarPage = () => {
         />
       </TungstunStatistics>
       <TungstunTitle text={"📜 Current bill"} level={2} />
-      <TungstunSessionItem session={session} />
       <TungstunTitle text={"🕐 Past bills"} level={2} />
       <TungstunListView>
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
-        <TungstunSessionItem session={session} />
       </TungstunListView>
     </TungstunPage>
   );
