@@ -5,6 +5,7 @@
     width: 100%;
     display: flex;
     overflow-x: scroll;
+    scrollbar-width: thin;
 
     @media (min-width: variables.$size-mobile-max) {
       flex-wrap: wrap;
