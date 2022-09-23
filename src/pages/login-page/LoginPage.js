@@ -58,6 +58,7 @@ const LoginPage = () => {
       className={"login-page__container"}
       transition={true}
       noHeader
+      noMenu
     >
       <TungstunForm
         title="Login"

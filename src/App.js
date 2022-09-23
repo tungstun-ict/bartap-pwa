@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useAdobeFonts } from 'react-adobe-fonts'
+import { useAdobeFonts } from "react-adobe-fonts";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import LoginPage from "./pages/login-page/LoginPage";
 import HomePage from "./pages/home-page/HomePage.tsx";
@@ -14,12 +14,12 @@ import { TungstunNotificationProvider } from "./stories/notification/tungstun-no
 import RegisterPage from "./pages/register-page/RegisterPage";
 import OwnedBarPage from "./pages/owner-pages/owned-bar-page/OwnedBarPage";
 import CustomerPage from "./pages/customer-page/CustomerPage.tsx";
-import ScrollToTop from './utils/ScrollToTop.tsx';
+import ScrollToTop from "./utils/ScrollToTop.tsx";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
 
-  useAdobeFonts({kitId: "opl2xhz"});
+  useAdobeFonts({ kitId: "opl2xhz" });
 
   return (
     <TungstunNotificationProvider>

@@ -234,6 +234,7 @@ const RegisterPage = () => {
       className={"register-page__container"}
       transition={true}
       noHeader
+      noMenu
     >
       {accountProgress === 0 ? loginInfo() : accountInfo()}
       <div className="register-page__links">

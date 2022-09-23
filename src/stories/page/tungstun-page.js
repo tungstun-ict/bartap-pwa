@@ -17,6 +17,7 @@ const TungstunPage = ({
   type,
   noHeader,
   bottomBar,
+  noMenu,
   id,
   title,
   style,
@@ -75,7 +76,7 @@ const TungstunPage = ({
         </motion.div>
       )}
 
-      <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />
+      {!noMenu && <TungstunMenu open={isMenuOpen} setOpen={setMenuOpen} />}
       {!noHeader && (
         <TungstunHeader
           className="page__header"
