@@ -4,6 +4,9 @@
   font-family: variables.$font-heading;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &__action {
     margin-left: auto;
@@ -30,7 +33,7 @@
       padding: 10px 0;
       align-items: center;
       justify-content: center;
-      
+
       & > h1 {
         min-width: 1000px;
       }
@@ -65,7 +68,6 @@
         margin-right: 10px;
       }
     }
-      
   }
 
   &__container {
