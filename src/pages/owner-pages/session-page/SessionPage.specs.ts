@@ -15,23 +15,11 @@ export type Bill = {
   date: Date;
   name: string;
   totalPrice: number;
-  payed: boolean;
+  isPayed: boolean;
   session: Session;
   orders: Order[];
   customer: Customer;
 };
-
-export const DefaultBill: Bill = {
-  id: "",
-  date: new Date(Date.now()),
-  name: "... ...",
-  totalPrice: 0,
-  payed: false,
-  orders: [],
-  customer: DefaultCustomer,
-}
-
-
 
 export type Session = {
   id: string;
@@ -69,5 +57,16 @@ export const DefaultOrder: Order = {
   creationDate: new Date(Date.now()),
   total: 0,
   amount: 0,
+}
+
+export const DefaultBill: Bill = {
+  id: "",
+  date: new Date(Date.now()),
+  name: "... ...",
+  totalPrice: 0,
+  isPayed: false,
+  session: DefaultSession,
+  orders: [],
+  customer: DefaultCustomer,
 }
 

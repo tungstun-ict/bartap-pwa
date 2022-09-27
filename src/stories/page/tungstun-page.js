@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import * as ApiService from "../../services/BarApiService";
 import * as StorageService from "../../services/BarStorageService";
@@ -26,6 +26,8 @@ const TungstunPage = ({
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const searchBarRef = useRef();
 
   const heavyVariants = {
     initial: {
