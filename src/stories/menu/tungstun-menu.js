@@ -27,8 +27,20 @@ function TungstunMenu({ open, setOpen }) {
     if (loading) fetchData().finally(() => setLoading(false));
   }, [loading]);
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleKeyDown = (e) => {
+    switch (e.code) {
+      case "Escape":
+        setOpen(state => !state);
+    }
   };
 
   const showBars = (bars) => {
@@ -52,7 +64,7 @@ function TungstunMenu({ open, setOpen }) {
     <div>
       <div className={`menu__container ${!open && "menu-closed"}`}>
         <div className="menu__header">
-          {open && (
+          {open && account && (
             <div className="menu__header__account">
               <div className="menu__header__account__image"></div>
               <div className="menu__header__account__info">
