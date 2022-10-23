@@ -6,7 +6,7 @@ import "./account-page.scss";
 
 import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
 import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTextButton from "../../stories/text-button/tungstun-text-button";
 import TungstunTitle from "../../stories/title/tungstun-title";

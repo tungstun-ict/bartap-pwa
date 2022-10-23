@@ -3,10 +3,10 @@ import TungstunCustomerItem from "../../../stories/list-item/customer-item/tungs
 import TungstunSessionItem from "../../../stories/list-item/session-item/tungstun-session-item.tsx";
 import TungstunMultiList from "../../../stories/multi-list/tungstun-multi-list.tsx";
 import TungstunPage from "../../../stories/page/tungstun-page";
-import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
+import TungstunStatistic from "../../../stories/statistic/tungstun-statistic.tsx";
 import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../../stories/title/tungstun-title";
-import { sleep, sortNameAlphabet } from "../../../services/Utils.ts";
+import { sortNameAlphabet } from "../../../services/Utils.ts";
 
 import "./owned-bar-page.scss";
 import { useParams } from "react-router-dom";
@@ -55,14 +55,18 @@ function OwnedBarPage() {
     if (loading) {
       fetchData().finally(() => setLoading(false));
     }
-  }, [loading]);
+  }, [loading, barId]);
+
+  const addCustomer = () => {
+    console.log("add customer");
+  };
 
   return (
     <TungstunPage loading={loading}>
       <TungstunTitle level={1} text={`🍻 ${bar.name}`} />
       <TungstunStatistics>
         <TungstunStatistic
-          value={`€${statistics.totalSpentOfAllTime},-`}
+          value={`€${statistics.totalSpentOfAllTime.toFixed(2)},-`}
           description={"Total revenue"}
         />
         <TungstunStatistic
@@ -80,10 +84,13 @@ function OwnedBarPage() {
           {
             displayName: "🧑 Customers",
             data: sortNameAlphabet(customers),
+            addIcon: require("../../../assets/icons/plus-light.png"),
+            onAdd: addCustomer,
           },
           {
             displayName: "🕰️ Sessions",
             data: sortNameAlphabet(sessions),
+            
           },
         ]}
       />

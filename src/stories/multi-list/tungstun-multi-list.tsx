@@ -13,6 +13,8 @@ interface Category {
   displayName: string;
   id: string;
   data: {}[];
+  onAdd: () => void;
+  addIcon: string;
 }
 
 const TungstunMultiList = ({ categories, className }: ComponentProps) => {
@@ -39,7 +41,12 @@ const TungstunMultiList = ({ categories, className }: ComponentProps) => {
           );
         })}
       </div>
-      <TungstunListView>{categories[selected].data}</TungstunListView>
+      <TungstunListView
+        addIcon={categories[selected].addIcon}
+        onAdd={categories[selected].onAdd}
+      >
+        {categories[selected].data}
+      </TungstunListView>
     </div>
   );
 };

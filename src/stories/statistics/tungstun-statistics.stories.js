@@ -1,6 +1,6 @@
 import React from "react";
 
-import TungstunStatistics from "./tungstun-statistics";
+import TungstunStatistics from "./tungstun-statistic.tsx";
 
 export default {
   title: "Statistics",

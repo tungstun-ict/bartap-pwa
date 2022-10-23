@@ -5,7 +5,7 @@ import "./customer-page.scss";
 import QRCode from "react-qr-code";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import {
   Account,

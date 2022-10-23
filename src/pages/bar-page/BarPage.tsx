@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item.tsx";

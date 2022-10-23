@@ -11,4 +11,16 @@
       transition: 0.3s;
     }
   }
+
+  &__search {
+    flex: auto;
+  }
+
+  &__add {
+    margin-left: 20px;
+  }
+
+  &__top {
+    display: flex;
+  }
 }

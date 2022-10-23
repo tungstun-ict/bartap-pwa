@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import TungstunListItem from "../list-item/tungstun-list-item";
 import TungstunSearchBar from "../search-bar/tungstun-search-bar.tsx";
 import "./tungstun-list-view.scss";
 import { distance } from "fastest-levenshtein";
-var levenshtein = require("fast-levenshtein");
+import TungstunIconButton from "./../icon-button/tungstun-icon-button";
 
-function TungstunListView({ children, className }) {
+function TungstunListView({ children, onAdd, addIcon, className }) {
   const [search, setSearch] = useState("");
   const [filteredChildren, setFilteredChildren] = useState(children);
 
@@ -29,7 +27,10 @@ function TungstunListView({ children, className }) {
 
       if (typeof value !== "string") continue;
 
-      if (value.toLowerCase().includes(search.toLowerCase()) || distance(value.toLowerCase(), search.toLowerCase()) < 2) {
+      if (
+        value.toLowerCase().includes(search.toLowerCase()) ||
+        distance(value.toLowerCase(), search.toLowerCase()) < 2
+      ) {
         return true;
       }
     }
@@ -51,12 +52,19 @@ function TungstunListView({ children, className }) {
 
   return (
     <div className={`list-view__container ${className}`}>
-      <TungstunSearchBar
-        value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      />
+      <div className="list-view__top">
+        <TungstunSearchBar
+          className={"list-view__search"}
+          width="auto"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+        {onAdd && addIcon && (
+          <TungstunIconButton className={"list-view__add"} onClick={onAdd} src={addIcon} />
+        )}
+      </div>
       {filteredChildren}
     </div>
   );
