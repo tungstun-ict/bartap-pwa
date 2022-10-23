@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TungstunPage from "../../stories/page/tungstun-page";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item.tsx";
+import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
-import { Bar } from "./BarPage.specs.ts";
+import { Bar } from "./BarPage.specs";
 import { getBarById } from "../../services/BarApiService";
 import { Bill } from "./BarPage.specs";
 
 const BarPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [bar, setBar] = useState<Bar>({ id: "0", name: "...", bills: [] });
+  const [bar, setBar] = useState<Bar>({ id: "0", name: "...", debt: 0 });
   const [bills, setBills] = useState<Bill[]>([]);
   const { id } = useParams();
 

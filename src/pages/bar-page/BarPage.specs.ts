@@ -1,9 +1,7 @@
 export type Bar = {
   id: string;
   name: string;
-  address: string;
-  email: string;
-  phoneNumber: string;
+  debt: number;
 }
 
 export const DefaultBar = {

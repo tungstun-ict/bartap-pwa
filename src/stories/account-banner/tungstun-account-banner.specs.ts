@@ -2,7 +2,7 @@ import { MouseEventHandler } from "react";
 
 export type Props = {
   account: Account;
-  expanded: boolean;
+  expanded?: boolean;
   handleDisconnect: MouseEventHandler<HTMLDivElement>;
   handleConnect: MouseEventHandler<HTMLDivElement>;
 };

@@ -11,7 +11,7 @@ export type Bill = {
   id: string;
   isPayed: boolean;
   totalPrice: number;
-  customer: Customer;
+  customer?: Customer;
   session: Session;
 };
 

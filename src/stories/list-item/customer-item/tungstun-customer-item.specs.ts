@@ -7,4 +7,5 @@ export type Customer = {
   id: string;
   accountId: string;
   name: string;
+  userId: string;
 };

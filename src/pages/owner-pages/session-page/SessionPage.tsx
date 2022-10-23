@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TungstunPage from "../../../stories/page/tungstun-page";
-import TungstunStatistic from "../../../stories/statistic/tungstun-statistic.tsx";
+import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../../stories/title/tungstun-title";
 import TungstunListView from "../../../stories/list-view/tungstun-list-view";
 import TungstunOrderItem from "../../../stories/list-item/tungstun-order-item";
-import TungstunBottomContainer from "../../../stories/bottom-container/tungstun-bottom-container";
 import TungstunIconButton from "../../../stories/icon-button/tungstun-icon-button";
 import "./session-page.scss";
 import TungstunNotificationContext from "../../../stories/notification/tungstun-notification-provider";
@@ -17,11 +16,11 @@ import {
   DefaultBill,
   DefaultSession,
   Session,
-} from "./SessionPage.specs.ts";
+} from "./SessionPage.specs";
 import { getBillById } from "../../../services/BarApiService";
 
 const SessionPage = () => {
-  const notificationDispatch = useContext(TungstunNotificationContext);
+  const notificationDispatch: Function = useContext(TungstunNotificationContext);
   const [loading, setLoading] = useState<boolean>(true);
   const [bill, setBill] = useState<Bill>(DefaultBill);
   const [session, setSession] = useState<Session>(DefaultSession);

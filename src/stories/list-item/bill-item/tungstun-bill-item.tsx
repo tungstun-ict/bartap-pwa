@@ -1,7 +1,7 @@
-import React, { useState, FC } from "react";
+import React, { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import TungstunListItem from "../tungstun-list-item";
-import { Props } from "./tungstun-bill-item.specs.ts";
+import { Props } from "./tungstun-bill-item.specs";
 import "./tungstun-bill-item.scss";
 
 const TungstunBillItem: FC<Props> = ({ bill }: Props) => {

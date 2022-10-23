@@ -5,7 +5,7 @@ import "./customer-page.scss";
 import QRCode from "react-qr-code";
 import TungstunPage from "../../stories/page/tungstun-page";
 import TungstunTitle from "../../stories/title/tungstun-title";
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import {
   Account,
@@ -13,9 +13,9 @@ import {
   Customer,
   DefaultCustomer,
   DefaultBar,
-} from "./CustomerPage.specs.ts";
-import TungstunAccountBanner from "../../stories/account-banner/tungstun-account-banner.tsx";
-import TungstunPopup from "../../stories/popup/tungstun-popup.tsx";
+} from "./CustomerPage.specs";
+import TungstunAccountBanner from "../../stories/account-banner/tungstun-account-banner";
+import TungstunPopup from "../../stories/popup/tungstun-popup";
 import {
   getAccountById,
   getBarById,
@@ -23,9 +23,9 @@ import {
   getConnectAccountToken,
   getCustomerOfBar,
 } from "../../services/BarApiService";
-import { Bill, DefaultBill, Session } from "./CustomerPage.specs.ts";
+import { Bill, DefaultBill, Session } from "./CustomerPage.specs";
 import TungstunListView from './../../stories/list-view/tungstun-list-view';
-import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item.tsx";
+import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item";
 
 const CustomerPage = () => {
   const { barId, customerId } = useParams();

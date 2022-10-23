@@ -24,13 +24,13 @@ export type Bill = {
 export type Session = {
   id: string;
   name: string;
-  startDate: Date;
+  date: Date;
 }
 
 export const DefaultSession: Session = {
   id: "",
   name: "... ...",
-  startDate: new Date(Date.now())
+  date: new Date(Date.now())
 }
 
 export type Product = {
@@ -46,6 +46,7 @@ export const DefaultProduct: Product = {
 }
 
 export type Order = {
+  id: string;
   product: Product,
   creationDate: Date,
   total: number,
@@ -53,6 +54,7 @@ export type Order = {
 };
 
 export const DefaultOrder: Order = {
+  id: "",
   product: DefaultProduct,
   creationDate: new Date(Date.now()),
   total: 0,

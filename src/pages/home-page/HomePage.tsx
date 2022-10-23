@@ -6,7 +6,7 @@ import "./home-page.scss";
 import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunTextButton from "../../stories/text-button/tungstun-text-button";
 
-import TungstunStatistic from "../../stories/statistic/tungstun-statistic.tsx";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 
@@ -46,7 +46,7 @@ const HomePage = ({}) => {
       <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
         {bars.map((bar) => {
-          return <TungstunBarItem key={bar.id} bar={bar} />
+          return <TungstunBarItem key={bar.id} bar={bar} />;
         })}
       </TungstunListView>
       <TungstunBottomContainer>
