@@ -5,6 +5,7 @@ export type Props = {
 export type Session = {
   id: string;
   name: string;
+  date: Date;
 };
 
 export type Bill = {

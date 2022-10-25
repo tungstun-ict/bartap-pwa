@@ -44,11 +44,13 @@ export type Bill = {
 export type Session = {
   id: string,
   name: string
+  date: Date;
 }
 
 export const DefaultSession: Session = {
   id: "",
-  name: "..."
+  name: "...",
+  date: new Date()
 }
 
 export const DefaultBill: Bill = {

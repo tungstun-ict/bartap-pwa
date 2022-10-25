@@ -201,7 +201,10 @@ export async function getBillsOfCustomer(barId, customerId) {
   return getRequest(`/bars/${barId}/people/${customerId}/bills`);
 }
 
-
 export async function getConnectedBars() {
   return getRequest(`/bars/connected`);
+}
+
+export async function getMyBillsByBarId(barId) {
+  return getRequest(`/bars/${barId}/bills`);
 }

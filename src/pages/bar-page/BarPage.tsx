@@ -7,8 +7,9 @@ import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 import { Bar } from "./BarPage.specs";
-import { getBarById } from "../../services/BarApiService";
+import { getBarById, getMyBillsByBarId } from "../../services/BarApiService";
 import { Bill } from "./BarPage.specs";
+import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item";
 
 const BarPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -19,14 +20,24 @@ const BarPage = () => {
   useEffect(() => {
     async function fetchData() {
       const response: Bar = await getBarById(id);
-      console.log(id);
+      const billsResponse: Bill[] = await getMyBillsByBarId(id);
+      console.log(billsResponse)
+
       setBar(response);
+      setBills(sortBillsByDate(billsResponse));
     }
 
     if (loading) {
       fetchData().finally(() => setLoading(false));
     }
   }, [loading]);
+
+  const sortBillsByDate = (bills: Bill[]) => {
+    return bills.sort((a, b) => {
+      console.log(a)
+      return new Date(b.session.date).getTime() - new Date(a.session.date).getTime();
+    });
+  }
 
   return (
     <TungstunPage authenticated loading={loading}>
@@ -48,6 +59,9 @@ const BarPage = () => {
       <TungstunTitle text={"📜 Current bill"} level={2} />
       <TungstunTitle text={"🕐 Past bills"} level={2} />
       <TungstunListView>
+        {bills.map((bill) => (
+          <TungstunBillItem bill={bill} />
+        ))}
       </TungstunListView>
     </TungstunPage>
   );

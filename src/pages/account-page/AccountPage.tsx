@@ -58,11 +58,6 @@ const AccountPage = () => {
               navigate("/auth/login");
             }}
           />
-          <TungstunTextButton
-            color="red"
-            width={"100%"}
-            text={"Delete account"}
-          />
         </div>
       </TungstunBottomContainer>
     </TungstunPage>

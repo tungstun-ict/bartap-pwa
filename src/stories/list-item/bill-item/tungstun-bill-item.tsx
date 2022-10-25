@@ -17,7 +17,12 @@ const TungstunBillItem: FC<Props> = ({ bill }: Props) => {
       borderColor={bill.isPayed ? "#82C9C1" : "#F9525A"}
       onClick={handleClick}
       left={
-        <p className="list-item__text list-item__name">{bill.session.name}</p>
+        <>
+          <p className="list-item__text list-item__date">
+            {new Date(bill.session.date).toLocaleDateString()}
+          </p>
+          <p className="list-item__text list-item__name">{bill.session.name}</p>
+        </>
       }
       right={
         <p className="list-item__text list-item__price">
