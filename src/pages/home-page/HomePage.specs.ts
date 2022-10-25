@@ -5,3 +5,17 @@ export type Bar = {
   mail: string;
   phoneNumber: string;
 }
+
+export type Bill = {
+  id: string;
+  name: string;
+  totalPrice: number;
+  isPayed: boolean;
+  session: Session;
+}
+
+export type Session = {
+  id: string;
+  name: string;
+  date: Date;
+}

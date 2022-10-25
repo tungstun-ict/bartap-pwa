@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TungstunPage from "../../../stories/page/tungstun-page";
-import TungstunStatistic from "../../../stories/statistic/tungstun-statistic";
-import TungstunStatistics from "../../../stories/statistics/tungstun-statistics";
-import TungstunTitle from "../../../stories/title/tungstun-title";
-import TungstunListView from "../../../stories/list-view/tungstun-list-view";
-import TungstunOrderItem from "../../../stories/list-item/tungstun-order-item";
-import TungstunIconButton from "../../../stories/icon-button/tungstun-icon-button";
+import TungstunPage from "../../stories/page/tungstun-page";
+import TungstunStatistic from "../../stories/statistic/tungstun-statistic";
+import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
+import TungstunTitle from "../../stories/title/tungstun-title";
+import TungstunListView from "../../stories/list-view/tungstun-list-view";
+import TungstunOrderItem from "../../stories/list-item/tungstun-order-item";
+import TungstunIconButton from "../../stories/icon-button/tungstun-icon-button";
 import "./session-page.scss";
-import TungstunNotificationContext from "../../../stories/notification/tungstun-notification-provider";
+import TungstunNotificationContext from "../../stories/notification/tungstun-notification-provider";
 
 import domtoimage from "dom-to-image";
 import {
@@ -16,10 +16,11 @@ import {
   DefaultBill,
   DefaultSession,
   Session,
-} from "./SessionPage.specs";
-import { getBillById } from "../../../services/BarApiService";
+} from "./BillPage.specs";
 
-const SessionPage = () => {
+import { getBillById } from "../../services/BarApiService";
+
+const BillPage = () => {
   const notificationDispatch: Function = useContext(TungstunNotificationContext);
   const [loading, setLoading] = useState<boolean>(true);
   const [bill, setBill] = useState<Bill>(DefaultBill);
@@ -92,7 +93,7 @@ const SessionPage = () => {
         <TungstunStatistics>
           <TungstunStatistic
             description="Total"
-            value={`€${bill.totalPrice.toFixed(2)},-`}
+            value={`€${bill.totalPrice},-`}
           />
           <TungstunStatistic description="Status" value={bill.isPayed ? "Paid" : "Open"} />
           
@@ -108,4 +109,4 @@ const SessionPage = () => {
   );
 };
 
-export default SessionPage;
+export default BillPage;

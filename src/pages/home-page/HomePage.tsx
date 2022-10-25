@@ -12,19 +12,23 @@ import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
-import { Bar } from "./HomePage.specs";
-import { getConnectedBars } from "../../services/BarApiService";
+import { Bar, Bill } from "./HomePage.specs";
+import { getConnectedBars, getMyActiveBillByBarId } from "../../services/BarApiService";
+import TungstunBillItem from './../../stories/list-item/bill-item/tungstun-bill-item';
 
 const HomePage = ({}) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [bars, setBars] = useState<Bar[]>([]);
+  const [activeBills, setActiveBills] = useState<Bill[]>([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
-      const response: Bar[] = await getConnectedBars();
-      setBars(response);
+      const barsResponse: Bar[] = await getConnectedBars();
+      setBars(barsResponse);
+
+      barsResponse.forEach((bar) => { getMyActiveBillByBarId(bar.id).then((bill) => {setActiveBills([...activeBills, bill])})});
     }
 
     if (loading) {
@@ -40,9 +44,14 @@ const HomePage = ({}) => {
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={"🏠 Home"} level={1} />
       <TungstunStatistics>
-        <TungstunStatistic value={"€40,50"} description="Open tap" />
-        <TungstunStatistic value={"€230,50"} description="Total spent" />
+        <TungstunStatistic value={`€`} description="Open tap" />
+        <TungstunStatistic value={"€"} description="Total spent" />
       </TungstunStatistics>
+      <TungstunTitle text="📜 Active bills" level={2} />
+      {activeBills.length > 0 && (
+        activeBills.map((bill) => (
+          <TungstunBillItem bill={bill}/>
+      )))}
       <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
         {bars.map((bar) => {

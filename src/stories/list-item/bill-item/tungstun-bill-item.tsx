@@ -5,11 +5,12 @@ import { Props } from "./tungstun-bill-item.specs";
 import "./tungstun-bill-item.scss";
 
 const TungstunBillItem: FC<Props> = ({ bill }: Props) => {
-  const { barId } = useParams();
+  const { id } = useParams();
+  console.log(id);
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/bar/${barId}/session/${bill.session.id}/bill/${bill.id}`);
+    navigate(`/bar/${id}/session/${bill.session.id}/bill/${bill.id}`);
   };
   return (
     <TungstunListItem

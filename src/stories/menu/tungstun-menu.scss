@@ -43,7 +43,7 @@
     flex-direction: column;
     background-color: variables.$color-menu-background;
 
-    @media (min-width: variables.$size-mobile-max) {
+    @media (min-width: 1300px) {
       width: 500px;
       left: 0;
       transition: 0.5s;
@@ -135,7 +135,7 @@
   &-closed {
     transform: translateX(-100vw);
 
-    @media (min-width: variables.$size-mobile-max) {
+    @media (min-width: 1300px) {
       transform: translateX(0);
       width: 100px;
     }
