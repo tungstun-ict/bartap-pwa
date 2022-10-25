@@ -208,3 +208,7 @@ export async function getConnectedBars() {
 export async function getMyBillsByBarId(barId) {
   return getRequest(`/bars/${barId}/bills`);
 }
+
+export async function getMyActiveBillByBarId(barId) {
+  return getRequest(`/bars/${barId}/bills/active`);
+}

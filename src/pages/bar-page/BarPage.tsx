@@ -7,7 +7,7 @@ import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
 import { Bar } from "./BarPage.specs";
-import { getBarById, getMyBillsByBarId } from "../../services/BarApiService";
+import { getBarById, getMyBillsByBarId, getMyActiveBillByBarId } from "../../services/BarApiService";
 import { Bill } from "./BarPage.specs";
 import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item";
 
@@ -15,12 +15,15 @@ const BarPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [bar, setBar] = useState<Bar>({ id: "0", name: "...", debt: 0 });
   const [bills, setBills] = useState<Bill[]>([]);
+  const [activeBill, setActiveBill] = useState<Bill>(null);
   const { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
       const response: Bar = await getBarById(id);
       const billsResponse: Bill[] = await getMyBillsByBarId(id);
+      const activeBillResponse: Bill = await getMyActiveBillByBarId(id);
+      setActiveBill(activeBillResponse);
       console.log(billsResponse)
 
       setBar(response);
@@ -57,7 +60,8 @@ const BarPage = () => {
         />
       </TungstunStatistics>
       <TungstunTitle text={"📜 Current bill"} level={2} />
-      <TungstunTitle text={"🕐 Past bills"} level={2} />
+      {activeBill && (<TungstunBillItem bill={activeBill} />)}
+      <TungstunTitle text={"🕐 All bills"} level={2} />
       <TungstunListView>
         {bills.map((bill) => (
           <TungstunBillItem bill={bill} />

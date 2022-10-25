@@ -23,12 +23,12 @@ function OwnedBarPage() {
   const [customers, setCustomers] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [statistics, setStatistics] = useState({
-    totalSpentOfAllTime: 0,
-    mostSoldProductOfAllTime: {
+    totalSpent: 0,
+    mostSoldProduct: {
       name: "...",
       brand: "...",
     },
-    mostSoldProductOfLastMonth: {
+    mostSoldProduct: {
       name: "...",
       brand: "...",
     },
@@ -49,33 +49,48 @@ function OwnedBarPage() {
           return <TungstunSessionItem key={s.id} session={s} />;
         })
       );
-      setStatistics(await getStatisticsOfBar(barId));
+      
+    }
+
+    async function fetchStatistics() {
+      var statisticsResponse = await getStatisticsOfBar(barId);
+      setStatistics(statisticsResponse);
     }
 
     if (loading) {
       fetchData().finally(() => setLoading(false));
+      fetchStatistics();
     }
+
   }, [loading, barId]);
 
   const addCustomer = () => {
     console.log("add customer");
   };
 
+  const sortCustomersByName = (customers) => {
+    return customers.sort((a, b) => {
+      return a.props.customer.name.localeCompare(b.props.customer.name);
+    })
+  }
+
+  const sortSessionByDate = (sessions) => {
+    return sessions.sort((a, b) => {
+      return new Date(b.props.session.creationDate).getTime() - new Date(a.props.session.creationDate).getTime();
+    })
+  }
+
   return (
     <TungstunPage loading={loading}>
       <TungstunTitle level={1} text={`🍻 ${bar.name}`} />
       <TungstunStatistics>
         <TungstunStatistic
-          value={`€${statistics.totalSpentOfAllTime.toFixed(2)},-`}
+          value={`€${statistics.totalSpent.toFixed(2)},-`}
           description={"Total revenue"}
         />
         <TungstunStatistic
-          value={`${statistics.mostSoldProductOfAllTime.brand} ${statistics.mostSoldProductOfAllTime.name}`}
+          value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
           description={"Most sold / all time"}
-        />
-        <TungstunStatistic
-          value={`${statistics.mostSoldProductOfLastMonth.brand} ${statistics.mostSoldProductOfLastMonth.name}`}
-          description={"Most sold / month"}
         />
       </TungstunStatistics>
       <TungstunMultiList
@@ -83,14 +98,13 @@ function OwnedBarPage() {
         categories={[
           {
             displayName: "🧑 Customers",
-            data: sortNameAlphabet(customers),
+            data: sortCustomersByName(customers),
             addIcon: require("../../../assets/icons/plus-light.png"),
             onAdd: addCustomer,
           },
           {
             displayName: "🕰️ Sessions",
-            data: sortNameAlphabet(sessions),
-            
+            data: sortSessionByDate(sessions),
           },
         ]}
       />
