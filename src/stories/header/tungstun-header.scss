@@ -29,10 +29,22 @@
     user-select: none;
     font-size: 20px;
     flex: 1;
+
+    @media (max-width: 750px) {
+      display: none;
+    }
   }
 
   &__right {
     flex: 1;
+    display: flex;
+  }
+
+  &__bmcLink {
+    margin-left: auto;
+    width: 253px;
+    
+    
   }
 }
 

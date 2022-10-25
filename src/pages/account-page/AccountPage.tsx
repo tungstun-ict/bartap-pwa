@@ -47,7 +47,7 @@ const AccountPage = () => {
           description={"Phone number"}
         />
       </TungstunStatistics>
-
+      
       <TungstunBottomContainer>
         <div className="account__bottom">
           <TungstunTextButton
