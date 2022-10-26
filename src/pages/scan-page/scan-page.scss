@@ -18,10 +18,34 @@
     }
 
     @media (max-width: variables.$size-mobile-max) {
-      height: 100%;
-      width: 100%;
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      & > section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+      }
+
+      & > section > div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      & > section > div > #video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 
