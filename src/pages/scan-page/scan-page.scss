@@ -11,25 +11,17 @@
       height: 100%;
     }
 
-    @media (max-width: variables.$size-mobile-max) {
-      position: absolute;
-      width: 100vw;
-      top: 0;
-      left: 0;
-      height: 100%;
-
-      & > section {
-        height: 100%;
-      }
-      & > section > div {
-        height: 100%;
-      }
-    }
-
     & > section > div > #video {
       height: 100%;
       width: 100%;
       object-fit: cover;
+    }
+
+    @media (max-width: variables.$size-mobile-max) {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
     }
   }
 

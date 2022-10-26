@@ -43,8 +43,16 @@
   &__bmcLink {
     margin-left: auto;
     width: 253px;
-    
-    
+    position: relative;
+
+    & > img {
+      height: 40px;
+      right: 0;
+      position: relative;
+      @media (max-width: variables.$size-mobile-max) {
+        height: 30px;
+      }
+    }
   }
 }
 
