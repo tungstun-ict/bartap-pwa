@@ -15,16 +15,10 @@ import { connectAccountWithToken } from "../../services/BarApiService";
 const ScanPage = () => {
   const dispatch = useContext(TungstunNotificationContext);
   const navigate = useNavigate();
-  const [scan, setScan] = useState(null);
   const [formValues, updateFormValues] = useForm();
 
-  useEffect(() => {
-    if (scan !== null) {
-      handleScan(scan);
-    }
-  }, [scan]);
-
   const handleScan = (input) => {
+    console.log(input);
     if (input === null || input === "") {
       return null;
     }
@@ -45,21 +39,17 @@ const ScanPage = () => {
     <TungstunPage authenticated>
       <TungstunTitle text="📷 Scan QR" level={1} back />
       <div className="scan-page__camera">
-        {scan === null ? (
-          <QrReader
-            constraints={{
-              facingMode: "environment",
-            }}
-            scanDelay={500}
-            onResult={(result, error) => {
-              if (!!result && scan === null) {
-                setScan(result);
-              }
-            }}
-          />
-        ) : (
-          "Oops"
-        )}
+        <QrReader
+          constraints={{
+            facingMode: "environment",
+          }}
+          scanDelay={500}
+          onResult={(result, error) => {
+            if (!!result) {
+              handleScan(result.text);
+            }
+          }}
+        />
       </div>
       <div className="scan-page__form">
         <TungstunForm onSubmit={() => handleScan(formValues.id)}>
