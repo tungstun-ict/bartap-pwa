@@ -1,11 +1,19 @@
 import React from "react";
 
 import "./tungstun-header.scss";
+import TungstunTextButton from './../text-button/tungstun-text-button';
+import { useNavigate } from 'react-router-dom';
 
 function TungstunHeader({ className, setMenuOpen }) {
+  const navigate = useNavigate();
+
   const handleOpenMenu = () => {
     setMenuOpen(true);
   };
+
+  const handleDonateClick = () => {
+    navigate("/donate")
+  }
 
   return (
     <div className={`header__container ${className}`}>
@@ -24,11 +32,7 @@ function TungstunHeader({ className, setMenuOpen }) {
       </div>
       <div className="header__center">bartap</div>
       <div className="header__right">
-        <a
-          className="header__bmcLink" 
-          href="https://www.buymeacoffee.com/tungstun">
-          <img src="https://img.buymeacoffee.com/button-api/?text=Buy us a cocktail&emoji=🍸&slug=tungstun&button_colour=BD5FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" />
-        </a>
+        <TungstunTextButton className={"header__bmcLink"} onClick={handleDonateClick} text={"💸"}/>
       </div>
     </div>
   );

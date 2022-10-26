@@ -115,6 +115,14 @@ function TungstunMenu({ open, setOpen }) {
           />
           <TungstunMenuLink
             retracted={!open}
+            key={"donate"}
+            handleClose={handleClose}
+            to="/donate"
+            emoji="💸"
+            text="Donate"
+          />
+          <TungstunMenuLink
+            retracted={!open}
             key={"debug"}
             handleClose={handleClose}
             to="/debug"

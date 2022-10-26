@@ -29,10 +29,6 @@
     user-select: none;
     font-size: 20px;
     flex: 1;
-
-    @media (max-width: 750px) {
-      display: none;
-    }
   }
 
   &__right {

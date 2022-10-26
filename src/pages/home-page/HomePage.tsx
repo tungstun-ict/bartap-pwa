@@ -13,8 +13,11 @@ import TungstunBarItem from "../../stories/list-item/tungstun-bar-item";
 import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunBottomContainer from "../../stories/bottom-container/tungstun-bottom-container";
 import { Bar, Bill } from "./HomePage.specs";
-import { getConnectedBars, getMyActiveBillByBarId } from "../../services/BarApiService";
-import TungstunBillItem from './../../stories/list-item/bill-item/tungstun-bill-item';
+import {
+  getConnectedBars,
+  getMyActiveBillByBarId,
+} from "../../services/BarApiService";
+import TungstunBillItem from "./../../stories/list-item/bill-item/tungstun-bill-item";
 
 const HomePage = ({}) => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -28,7 +31,13 @@ const HomePage = ({}) => {
       const barsResponse: Bar[] = await getConnectedBars();
       setBars(barsResponse);
 
-      barsResponse.forEach((bar) => { getMyActiveBillByBarId(bar.id).then((bill) => {setActiveBills([...activeBills, bill])})});
+      barsResponse.forEach((bar: Bar) => {
+        getMyActiveBillByBarId(bar.id).then((bill: Bill) => {
+          bill.bar = bar;
+          console.log(bill);
+          setActiveBills([...activeBills, bill]);
+        });
+      });
     }
 
     if (loading) {
@@ -48,10 +57,8 @@ const HomePage = ({}) => {
         <TungstunStatistic value={"€"} description="Total spent" />
       </TungstunStatistics>
       <TungstunTitle text="📜 Active bills" level={2} />
-      {activeBills.length > 0 && (
-        activeBills.map((bill) => (
-          <TungstunBillItem bill={bill}/>
-      )))}
+      {activeBills.length > 0 &&
+        activeBills.map((bill) => <TungstunBillItem barId={bill.bar.id} bill={bill} />)}
       <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
         {bars.map((bar) => {

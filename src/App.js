@@ -15,6 +15,7 @@ import RegisterPage from "./pages/register-page/RegisterPage";
 import OwnedBarPage from "./pages/owner-pages/owned-bar-page/OwnedBarPage";
 import CustomerPage from "./pages/customer-page/CustomerPage.tsx";
 import ScrollToTop from "./utils/ScrollToTop.tsx";
+import DonationPage from './pages/donation-page/DonationPage';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -71,6 +72,11 @@ const AnimatedRoutes = () => {
           <Route
             path="/my-bar/:barId"
             element={<OwnedBarPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/donate"
+            element={<DonationPage />}
             key={location.pathname}
           />
         </Routes>

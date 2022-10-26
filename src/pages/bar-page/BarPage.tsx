@@ -60,11 +60,11 @@ const BarPage = () => {
         />
       </TungstunStatistics>
       <TungstunTitle text={"📜 Current bill"} level={2} />
-      {activeBill && (<TungstunBillItem bill={activeBill} />)}
+      {activeBill && (<TungstunBillItem barId={bar.id} bill={activeBill} />)}
       <TungstunTitle text={"🕐 All bills"} level={2} />
       <TungstunListView>
         {bills.map((bill) => (
-          <TungstunBillItem bill={bill} />
+          <TungstunBillItem barId={bar.id} bill={bill} />
         ))}
       </TungstunListView>
     </TungstunPage>

@@ -12,6 +12,7 @@ export type Bill = {
   totalPrice: number;
   isPayed: boolean;
   session: Session;
+  bar: Bar;
 }
 
 export type Session = {
