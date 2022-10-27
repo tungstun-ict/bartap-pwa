@@ -121,14 +121,14 @@ function TungstunMenu({ open, setOpen }) {
             emoji="💸"
             text="Donate"
           />
-          <TungstunMenuLink
+          {/* <TungstunMenuLink
             retracted={!open}
             key={"debug"}
             handleClose={handleClose}
             to="/debug"
             emoji="🪲"
             text="Debug options"
-          />
+          /> */}
           {!open && <hr className="menu__divider" />}
 
           {loading && (
