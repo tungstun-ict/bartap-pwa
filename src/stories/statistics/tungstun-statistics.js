@@ -2,9 +2,9 @@ import React from "react";
 
 import "./tungstun-statistics.scss"
 
-const TungstunStatistics = ({children}) => {
+const TungstunStatistics = ({children, className}) => {
   return (
-    <div className="statistics__container">
+    <div className={`statistics__container ${className && className}`}>
         {children}
     </div>
   );

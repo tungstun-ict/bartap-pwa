@@ -3,11 +3,7 @@ import TungstunInstallButton from "../install-button/tungstun-install-button";
 import TungstunMenuLink from "../menu-link/tungstun-menu-link";
 import TungstunTitle from "../title/tungstun-title";
 import "./tungstun-menu.scss";
-import {
-  getAccountById,
-  getMyAccount,
-  getOwnedBars,
-} from "../../services/BarApiService";
+import { getMyAccount, getOwnedBars } from "../../services/BarApiService";
 import TungstunLoadingIndicator from "../loading-indicator/tungstun-loading-indicator";
 
 function TungstunMenu({ open, setOpen }) {
@@ -39,7 +35,7 @@ function TungstunMenu({ open, setOpen }) {
   const handleKeyDown = (e) => {
     switch (e.code) {
       case "Escape":
-        setOpen(state => !state);
+        setOpen((state) => !state);
     }
   };
 
@@ -68,10 +64,14 @@ function TungstunMenu({ open, setOpen }) {
             <div className="menu__header__account">
               <div className="menu__header__account__image"></div>
               <div className="menu__header__account__info">
-                <p className="menu__header__account__info__name">{`${account.firstName} ${account.lastName}`}</p>
-                <p className="menu__header__account__info__userName">
-                  {account.username}
-                </p>
+                <p className="menu__header__account__info__name">{`${
+                  account.firstName ? `${account.firstName} ${account.lastName}`: account.username
+                }`}</p>
+                {account.firstName && (
+                  <p className="menu__header__account__info__userName">
+                    {account.username ?? "..."}
+                  </p>
+                )}
               </div>
             </div>
           )}

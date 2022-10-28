@@ -20,7 +20,7 @@ const AccountPage = () => {
   useEffect(() => {
     async function fetchData() {
       let response = await ApiService.getMyAccount();
-      setAccount(response);
+      setAccount({ ...account, ...response });
     }
 
     if (loading) {
@@ -47,7 +47,7 @@ const AccountPage = () => {
           description={"Phone number"}
         />
       </TungstunStatistics>
-      
+
       <TungstunBottomContainer>
         <div className="account__bottom">
           <TungstunTextButton

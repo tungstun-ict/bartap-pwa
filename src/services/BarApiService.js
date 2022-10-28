@@ -212,3 +212,7 @@ export async function getMyBillsByBarId(barId) {
 export async function getMyActiveBillByBarId(barId) {
   return getRequest(`/bars/${barId}/bills/active`);
 }
+
+export async function getGlobalCustomerStatistics() {
+  return getRequest(`/global-customer-statistics`);
+}
