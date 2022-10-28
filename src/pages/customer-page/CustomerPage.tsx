@@ -13,6 +13,8 @@ import {
   Customer,
   DefaultCustomer,
   DefaultBar,
+  Statistics,
+  DefaultStatistics,
 } from "./CustomerPage.specs";
 import TungstunAccountBanner from "../../stories/account-banner/tungstun-account-banner";
 import TungstunPopup from "../../stories/popup/tungstun-popup";
@@ -22,9 +24,10 @@ import {
   getBillsOfCustomer,
   getConnectAccountToken,
   getCustomerOfBar,
+  getCustomerByIdStatistics,
 } from "../../services/BarApiService";
 import { Bill, DefaultBill, Session } from "./CustomerPage.specs";
-import TungstunListView from './../../stories/list-view/tungstun-list-view';
+import TungstunListView from "./../../stories/list-view/tungstun-list-view";
 import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item";
 
 const CustomerPage = () => {
@@ -37,6 +40,7 @@ const CustomerPage = () => {
   const [bar, setBar] = useState<Bar>(DefaultBar);
   const [bills, setBills] = useState<Bill[]>([DefaultBill]);
   const [popupOpen, setPopupOpen] = useState(false);
+  const [statistics, setStatistics] = useState<Statistics>(DefaultStatistics);
 
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +49,12 @@ const CustomerPage = () => {
         customerId
       );
       setCustomer(customerResponse);
+
+      let statisticsResponse: Statistics = await getCustomerByIdStatistics(
+        barId,
+        customerId
+      );
+      setStatistics(statisticsResponse);
 
       let barResponse: Bar = await getBarById(barId);
       setBar(barResponse);
@@ -65,10 +75,12 @@ const CustomerPage = () => {
 
   const sortBillsByDate = (bills: Bill[]) => {
     return bills.sort((a, b) => {
-      console.log(a)
-      return new Date(b.session.date).getTime() - new Date(a.session.date).getTime();
+      console.log(a);
+      return (
+        new Date(b.session.date).getTime() - new Date(a.session.date).getTime()
+      );
     });
-  }
+  };
 
   const handleConnect = () => {
     async function fetchData() {
@@ -76,7 +88,10 @@ const CustomerPage = () => {
     }
 
     fetchData()
-      .then(token => {console.log(token); setToken(token);})
+      .then((token) => {
+        console.log(token);
+        setToken(token);
+      })
       .finally(() => setPopupOpen(true));
   };
 
@@ -85,15 +100,27 @@ const CustomerPage = () => {
   return (
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle back text={`🧑 ${customer.name}`} level={1} />
-      <TungstunStatistics>
+      <TungstunStatistics className="statistics">
         <TungstunStatistic value={bar.name} description={"Customer of"} />
         <TungstunStatistic
-          value={customer.name}
+          value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
           description={"Favorite item"}
         />
         <TungstunStatistic
-          value={`€${new Number(2).toFixed(2)}`}
-          description={"Highest bill"}
+          value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(
+            2
+          )},- during '${statistics.mostExpensiveBill.session.name}'`}
+          description={"Most expensive bill"}
+        />
+      </TungstunStatistics>
+      <TungstunStatistics>
+        <TungstunStatistic
+          value={`€${statistics.totalNotYetPayed.toFixed(2)},-`}
+          description={"Total owed"}
+        />
+        <TungstunStatistic
+          value={`€${statistics.totalSpent.toFixed(2)},-`}
+          description={"Total spent"}
         />
       </TungstunStatistics>
       <TungstunTitle text={`🔒 Account`} level={2} />

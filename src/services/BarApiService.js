@@ -252,3 +252,7 @@ export async function getGlobalCustomerStatistics() {
 export async function getCustomerBarStatistics(barId) {
   return getRequest(`/bars/${barId}/customer-statistics`);
 }
+
+export async function getCustomerByIdStatistics(barId, customerId) {
+  return getRequest(`/bars/${barId}/people/${customerId}/statistics`);
+}
