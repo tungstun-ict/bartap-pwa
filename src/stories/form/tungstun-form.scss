@@ -1,33 +1,42 @@
 @use "../../variables.scss";
 
-.form__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.form {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
 
-.form__title {
-  margin: 0;
-  font-family: variables.$font-heading;
-}
+  &__row {
+    display: flex;
+    align-self: flex-end;
+  }
+  &__loader {
+    margin-right: 20px;
+  }
 
-.form__description {
-  margin: 0;
-  font-family: variables.$font-content;
-}
+  &__title {
+    margin: 0;
+    font-family: variables.$font-heading;
+  }
 
-.form__children {
-  margin-top: 30px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+  &__description {
+    margin: 0;
+    font-family: variables.$font-content;
+  }
 
-.form__children > div{
-  margin: 10px 0;
-}
+  &__children {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-.form__children > .button__container {
-  align-self: flex-end;
-}
+    & > div {
+      margin: 10px 0;
+    }
 
+    & > .button__container {
+      align-self: flex-end;
+    }
+  }
+}

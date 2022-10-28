@@ -20,8 +20,21 @@
   font-family: variables.$font-heading;
   font-weight: bold;
   border-radius: 100px;
-}
 
+  &__eye {
+    height: 80%;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__prefix {
+    color: black;
+    font-family: variables.$font-heading;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+}
 .input:focus {
   outline: none;
 }

@@ -3,25 +3,66 @@
 .header {
   &__container {
     box-shadow: variables.$shadow;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
     display: flex;
-    height: 80px;
+    height: 60px;
     margin: 0;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     padding: 0 20px;
-  }
-
-  &__logo {
-    height: 40px;
+    z-index: 97;
   }
 
   &__left {
-    margin-left: 20px;
+    flex: 1;
+  }
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-family: variables.$font-heading;
+    user-select: none;
+    font-size: 20px;
+    flex: 1;
   }
 
   &__right {
-    margin-left: auto;
+    flex: 1;
+    display: flex;
+  }
 
+  &__bmcLink {
+    margin-left: auto;
+    width: 253px;
+    position: relative;
+
+    & > img {
+      height: 40px;
+      right: 0;
+      position: relative;
+      @media (max-width: variables.$size-mobile-max) {
+        height: 30px;
+      }
+    }
+  }
+}
+
+.menu {
+  &__button {
+    border: none;
+    background: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+  }
+
+  &__image {
+    width: 100%;
   }
 }

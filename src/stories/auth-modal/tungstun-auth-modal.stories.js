@@ -14,10 +14,6 @@ export default {
 export const Primary = () => {
   const [formValues, updateFormValues] = useForm();
 
-  const submitForm = () => {
-    console.log(formValues);
-  };
-
   return (
     <TungstunAuthModal
       heroImg={require("../../assets/images/office.jpg")}
@@ -47,8 +43,7 @@ export const Primary = () => {
           onChange={updateFormValues}
         />
         <TungstunIconButton
-          onClick={submitForm}
-          src={require("../../assets/icons/next-icon-light.png")}
+          src={require("../../assets/icons/arrow-light.png")}
         />
       </TungstunForm>
     </TungstunAuthModal>

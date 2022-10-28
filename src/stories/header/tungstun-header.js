@@ -1,16 +1,39 @@
 import React from "react";
 
 import "./tungstun-header.scss";
+import TungstunTextButton from './../text-button/tungstun-text-button';
+import { useNavigate } from 'react-router-dom';
 
-function TungstunHeader({ logo, left, right, height, className }) {
+function TungstunHeader({ className, setMenuOpen }) {
+  const navigate = useNavigate();
+
+  const handleOpenMenu = () => {
+    setMenuOpen(true);
+  };
+
+  const handleDonateClick = () => {
+    navigate("/donate")
+  }
+
   return (
-    <div
-      className={`header__container ${className}`}
-      style={{ height: height && height }}
-    >
-      <img className="header__logo" alt="" src={logo} />
-      <div className="header__left">{left}</div>
-      <div className="header__right">{right}</div>
+    <div className={`header__container ${className}`}>
+      <div className="header__left">
+        <button
+          aria-label="Open menu"
+          onClick={handleOpenMenu}
+          className="menu__button"
+        >
+          <img
+            alt="menu"
+            className="menu__image"
+            src={require("../../assets/icons/menu.png")}
+          />
+        </button>
+      </div>
+      <div className="header__center">bartap</div>
+      <div className="header__right">
+        <TungstunTextButton className={"header__bmcLink"} onClick={handleDonateClick} text={"💸"}/>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,18 @@
+@use "../../variables.scss";
+
+.install-button {
+  &__container {
+    background: variables.$color-brand-gradient;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  &__text {
+    margin: 20px;
+  }
+}

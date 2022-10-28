@@ -1,5 +1,7 @@
+@use "../../variables.scss";
+
 .text {
-  font-family: rubik, sans-serif;
-  font-weight: bold;
+  font-family: variables.$font-heading;
+  font-weight: 800;
   user-select: none;
 }

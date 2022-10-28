@@ -1,0 +1,87 @@
+@use "../../variables.scss";
+
+.title {
+  font-family: variables.$font-heading;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+
+  &__action {
+    position: absolute;
+    right: 0;
+  }
+
+  &__fixed {
+    margin: 0;
+    padding-left: 20px;
+    top: 60px;
+    left: 0;
+    padding: 10px 20px 20px 20px;
+    position: fixed;
+    z-index: 8;
+    width: 100vw;
+    box-sizing: border-box;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    & > div {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (min-width: variables.$size-mobile-max) {
+        width: 1000px;
+      }
+    }
+
+    @media (min-width: variables.$size-mobile-max) {
+      display: flex;
+      padding: 10px 0;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__h1 {
+    font-size: 30px;
+  }
+
+  &__h2 {
+    font-size: 25px;
+    margin: 20px 0;
+  }
+
+  &__h3 {
+    font-size: 20px;
+  }
+
+  &__back {
+    height: 30px;
+    width: 30px;
+    transform: rotate(180deg);
+    transition: 0.3s;
+    z-index: 0;
+    align-self: center;
+    cursor: pointer;
+
+    @media (min-width: variables.$size-mobile-max) {
+      &:hover {
+        transform: rotate(180deg) scale(1.1);
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    height: fit-content;
+  }
+}

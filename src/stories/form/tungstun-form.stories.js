@@ -42,7 +42,7 @@ export const Primary = () => {
         onChange={updateValues}
       />
       <TungstunIconButton
-        src={require("../../assets/icons/next-icon-light.png")}
+        src={require("../../assets/icons/arrow-light.png")}
         width={30}
         onClick={submitForm}
       />

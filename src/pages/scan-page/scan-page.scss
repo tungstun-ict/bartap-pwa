@@ -1,0 +1,64 @@
+@use "../../variables.scss";
+
+.scan-page {
+  &__camera {
+    height: 800px;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.3s;
+
+    & > section > div {
+      height: 100%;
+    }
+
+    & > section > div > #video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: variables.$size-mobile-max) {
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      & > section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+      }
+
+      & > section > div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      & > section > div > #video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__form {
+    @media (max-width: variables.$size-mobile-max) {
+      background-color: white;
+      height: 150px;
+      width: 100vw;
+      position: fixed;
+      bottom: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      left: 0;
+    }
+  }
+}

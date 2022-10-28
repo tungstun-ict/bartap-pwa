@@ -1,0 +1,143 @@
+@use "../../variables.scss";
+
+.menu {
+  &__negative {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 0;
+    height: 100vh;
+    position: fixed;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 99;
+    top: 0;
+    transition: 0.3s;
+    width: 100vw;
+    opacity: 0;
+
+    &--open {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__loadingIndicator {
+    margin-top: 20px !important;
+  }
+
+  &__divider {
+    width: 100%;
+    border: 2px solid lightgray;
+    border-radius: 100px;
+    background-color: lightgray;
+    margin: 42px 10px;
+  }
+
+  &__container {
+    transition: 0.2s ease-in-out;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    background-color: variables.$color-menu-background;
+
+    @media (min-width: 1300px) {
+      width: 500px;
+      left: 0;
+      transition: 0.5s;
+      box-shadow: variables.$shadow;
+    }
+  }
+
+  &__header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &__close,
+    &__open {
+      margin-left: auto;
+      margin-right: 20px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      & > img {
+        width: 100%;
+      }
+    }
+
+    &__open {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      & > img {
+        width: 30px;
+      }
+    }
+
+    &__account {
+      display: flex;
+
+      &__image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 20px;
+        background-color: lightgray;
+      }
+
+      &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &__name {
+          font-weight: bold;
+        }
+
+        &__userName {
+          color: lightgray;
+        }
+
+        & > p {
+          font-size: 0.8rem;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &__links {
+    flex: 1;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > div {
+      margin: 10px;
+    }
+  }
+
+  &-closed {
+    transform: translateX(-100vw);
+
+    @media (min-width: 1300px) {
+      transform: translateX(0);
+      width: 100px;
+    }
+  }
+}

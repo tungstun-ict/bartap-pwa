@@ -1,0 +1,46 @@
+@use "../../variables.scss";
+
+.menu-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  text-decoration: none;
+  transform-origin: left;
+
+  &__container {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: variables.$shadow;
+    border-radius: 100px;
+    transition: 0.3s;
+  }
+
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: variables.$font-heading;
+    font-weight: 800;
+    color: variables.$color-text-link-header;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  &-active {
+    background-color: black;
+    &,
+    .menu-link__text {
+      color: white;
+    }
+  }
+
+  &-retracted {
+    width: 70px;
+  }
+}

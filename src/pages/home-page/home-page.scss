@@ -1,0 +1,13 @@
+@use "../../variables.scss";
+
+.statistics {
+  margin-bottom: 10px;
+
+  @media (min-width: variables.$size-mobile-max) {
+    margin-bottom: 20px;
+  }
+}
+
+.add-bar-button {
+  margin-top: 20px;
+}

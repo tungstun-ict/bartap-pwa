@@ -1,0 +1,66 @@
+@use "../../variables.scss";
+
+.notification {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    background-color: variables.$color-notification-background;
+    box-shadow: variables.$shadow;
+    border-radius: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    animation: SlideIn 0.2s;
+    
+    align-items: center;
+    transition: all 1s ease-in-out;
+
+    @keyframes SlideIn {
+      0% {
+        margin-left: 120%;
+      }
+      100% {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__overlay {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    background-color: variables.$color-notification-overlay;
+  }
+
+  &__text {
+    margin-left: 20px;
+    z-index: 1;
+  }
+
+  &__icon {
+    height: 40px;
+    margin-left: 20px;
+  }
+
+  &-error {
+    background-color: variables.$color-error;
+    color: white;
+  }
+
+  &-exit {
+    animation: SlideOut 0.4s;
+    
+  }
+
+  @keyframes SlideOut {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(-80px);
+    }
+  }
+}

@@ -13,6 +13,6 @@ export const Primary = Template.bind({});
 
 Primary.storyName = "Primary";
 Primary.args = {
-  src: require("../../assets/icons/next-icon-light.png"),
+  src: require("../../assets/icons/arrow-light.png"),
   width: 40
 };

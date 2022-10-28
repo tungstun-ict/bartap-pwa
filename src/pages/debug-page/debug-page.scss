@@ -1,0 +1,11 @@
+@use "../../variables.scss";
+
+.notifications {
+  &__container {
+    display: flex;
+
+    & > button {
+      margin: 0 10px;
+    }
+  }
+}
