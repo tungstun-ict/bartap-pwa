@@ -20,7 +20,7 @@ export const DefaultBill: Bill = {
   name: '... ...',
   totalPrice: 0,
   isPayed: false,
-  session: null,
+  session: { id: '', name: '...', date: new Date() },
   bar: null,
 }
 

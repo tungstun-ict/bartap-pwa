@@ -16,6 +16,7 @@ const RegisterPage = () => {
   const [formValues, updateFormValues] = useForm();
   const [accountFormValues, updateAccountFormValues] = useForm();
   const [loading, setLoading] = useState(false);
+  const [createAccountResponse, setCreateAccountResponse] = useState(null);
   const [accountProgress, setAccountProgress] = useState(0);
   const navigate = useNavigate();
   const notificationDispatch = useContext(TungstunNotificationContext);
@@ -61,11 +62,15 @@ const RegisterPage = () => {
         throw new Error("This is not a valid email address.");
       }
 
-      await ApiService.signUp(
+      const response = await ApiService.signUp(
         formValues.email,
         formValues.username,
         formValues.password
       );
+
+      setCreateAccountResponse(response.data);
+      const loginResponse = await ApiService.login(formValues.username, formValues.password);
+      console.log(loginResponse);
       sleep(1000);
       setLoading(false);
       setAccountProgress(1);
@@ -118,9 +123,10 @@ const RegisterPage = () => {
         throw new Error("Last name must not be empty.");
       }
 
-      //TODO: IMPLEMENT
-      setLoading(false);
+      const response = await ApiService.updateAccountInfo(createAccountResponse.id ,accountFormValues.first_name, accountFormValues.last_name, accountFormValues.phone);
+      
       navigate("/");
+      setLoading(false);
     } catch (e) {
       setLoading(false);
       notificationDispatch({

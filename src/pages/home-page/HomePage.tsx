@@ -16,7 +16,7 @@ import { Bar, Bill, DefaultStatistics, Statistics } from "./HomePage.specs";
 import {
   getConnectedBars,
   getMyActiveBillByBarId,
-  getGlobalCustomerStatistics
+  getGlobalCustomerStatistics,
 } from "../../services/BarApiService";
 import TungstunBillItem from "./../../stories/list-item/bill-item/tungstun-bill-item";
 
@@ -33,7 +33,8 @@ const HomePage = ({}) => {
       const barsResponse: Bar[] = await getConnectedBars();
       setBars(barsResponse);
 
-      const statisticsResponse: Statistics = await getGlobalCustomerStatistics();
+      const statisticsResponse: Statistics =
+        await getGlobalCustomerStatistics();
       setStatistics(statisticsResponse);
 
       barsResponse.forEach((bar: Bar) => {
@@ -58,16 +59,32 @@ const HomePage = ({}) => {
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={"🏠 Home"} level={1} />
       <TungstunStatistics className="statistics">
-      <TungstunStatistic value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(2)},- during '${statistics.mostExpensiveBill.session?.name}'`} description="Most expensive bill" />
+        <TungstunStatistic
+          value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(
+            2
+          )},- during '${statistics.mostExpensiveBill.session?.name}'`}
+          description="Most expensive bill"
+        />
       </TungstunStatistics>
       <TungstunStatistics>
-        <TungstunStatistic value={`€${statistics.totalNotYetPayed.toFixed(2)},-`} description="Open tap" />
-        <TungstunStatistic value={`€${statistics.totalSpent.toFixed(2)},-`} description="Total spent" />
-        <TungstunStatistic value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`} description="Favourite product" />
+        <TungstunStatistic
+          value={`€${statistics.totalNotYetPayed.toFixed(2)},-`}
+          description="Open tap"
+        />
+        <TungstunStatistic
+          value={`€${statistics.totalSpent.toFixed(2)},-`}
+          description="Total spent"
+        />
+        <TungstunStatistic
+          value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
+          description="Favourite product"
+        />
       </TungstunStatistics>
       <TungstunTitle text="📜 Active bills" level={2} />
       {activeBills.length > 0 &&
-        activeBills.map((bill) => <TungstunBillItem barId={bill.bar.id} bill={bill} />)}
+        activeBills.map((bill) => (
+          <TungstunBillItem barId={bill.bar.id} bill={bill} />
+        ))}
       <TungstunTitle text="🍺 Joined bars" level={2} />
       <TungstunListView>
         {bars.map((bar) => {

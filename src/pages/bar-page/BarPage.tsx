@@ -6,8 +6,8 @@ import TungstunStatistics from "../../stories/statistics/tungstun-statistics";
 import TungstunTitle from "../../stories/title/tungstun-title";
 import TungstunSessionItem from "../../stories/list-item/session-item/tungstun-session-item";
 import TungstunListView from "../../stories/list-view/tungstun-list-view";
-import { Bar } from "./BarPage.specs";
-import { getBarById, getMyBillsByBarId, getMyActiveBillByBarId } from "../../services/BarApiService";
+import { Bar, DefaultStatistics, Statistics } from "./BarPage.specs";
+import { getBarById, getMyBillsByBarId, getMyActiveBillByBarId, getCustomerBarStatistics } from "../../services/BarApiService";
 import { Bill } from "./BarPage.specs";
 import TungstunBillItem from "../../stories/list-item/bill-item/tungstun-bill-item";
 
@@ -16,6 +16,8 @@ const BarPage = () => {
   const [bar, setBar] = useState<Bar>({ id: "0", name: "...", debt: 0 });
   const [bills, setBills] = useState<Bill[]>([]);
   const [activeBill, setActiveBill] = useState<Bill>(null);
+  const [statistics, setStatistics] = useState<Statistics>(DefaultStatistics);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -23,6 +25,8 @@ const BarPage = () => {
       const response: Bar = await getBarById(id);
       const billsResponse: Bill[] = await getMyBillsByBarId(id);
       const activeBillResponse: Bill = await getMyActiveBillByBarId(id);
+      const statisticsResponse: Statistics = await getCustomerBarStatistics(id);
+      setStatistics(statisticsResponse);
       setActiveBill(activeBillResponse);
       console.log(billsResponse)
 
@@ -45,18 +49,26 @@ const BarPage = () => {
   return (
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={`🍺 ${bar.name}`} level={1} back />
+      <TungstunStatistics className="statistics">
+        <TungstunStatistic
+          value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(
+            2
+          )},- during '${statistics.mostExpensiveBill.session?.name}'`}
+          description="Most expensive bill"
+        />
+      </TungstunStatistics>
       <TungstunStatistics>
         <TungstunStatistic
-          description={"Total debt"}
-          value={`€${bar.debt},-`}
+          value={`€${statistics.totalNotYetPayed.toFixed(2)},-`}
+          description="Open tap"
         />
         <TungstunStatistic
-          description={"Most spent at one time"}
-          value={`€${bar.debt},-`}
+          value={`€${statistics.totalSpent.toFixed(2)},-`}
+          description="Total spent"
         />
         <TungstunStatistic
-          description={"Favourite drink"}
-          value={`Vodka martini`}
+          value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
+          description="Favourite product"
         />
       </TungstunStatistics>
       <TungstunTitle text={"📜 Current bill"} level={2} />

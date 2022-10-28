@@ -90,6 +90,24 @@ async function postRequest(url, body = null) {
     });
 }
 
+async function patchRequest(url, body = null) {
+  const accessToken = storage.getAccessToken();
+
+  return api
+    .patch(url, body, {
+      headers: {
+        access_token: accessToken,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e) => {
+      throw e;
+    });
+}
+
 export async function login(email, password) {
   let data = { username: email, password: password };
   let tokens = null;
@@ -109,6 +127,7 @@ export async function login(email, password) {
             accessToken: response.headers.get("access_token"),
             refreshToken: response.headers.get("refresh_token"),
           };
+          ````````````;
         }
       } else {
         throw new Error("Credentials are not ok!");
@@ -129,12 +148,25 @@ export async function logout() {
 }
 
 export async function signUp(email, userName, password, firstName, lastName) {
-  await api.post(`/account/register`, {
+  return await api.post(`/account/register`, {
     firstName: firstName,
     lastName: lastName,
     mail: email,
     password: password,
     username: userName,
+  });
+}
+
+export async function updateAccountInfo(
+  customerId,
+  firstName,
+  lastName,
+  phone
+) {
+  return await patchRequest(`/account/${customerId}`, {
+    firstName: firstName,
+    lastName: lastName,
+    phoneNumber: "+31" + phone,
   });
 }
 
@@ -215,4 +247,8 @@ export async function getMyActiveBillByBarId(barId) {
 
 export async function getGlobalCustomerStatistics() {
   return getRequest(`/global-customer-statistics`);
+}
+
+export async function getCustomerBarStatistics(barId) {
+  return getRequest(`/bars/${barId}/customer-statistics`);
 }
