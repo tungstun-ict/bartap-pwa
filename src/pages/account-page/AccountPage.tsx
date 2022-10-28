@@ -31,7 +31,6 @@ const AccountPage = () => {
   return (
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={"🧑 Account"} level={1} />
-      <TungstunTitle text={"🌐 Information"} level={2} />
       <TungstunStatistics>
         <TungstunStatistic
           value={`${account.firstName} ${account.lastName}`}

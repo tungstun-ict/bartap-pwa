@@ -58,28 +58,32 @@ const HomePage = ({}) => {
   return (
     <TungstunPage authenticated loading={loading}>
       <TungstunTitle text={"🏠 Home"} level={1} />
-      <TungstunStatistics className="statistics">
-        <TungstunStatistic
-          value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(
-            2
-          )},- during '${statistics.mostExpensiveBill.session?.name}'`}
-          description="Most expensive bill"
-        />
-      </TungstunStatistics>
-      <TungstunStatistics>
-        <TungstunStatistic
-          value={`€${statistics.totalNotYetPayed.toFixed(2)},-`}
-          description="Open tap"
-        />
-        <TungstunStatistic
-          value={`€${statistics.totalSpent.toFixed(2)},-`}
-          description="Total spent"
-        />
-        <TungstunStatistic
-          value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
-          description="Favourite product"
-        />
-      </TungstunStatistics>
+      {bars.length > 0 && (
+        <>
+          <TungstunStatistics className="statistics">
+            <TungstunStatistic
+              value={`€${statistics.mostExpensiveBill.totalPrice.toFixed(
+                2
+              )},- during '${statistics.mostExpensiveBill.session?.name}'`}
+              description="Most expensive bill"
+            />
+          </TungstunStatistics>
+          <TungstunStatistics>
+            <TungstunStatistic
+              value={`€${statistics.totalNotYetPayed.toFixed(2)},-`}
+              description="Open tap"
+            />
+            <TungstunStatistic
+              value={`€${statistics.totalSpent.toFixed(2)},-`}
+              description="Total spent"
+            />
+            <TungstunStatistic
+              value={`${statistics.mostSoldProduct.brand} ${statistics.mostSoldProduct.name}`}
+              description="Favourite product"
+            />
+          </TungstunStatistics>
+        </>
+      )}
       <TungstunTitle text="📜 Active bills" level={2} />
       {activeBills.length > 0 &&
         activeBills.map((bill) => (

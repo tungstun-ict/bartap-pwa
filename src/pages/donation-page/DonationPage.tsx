@@ -45,11 +45,12 @@ const DonationPage = ({}) => {
       <div className="goal">
         <p className="goal__name">Bartap on iOS - €100</p>
         <div className="goal__progressBar">
-          <p className="goal__progressBar__progress">6%</p>
+          <p className="goal__progressBar__progress">13%</p>
           <div className="goal__progressBar__fill" />
         </div>
       </div>
       <TungstunTitle text={"👨‍💻 Donators"} level={2} />
+      <TungstunTitle text={"1x 🍸 Stan"} level={3} />
       <TungstunTitle text={"1x 🍺 Xander Vedder"} level={3} />
       <TungstunTitle text={"1x 🍺 Milan Dol"} level={3} />
     </TungstunPage>
