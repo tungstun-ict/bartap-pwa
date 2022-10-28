@@ -63,6 +63,13 @@ const CustomerPage = () => {
     if (loading) fetchData().finally(() => setLoading(false));
   }, [loading]);
 
+  const sortBillsByDate = (bills: Bill[]) => {
+    return bills.sort((a, b) => {
+      console.log(a)
+      return new Date(b.session.date).getTime() - new Date(a.session.date).getTime();
+    });
+  }
+
   const handleConnect = () => {
     async function fetchData() {
       return await getConnectAccountToken(bar.id, customer.id);
@@ -97,7 +104,7 @@ const CustomerPage = () => {
       />
       <TungstunTitle text={`📜 Bills`} level={2} />
       <TungstunListView>
-        {bills.map((bill: Bill) => (
+        {sortBillsByDate(bills).map((bill: Bill) => (
           <TungstunBillItem key={bill.id} barId={barId} bill={bill} />
         ))}
       </TungstunListView>
