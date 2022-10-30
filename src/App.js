@@ -16,6 +16,8 @@ import OwnedBarPage from "./pages/owner-pages/owned-bar-page/OwnedBarPage";
 import CustomerPage from "./pages/customer-page/CustomerPage.tsx";
 import ScrollToTop from "./utils/ScrollToTop.tsx";
 import DonationPage from './pages/donation-page/DonationPage';
+import PrivacyPage from './pages/statements-pages/PrivacyPage';
+import TermsAndConditionsPage from './pages/statements-pages/TermsAndConditionsPage';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -77,6 +79,16 @@ const AnimatedRoutes = () => {
           <Route
             path="/donate"
             element={<DonationPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/privacy-statement"
+            element={<PrivacyPage />}
+            key={location.pathname}
+          />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditionsPage />}
             key={location.pathname}
           />
         </Routes>

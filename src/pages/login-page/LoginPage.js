@@ -24,7 +24,7 @@ const LoginPage = () => {
     try {
       if (Object.keys(formValues).length === 0)
         throw new Error("Some fields are empty");
-  
+
       for (const prop in formValues) {
         if (
           formValues[prop] === "" ||
@@ -100,6 +100,24 @@ const LoginPage = () => {
         >
           or register here
         </p>
+        <div className="login-page__links__statements">
+          <p
+            className="login-page__links__statement"
+            onClick={() => {
+              navigate("/terms-and-conditions");
+            }}
+          >
+            terms and conditions
+          </p>
+          <p
+            className="login-page__links__statement"
+            onClick={() => {
+              navigate("/privacy-statement");
+            }}
+          >
+            privacy statement
+          </p>
+        </div>
       </div>
       <TungstunWaves />
     </TungstunPage>

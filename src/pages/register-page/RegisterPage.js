@@ -69,7 +69,10 @@ const RegisterPage = () => {
       );
 
       setCreateAccountResponse(response.data);
-      const loginResponse = await ApiService.login(formValues.username, formValues.password);
+      const loginResponse = await ApiService.login(
+        formValues.username,
+        formValues.password
+      );
       console.log(loginResponse);
       sleep(1000);
       setLoading(false);
@@ -84,10 +87,10 @@ const RegisterPage = () => {
   };
 
   const submitAccountForm = async () => {
-    setLoading(true);;
+    setLoading(true);
 
     if (Object.keys(accountFormValues).length === 0)
-        throw new Error("Some fields are empty");
+      throw new Error("Some fields are empty");
 
     try {
       for (const prop in accountFormValues) {
@@ -123,8 +126,13 @@ const RegisterPage = () => {
         throw new Error("Last name must not be empty.");
       }
 
-      const response = await ApiService.updateAccountInfo(createAccountResponse.id ,accountFormValues.first_name, accountFormValues.last_name, accountFormValues.phone);
-      
+      const response = await ApiService.updateAccountInfo(
+        createAccountResponse.id,
+        accountFormValues.first_name,
+        accountFormValues.last_name,
+        accountFormValues.phone
+      );
+
       navigate("/");
       setLoading(false);
     } catch (e) {
@@ -243,6 +251,10 @@ const RegisterPage = () => {
       noMenu
     >
       {accountProgress === 0 ? loginInfo() : accountInfo()}
+      <p>
+        By creating an account you accept our terms and conditions and privacy
+        statement.
+      </p>
       <div className="register-page__links">
         <hr className="register-page__links__divider" />
         <p
@@ -252,6 +264,24 @@ const RegisterPage = () => {
           }}
         >
           or login here
+        </p>
+      </div>
+      <div className="login-page__links__statements">
+        <p
+          className="login-page__links__statement"
+          onClick={() => {
+            navigate("/terms-and-conditions");
+          }}
+        >
+          terms and conditions
+        </p>
+        <p
+          className="login-page__links__statement"
+          onClick={() => {
+            navigate("/privacy-statement");
+          }}
+        >
+          privacy statement
         </p>
       </div>
       <TungstunWaves />

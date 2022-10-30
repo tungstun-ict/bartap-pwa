@@ -46,7 +46,19 @@ const AccountPage = () => {
           description={"Phone number"}
         />
       </TungstunStatistics>
-
+      <TungstunTitle text={"📖 Statements"} level={2} />
+      <TungstunTextButton
+        className="account__button"
+        width="100%"
+        text={"Terms and conditions"}
+        onClick={() => navigate("/terms-and-conditions")}
+      />
+      <TungstunTextButton
+        className="account__button"
+        width="100%"
+        text={"Privacy statement"}
+        onClick={() => navigate("/privacy-statement")}
+      />
       <TungstunBottomContainer>
         <div className="account__bottom">
           <TungstunTextButton

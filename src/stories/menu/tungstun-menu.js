@@ -55,7 +55,7 @@ function TungstunMenu({ open, setOpen }) {
       );
     });
   };
-
+  console.log(process.env)
   return (
     <div>
       <div className={`menu__container ${!open && "menu-closed"}`}>
@@ -121,14 +121,6 @@ function TungstunMenu({ open, setOpen }) {
             emoji="💸"
             text="Donate"
           />
-          {/* <TungstunMenuLink
-            retracted={!open}
-            key={"debug"}
-            handleClose={handleClose}
-            to="/debug"
-            emoji="🪲"
-            text="Debug options"
-          /> */}
           {!open && <hr className="menu__divider" />}
 
           {loading && (
@@ -144,6 +136,7 @@ function TungstunMenu({ open, setOpen }) {
 
           {!loading && showBars(bars)}
         </nav>
+        <p className="menu__versionCode">{process.env.REACT_APP_BARTAP_NAME} <br/> v{process.env.REACT_APP_BARTAP_VERSION}</p>
         <TungstunInstallButton />
       </div>
       <div

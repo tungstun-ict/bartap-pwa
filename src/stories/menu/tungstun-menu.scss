@@ -1,6 +1,12 @@
 @use "../../variables.scss";
 
 .menu {
+  &__versionCode {
+    width: 100%;
+    text-align: center;
+    color: grey;
+  }
+
   &__negative {
     background-color: rgba(0, 0, 0, 0.3);
     width: 0;
