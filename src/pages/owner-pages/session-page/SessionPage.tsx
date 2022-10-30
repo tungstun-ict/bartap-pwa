@@ -15,27 +15,38 @@ import {
   Bill,
   DefaultBill,
   DefaultSession,
+  Order,
   Session,
 } from "./SessionPage.specs";
 import { getBillById } from "../../../services/BarApiService";
 
 const SessionPage = () => {
-  const notificationDispatch: Function = useContext(TungstunNotificationContext);
+  const notificationDispatch: Function = useContext(
+    TungstunNotificationContext
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [bill, setBill] = useState<Bill>(DefaultBill);
   const [session, setSession] = useState<Session>(DefaultSession);
 
   const { barId, sessionId, billId } = useParams();
-  
+
   useEffect(() => {
     async function fetchData() {
       let billResponse = await getBillById(barId, sessionId, billId);
       setBill(billResponse);
     }
 
-    if (loading)
-      fetchData().finally(() => setLoading(false));
+    if (loading) fetchData().finally(() => setLoading(false));
   }, [loading]);
+
+  const sortOrdersByDate = (orders: Order[]) => {
+    return orders.sort((a, b) => {
+      console.log(a);
+      return (
+        new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
+      );
+    });
+  };
 
   const handleShare = async () => {
     const styles = {
@@ -94,12 +105,14 @@ const SessionPage = () => {
             description="Total"
             value={`€${bill.totalPrice.toFixed(2)},-`}
           />
-          <TungstunStatistic description="Status" value={bill.isPayed ? "Paid" : "Open"} />
-          
+          <TungstunStatistic
+            description="Status"
+            value={bill.isPayed ? "Paid" : "Open"}
+          />
         </TungstunStatistics>
         <TungstunTitle text={`🍽️ Orders`} level={2} />
         <TungstunListView>
-          {bill.orders.map((order) => (
+          {sortOrdersByDate(bill.orders).map((order) => (
             <TungstunOrderItem key={order.id} order={order} />
           ))}
         </TungstunListView>

@@ -15,6 +15,7 @@ import {
   Bill,
   DefaultBill,
   DefaultSession,
+  Order,
   Session,
 } from "./BillPage.specs";
 
@@ -38,6 +39,13 @@ const BillPage = () => {
       fetchData().finally(() => setLoading(false));
   }, [loading]);
 
+  const sortOrdersByDate = (orders: Order[]) => {
+    return orders.sort((a, b) => {
+      console.log(a)
+      return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
+    });
+  }
+  
   const handleShare = async () => {
     const styles = {
       display: "flex",
@@ -100,7 +108,7 @@ const BillPage = () => {
         </TungstunStatistics>
         <TungstunTitle text={`🍽️ Orders`} level={2} />
         <TungstunListView>
-          {bill.orders.map((order) => (
+          {sortOrdersByDate(bill.orders).map((order) => (
             <TungstunOrderItem key={order.id} order={order} />
           ))}
         </TungstunListView>
